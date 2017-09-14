@@ -1,0 +1,26 @@
+add_library (player_master_default SHARED playlist.c playlist_patch.c playlist_parse.c)
+target_link_libraries (player_master_default ${BMC_LIBS} ${IMGU_LIBS} ${LT_LIBS})
+install(TARGETS player_master_default LIBRARY DESTINATION ${LT_LIB})
+
+SET_TARGET_PROPERTIES(player_master_default PROPERTIES PREFIX "")
+if (APPLE)
+  SET_TARGET_PROPERTIES(player_master_default PROPERTIES LINK_FLAGS "-undefined suppress -flat_namespace")
+  SET_TARGET_PROPERTIES(player_master_default PROPERTIES SUFFIX ".pd_darwin")
+else()
+  SET_TARGET_PROPERTIES(player_master_default PROPERTIES SUFFIX ".pd_linux")
+endif()
+
+install(FILES playlist_player.pd DESTINATION ${LT_SHARE})
+install(FILES output~.pd DESTINATION ${LT_SHARE})
+install(FILES ch_grp.pd DESTINATION ${LT_SHARE})
+install(FILES ch_ctrl.pd DESTINATION ${LT_SHARE})
+install(FILES ch_env.pd DESTINATION ${LT_SHARE})
+install(FILES ch_dist.pd DESTINATION ${LT_SHARE})
+install(FILES ch_norm.pd DESTINATION ${LT_SHARE})
+install(FILES ch_weight.pd DESTINATION ${LT_SHARE})
+install(FILES plus.pd DESTINATION ${LT_SHARE})
+install(FILES minus.pd DESTINATION ${LT_SHARE})
+install(FILES times.pd DESTINATION ${LT_SHARE})
+install(FILES divide.pd DESTINATION ${LT_SHARE})
+
+

@@ -1,0 +1,58 @@
+#N canvas 92 101 535 522 10;
+#X obj 290 152 mcnetsend;
+#X obj 316 202 print;
+#X obj 230 110 r net;
+#X obj 257 32 loadbang;
+#X floatatom 56 156 5 0 0 0 - - -;
+#X obj 55 183 / 100;
+#X floatatom 58 42 5 0 0 0 - - -;
+#X obj 57 69 / 100;
+#X msg 54 103 \; net send fade 0 \$1;
+#X msg 52 221 \; net sendsafe fade 0 \$1;
+#X msg 46 266 \; net send capture 0;
+#X obj 271 235 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 296 265 0;
+#X msg 277 298 \; net send scantrig \$1 yo;
+#X msg 345 256 1;
+#X obj 49 310 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 72 309 0;
+#X msg 109 309 1;
+#X msg 54 341 \; net send scanner 0 \$1;
+#X msg 270 356 \; net sendsafe capture 0 gige:36134 \; net sendsafe
+fade 0 1;
+#X msg 301 91 connect 15000 1;
+#X obj 20 403 hsl 128 15 -5 5 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 5000 1;
+#X obj 188 407 hsl 128 15 1 10 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 352 428 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 327 454 \; net send fade 4 \$1;
+#X obj 22 379 hsl 128 15 -5 5 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6300 1;
+#X obj 169 382 hsl 128 15 1 10 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 6000 1;
+#X obj 122 454 pack f f f f;
+#X msg 75 480 \; net send scaletrans 4 \$3 \$4 \$1 \$2;
+#X connect 0 0 1 0;
+#X connect 2 0 0 0;
+#X connect 3 0 20 0;
+#X connect 4 0 5 0;
+#X connect 5 0 9 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 11 0 13 0;
+#X connect 12 0 13 0;
+#X connect 14 0 13 0;
+#X connect 15 0 18 0;
+#X connect 16 0 18 0;
+#X connect 17 0 18 0;
+#X connect 20 0 0 0;
+#X connect 21 0 27 0;
+#X connect 22 0 27 3;
+#X connect 23 0 24 0;
+#X connect 25 0 27 1;
+#X connect 26 0 27 2;
+#X connect 27 0 28 0;

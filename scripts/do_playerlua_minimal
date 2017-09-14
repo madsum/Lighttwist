@@ -1,0 +1,2 @@
+#!/bin/bash
+ltplayerlua -path ~/lighttwist/data -lut ~/lighttwist/scan_minimal/00_lut1.png -blend ~/lighttwist/scan_minimal/00_blend1.png -share /usr/local/share/lighttwist -video_shader deform_video.glsl -3d_shader deform_3d.glsl -m 0 -n 1 -zero 0 -sync -dlutsx 2048 -dlutsy 2048 -vpxmin 0 -vpymin 0 -vpwidth 640 -vpheight 480 -port 15555 -nobmcthreads

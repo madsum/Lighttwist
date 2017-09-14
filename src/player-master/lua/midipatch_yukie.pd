@@ -1,0 +1,3334 @@
+#N canvas 162 25 1199 573 8;
+#X obj 15 36 r lua;
+#X obj 15 109 luabox 1;
+#X text 11 18 Receive LUA messages;
+#X text 291 607 CENTRE;
+#X msg 15 637 \; net ecran sendsafe scaletrans 3 1 -0.5 0 1.25;
+#X text 304 641 TOP;
+#X text 304 676 BOTTOM;
+#X msg 14 672 \; net ecran sendsafe scaletrans 3 1 -0.5 0 0.25;
+#X text 305 713 DROITE;
+#X text 304 748 GAUCHE;
+#X msg 29 709 \; net ecran sendsafe scaletrans 3 2 -1 0 1;
+#X msg 15 744 \; net ecran sendsafe scaletrans 3 2 -1 -1 1;
+#X msg 29 832 0;
+#X msg 66 832 1;
+#X msg 29 860 \; net ecran sendsafe inverse 3 \$1;
+#X msg 284 837 \; net ecran sendsafe invoke_plugin_command 3 inverse
+OFF;
+#X msg 13 602 \; net ecran sendsafe scaletrans 3 3 -1 -0.8 1;
+#X msg 17 777 \; net ecran sendsafe scaletrans 3 1 -0.5 0 0.75;
+#N canvas 0 314 1407 476 Partie_1 0;
+#X msg 20 335 \; midiin 0 89 \; midiin 0 90 \; midiin 0 91 \; midiin
+0 92 \; dmidiout 89 0 \; dmidiout 90 0 \; dmidiout 91 0 \; dmidiout
+92 0 \;;
+#X obj 20 308 r b;
+#X msg 55 546 1;
+#X msg 21 519 1;
+#X msg 89 546 1;
+#X msg 123 546 0;
+#X msg 158 546 0;
+#X obj 21 580 scaletrans f 1 1 0 0;
+#X obj 21 626 prepend;
+#X obj 21 663 s net;
+#X msg 67 605 e0f;
+#X obj 44 457 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 35 478 \; net ecran send fade 0 \$1;
+#X obj 511 114 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 517 203 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 475 115 1;
+#X obj 515 361 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 475 383 \; net e0f send fade 1 \$1;
+#X msg 467 505 \; net e0f send fade 2 \$1;
+#X obj 516 484 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 475 331 \; net e0f sendsafe image 1 yukie/p1_eclairageAlexandrine.png
+\;;
+#X obj 435 423 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 476 485 0;
+#X obj 435 331 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 476 361 0;
+#X obj 435 287 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 429 627 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 514 709 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 476 561 \; net e0f sendsafe scaletrans 2 2 -1 -1 1;
+#X obj 867 387 pack f f f f;
+#X obj 869 246 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 967 246 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 935 362 line -1 100;
+#X obj 1009 362 line -1 100;
+#X obj 1083 361 line 1 100;
+#X msg 943 341 -1 10000;
+#X msg 1016 342 -1 10000;
+#X msg 1090 341 1 10000;
+#X msg 1009 324 0 10000;
+#X msg 1083 321 0.75 10000;
+#X msg 935 323 -0.5 10000;
+#X text 865 226 ECRAN COMPLET;
+#X text 970 225 ECRAN DROIT;
+#X obj 433 -8 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X floatatom 667 720 5 0 0 0 - - -;
+#X obj 667 679 * -1;
+#X obj 667 700 + 1;
+#X obj 656 484 r fadecam;
+#X obj 667 739 s fadecam;
+#X msg 474 710 0;
+#X obj 516 20 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 475 21 1;
+#X msg 475 -9 \; net ep sendsafe color 0 1 1 1 1 0;
+#X text 860 -11 Fleurs pour tester;
+#X obj 430 86 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 435 170 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 1007 90 /home/vision/lighttwist/caserne_plancher/out/imapXY_01_crop.lut.png
+;
+#X msg 1013 147 -blend /home/vision/lighttwist/caserne_ecranmono/out/00_support_proj.png
+;
+#X obj -10 691 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 477 204 0;
+#X text 437 134 --> Ici changer glam3 pour pointer vers ecran et ./play_yukie_ecranmono
+;
+#X obj 429 799 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 514 881 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 474 882 0;
+#X msg 473 648 \; net e0f sendsafe scaletrans 4 1 1 0 0;
+#X msg 474 678 \; net e0f sendsafe play 4 start;
+#X msg 474 730 \; net e0f send fade 4 \$1;
+#X msg 485 822 \; net e0f sendsafe scaletrans 5 -1 1 1 0;
+#X msg 475 850 \; net e0f sendsafe play 5 start;
+#X msg 474 903 \; net e0f send fade 5 \$1;
+#X obj 808 585 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 939 486 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 859 456 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 900 486 0;
+#X obj 910 790 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 911 817 \; net e0f sendsafe scaletrans 2 2 -1 -1 1;
+#X obj 851 796 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 954 914 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 874 884 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 915 914 0;
+#X floatatom 1079 798 5 0 0 0 - - -;
+#X obj 1079 757 * -1;
+#X obj 1079 778 + 1;
+#X msg 914 849 \; net e0f send fade 2 \$1;
+#X obj 954 1000 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 915 973 \; net e0b sendsafe image 7 yukie/p1_rouge.png \;;
+#X msg 915 1018 \; net e0b send fade 7 \$1;
+#X obj 215 520 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 77 795 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 27 793 0;
+#X msg 28 760 \; net e0f sendsafe play 8 start;
+#X msg 27 814 \; net e0f send fade 8 \$1;
+#X msg 858 8 \; net e0f sendsafe image 1 statue_fleurs.png \; net e0f
+sendsafe fade 1 1;
+#X obj 725 873 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 725 982 5 0 0 0 - - -;
+#X obj 762 875 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 762 982 5 0 0 0 - - -;
+#X obj 798 875 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 798 982 5 0 0 0 - - -;
+#X text 726 849 R;
+#X text 763 847 G;
+#X text 800 848 B;
+#X obj 566 951 t b f;
+#X obj 602 951 t b f;
+#X obj 654 949 t b f;
+#X obj 550 989 pack f f f f;
+#X obj 836 873 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 838 980 5 0 0 0 - - -;
+#X text 836 849 A;
+#X obj -9 868 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 78 972 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 28 970 0;
+#X msg 13 937 \; net e0f sendsafe play 9 start;
+#X msg 28 991 \; net e0f send fade 9 \$1;
+#X obj 1178 792 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1265 896 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 1215 894 0;
+#X msg 32 732 \; net e0f sendsafe scaletrans 8 1 1 0 -0.16;
+#X msg 172 813 \; net e0f sendsafe scaletrans 8 1 1 0 0;
+#X obj 1169 618 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1256 722 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 1206 720 0;
+#X msg 187 401 \; net e0f send unload 11;
+#X msg 476 533 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.25;
+#X msg 851 551 \; net e0f sendsafe scaletrans 3 1 -0.5 0 1.25;
+#X msg 216 760 \; net e0f sendsafe play 8 stop;
+#X msg 209 937 \; net e0f sendsafe play 9 stop;
+#X obj 740 182 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 782 193 \; net e0b sendsafe color 0 1 1 1 1 0;
+#X msg 505 454 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.75;
+#X msg 851 577 \; net e0f sendsafe scaletrans 3 1 -0.5 0 0.75;
+#X text 287 740 TOP;
+#X text 1116 586 FULL;
+#X text 752 538 BOTTOM;
+#X text 1122 559 TOP;
+#X obj 91 266 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 176 348 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 136 349 0;
+#X msg 135 287 \; net e2 sendsafe scaletrans 4 1 1 0 0;
+#X msg 136 317 \; net e2 sendsafe play 4 start;
+#X msg 136 369 \; net e2 send fade 4 \$1;
+#X msg 136 257 \; net e2 sendsafe movie 4 yukie/ScanVerti_VillageChampB.mov
+;
+#X msg 392 933 \; net e0f sendsafe play 5 stop;
+#X text 725 568 DROITE;
+#X obj 119 514 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 204 596 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X floatatom 357 607 5 0 0 0 - - -;
+#X obj 357 566 * -1;
+#X obj 357 587 + 1;
+#X obj 357 626 s fadecam;
+#X msg 164 597 0;
+#X msg 163 535 \; net e0f sendsafe scaletrans 4 1 1 0 0;
+#X msg 164 565 \; net e0f sendsafe play 4 start;
+#X msg 164 617 \; net e0f send fade 4 \$1;
+#X msg 914 1000 0;
+#X msg 1057 948 \; net e0f sendsafe scaletrans 6 -1 1 1 0;
+#X msg 1343 946 \; net e0b send unload 11;
+#X msg 28 906 \; net e0f sendsafe scaletrans 9 1 1 0 0.08;
+#X msg 243 841 \; net e0f sendsafe unload 8;
+#X msg 221 969 \; net e0f sendsafe unload 9;
+#X msg 899 457 \; net e0f sendsafe image 1 yukie/p1_eclairageVieilles.png
+\;;
+#X msg 893 508 \; net e0f send fade 1 \$1;
+#X msg 1038 508 \; net e0f send unload 1;
+#X msg 867 412 \; net e0f sendsafe scaletrans 2 \$1 \$2 \$3 \$4;
+#N canvas 0 0 450 300 camera12145 0;
+#X restore 688 390 pd camera12145;
+#X msg 161 647 \; net e0f send unload 4;
+#X msg 164 506 \; net e0f sendsafe movie 4 fps15/yukie/Oiseaux+arbres.mov
+;
+#X msg 474 617 \; net e0f sendsafe movie 4 yukie/ScanVerti_VillageB.mov
+;
+#X msg 28 699 \; net e0f sendsafe movie 8 fps15/yukie/Nuage2min.mov
+;
+#X msg 30 877 \; net e0f sendsafe movie 9 fps15/yukie/Pieds.mov;
+#X msg 622 505 \; net e0f sendsafe unload 2;
+#X msg 475 43 \; net ep send set_color 0 \$1 \$1 \$1 \$1;
+#X msg 475 423 \; net e0f sendsafe capturefiltre 2 12145 15;
+#X msg 914 888 \; net e0f send image 6 yukie/p1_robe.png \;;
+#X msg 915 933 \; net e0f send fade 6 \$1;
+#X msg 1195 983 \; net e0f sendsafe unload 6;
+#X obj 1267 256 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 1228 256 0;
+#X msg 1227 230 \; net e0b send image 6 yukie/p1_lissieres.png \;;
+#X msg 1228 275 \; net e0b send fade 6 \$1;
+#X msg 1224 196 \; net e0b sendsafe color 0 0.75 0.75 1 1 2;
+#X msg 1373 274 \; net e0b send unload 6;
+#X msg 475 588 \; net e0f sendsafe scaletrans 2 3 -1 -0.8 1;
+#X text 736 595 CENTRE;
+#X msg 475 85 \; net e0f send capturecrayon 4;
+#X obj 1063 246 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 953 304 -1 10000;
+#X msg 1027 305 -0.8 10000;
+#X msg 1101 302 1 10000;
+#X text 1059 225 ECRAN CENTRE;
+#X msg 476 172 \; net e0b sendsafe color 0 1 1 1 1 0;
+#X msg 477 229 \; net e0b send set_color 0 \$1 \$1 \$1 \$1;
+#X msg 84 461 \; net e0f sendsafe invoke_plugin_command 2 scannereffect
+ON;
+#X msg 86 428 \; net e0f sendsafe invoke_plugin_command 2 scannereffect
+OFF;
+#X msg 885 305 3 10000;
+#X msg 867 324 1 10000;
+#X msg 877 342 2 10000;
+#X obj 867 363 line 2 100;
+#X msg 1211 657 \; net e1 sendsafe scaletrans 10 1 1 0 0;
+#X msg 1207 687 \; net e1 sendsafe play 10 start;
+#X msg 1209 750 \; net e1 send fade 10 \$1;
+#X msg 1357 739 \; net e1 send unload 10;
+#X msg 1323 769 \; net e1 sendsafe play 10 stop;
+#X obj 1183 493 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1279 565 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 1229 563 0;
+#X msg 1234 500 \; net ep sendsafe scaletrans 10 1 1 0 0;
+#X msg 1230 530 \; net ep sendsafe play 10 start;
+#X msg 1380 582 \; net ep send unload 10;
+#X msg 1233 593 \; net ep send fade 10 \$1;
+#X msg 1206 627 \; net e1 sendsafe movie 10 yukie/Mains+.mov;
+#X msg 1229 469 \; net ep sendsafe movie 10 yukie/Mains+.mov;
+#X obj 1173 337 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1269 409 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 1219 407 0;
+#X msg 1224 344 \; net ep sendsafe scaletrans 10 1 1 0 0;
+#X msg 1220 374 \; net ep sendsafe play 10 start;
+#X msg 1368 429 \; net ep send unload 10;
+#X msg 1223 429 \; net ep send fade 10 \$1;
+#X msg 1219 313 \; net ep sendsafe movie 10 yukie/Mains+.mov;
+#X obj 36 266 print;
+#X obj 1124 1012 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1211 1116 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 1161 1114 0;
+#X msg 1162 1019 \; net e2 sendsafe movie 11 yukie/ScanVerti_Etang.mov
+;
+#X msg 1166 1051 \; net e2 sendsafe scaletrans 11 1 1 0 0;
+#X msg 1163 1081 \; net e2 sendsafe play 11 start;
+#X msg 1161 1136 \; net e2 send fade 11 \$1;
+#X msg 657 263 \; net e0f sendsafe unload 2;
+#X msg 471 760 \; net e0f send unload 4;
+#X msg 662 820 \; net e0f send unload 5;
+#X msg 1007 54 \; net ep sendsafe loadLutBlend 1;
+#X msg 808 67 \; net e0f sendsafe unload 1;
+#N canvas 297 192 1049 579 ecran3 0;
+#X obj 11 -96 r net;
+#X obj -51 -9 mcnetsend;
+#X obj 47 2 mcnetsend;
+#X msg -45 -34 connect 10003;
+#X msg 7 56 \; net e3 sendsafe image 1 statue_fleurs.png \; net e3
+sendsafe fade 1 1;
+#X msg 7 92 \; net e3 sendsafe unload 1;
+#X obj 366 84 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 285 23 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 326 85 0;
+#X obj 506 84 r fadecam;
+#X msg 325 23 \; net e3 sendsafe capturefiltre 2 12145 15;
+#X msg 355 54 \; net e3 sendsafe scaletrans 2 1 -0.5 0 0.75;
+#X msg 317 105 \; net e3 send fade 2 \$1;
+#X msg 472 105 \; net e3 sendsafe unload 2;
+#X obj 283 -47 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 330 -35 \; net e3 sendsafe color 0 0.75 0.75 1 1 2;
+#X msg 620 -32 \; net e3 sendsafe invoke_plugin_command 2 scannereffect
+ON;
+#X msg 622 284 \; net e3 sendsafe invoke_plugin_command 3 scannereffect
+OFF;
+#X msg 622 254 \; net e3 sendsafe invoke_plugin_command 3 scannereffect
+ON;
+#X obj 663 52 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 619 0 \; net e3 sendsafe invoke_plugin_command 2 scannereffect
+OFF;
+#X msg 658 118 \; net e3 send set_plugin_param 2 distorsion Scale 0
+;
+#X msg 660 77 \; net e3 send set_plugin_param 2 distorsion Scale \$1
+;
+#X msg 619 -95 \; net e3 sendsafe invoke_plugin_command 2 inverse ON
+;
+#X msg 618 -63 \; net e3 sendsafe invoke_plugin_command 2 inverse OFF
+;
+#X msg 614 352 \; net e3 sendsafe invoke_plugin_command 3 inverse ON
+;
+#X msg 612 382 \; net e3 sendsafe invoke_plugin_command 3 inverse OFF
+;
+#X msg 308 169 \; net e3 sendsafe loadAlpha 2 alpha_borders_100.png
+;
+#X msg 314 203 \; net e3 sendsafe scaletrans 2 1.8 -1 0 1;
+#X obj 25 288 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj -58 220 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg -22 289 0;
+#X msg -23 259 \; net e3 sendsafe scaletrans 3 1 -0.5 0 0.75;
+#X msg -22 310 \; net e3 send fade 3 \$1;
+#X msg 157 286 \; net e3 sendsafe unload 3;
+#X msg -19 379 \; net e3 sendsafe loadAlpha 3 alpha_borders_100.png
+;
+#X msg -21 343 \; net e3 sendsafe scaletrans 3 1.8 -1 -0.8 1;
+#X obj 20 416 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg -22 416 0.95;
+#X msg 166 417 0.8;
+#X msg -20 440 \; net e3 send set_plugin_param 3 frameblend Ratio \$1
+;
+#X msg -22 224 \; net e3 sendsafe captureblend 3 13137 0.01;
+#X obj 11 -74 route e3 e3f;
+#X obj 143 -11 mcnetsend;
+#X msg 143 -30 connect 11003;
+#X msg 47 -17 connect 10013;
+#X msg 318 139 \; net e3 sendsafe scaletrans 2 1.8 -1 0 1;
+#X obj -45 -88 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X connect 0 0 42 0;
+#X connect 3 0 1 0;
+#X connect 6 0 12 0;
+#X connect 7 0 10 0;
+#X connect 7 0 11 0;
+#X connect 7 0 8 0;
+#X connect 7 0 28 0;
+#X connect 7 0 27 0;
+#X connect 8 0 6 0;
+#X connect 9 0 6 0;
+#X connect 14 0 15 0;
+#X connect 19 0 22 0;
+#X connect 29 0 33 0;
+#X connect 30 0 41 0;
+#X connect 30 0 32 0;
+#X connect 30 0 31 0;
+#X connect 30 0 36 0;
+#X connect 30 0 38 0;
+#X connect 30 0 35 0;
+#X connect 31 0 29 0;
+#X connect 37 0 40 0;
+#X connect 38 0 37 0;
+#X connect 39 0 37 0;
+#X connect 42 0 1 0;
+#X connect 42 0 2 0;
+#X connect 42 1 43 0;
+#X connect 44 0 43 0;
+#X connect 45 0 2 0;
+#X connect 47 0 3 0;
+#X connect 47 0 45 0;
+#X connect 47 0 44 0;
+#X restore 761 116 pd ecran3;
+#X msg 474 792 \; net e0f sendsafe movie 5 yukie/Glacon.mov;
+#X msg 482 298 \; net e0f sendsafe color 0 0.8 0.8 1 1 2;
+#X obj 890 703 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 853 703 0;
+#X msg 854 728 \; net e0f send fade 3 \$1;
+#X msg 998 728 \; net e0f sendsafe unload 3;
+#X msg 851 615 \; net e0f sendsafe captureblend 3 13137 0.8;
+#X msg 1220 832 \; net e0b sendsafe scaletrans 11 1 1 0 0;
+#X msg 1216 861 \; net e0b sendsafe play 11 start;
+#X msg 1214 916 \; net e0b send fade 11 \$1;
+#X msg 1215 799 \; net e0b sendsafe movie 11 fps15/yukie/Nuage2min.mov
+;
+#X msg 537 1018 \; net e2b send set_color 0 \$1 \$2 \$3 \$4;
+#X connect 1 0 0 0;
+#X connect 2 0 7 1;
+#X connect 3 0 7 0;
+#X connect 4 0 7 2;
+#X connect 5 0 7 3;
+#X connect 6 0 7 4;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 10 0 8 1;
+#X connect 11 0 12 0;
+#X connect 14 0 191 0;
+#X connect 15 0 13 0;
+#X connect 16 0 17 0;
+#X connect 19 0 18 0;
+#X connect 21 0 172 0;
+#X connect 21 0 129 0;
+#X connect 21 0 22 0;
+#X connect 22 0 19 0;
+#X connect 23 0 20 0;
+#X connect 23 0 24 0;
+#X connect 24 0 16 0;
+#X connect 25 0 235 0;
+#X connect 26 0 167 0;
+#X connect 26 0 64 0;
+#X connect 26 0 65 0;
+#X connect 26 0 49 0;
+#X connect 27 0 66 0;
+#X connect 29 0 163 0;
+#X connect 30 0 195 0;
+#X connect 30 0 40 0;
+#X connect 30 0 38 0;
+#X connect 30 0 39 0;
+#X connect 31 0 196 0;
+#X connect 31 0 35 0;
+#X connect 31 0 36 0;
+#X connect 31 0 37 0;
+#X connect 32 0 29 1;
+#X connect 33 0 29 2;
+#X connect 34 0 29 3;
+#X connect 35 0 32 0;
+#X connect 36 0 33 0;
+#X connect 37 0 34 0;
+#X connect 38 0 33 0;
+#X connect 39 0 34 0;
+#X connect 40 0 32 0;
+#X connect 43 0 51 0;
+#X connect 43 0 52 0;
+#X connect 44 0 48 0;
+#X connect 45 0 46 0;
+#X connect 46 0 44 0;
+#X connect 47 0 19 0;
+#X connect 49 0 27 0;
+#X connect 50 0 171 0;
+#X connect 51 0 50 0;
+#X connect 54 0 184 0;
+#X connect 54 0 15 0;
+#X connect 55 0 190 0;
+#X connect 55 0 59 0;
+#X connect 58 0 168 0;
+#X connect 58 0 90 0;
+#X connect 58 0 89 0;
+#X connect 58 0 117 0;
+#X connect 59 0 14 0;
+#X connect 61 0 234 0;
+#X connect 61 0 67 0;
+#X connect 61 0 68 0;
+#X connect 61 0 63 0;
+#X connect 62 0 69 0;
+#X connect 63 0 62 0;
+#X connect 70 0 240 0;
+#X connect 70 0 237 0;
+#X connect 71 0 161 0;
+#X connect 72 0 160 0;
+#X connect 72 0 73 0;
+#X connect 73 0 71 0;
+#X connect 74 0 81 0;
+#X connect 76 0 75 0;
+#X connect 76 0 83 0;
+#X connect 77 0 174 0;
+#X connect 78 0 173 0;
+#X connect 78 0 79 0;
+#X connect 78 0 85 0;
+#X connect 78 0 154 0;
+#X connect 79 0 77 0;
+#X connect 80 0 83 0;
+#X connect 81 0 82 0;
+#X connect 82 0 80 0;
+#X connect 84 0 86 0;
+#X connect 88 0 91 0;
+#X connect 89 0 88 0;
+#X connect 93 0 94 0;
+#X connect 94 0 105 0;
+#X connect 95 0 96 0;
+#X connect 96 0 102 0;
+#X connect 97 0 98 0;
+#X connect 98 0 103 0;
+#X connect 102 0 105 0;
+#X connect 102 1 105 1;
+#X connect 103 0 105 0;
+#X connect 103 1 105 2;
+#X connect 104 0 105 0;
+#X connect 104 1 105 3;
+#X connect 105 0 245 0;
+#X connect 106 0 107 0;
+#X connect 107 0 104 0;
+#X connect 109 0 169 0;
+#X connect 109 0 112 0;
+#X connect 109 0 111 0;
+#X connect 110 0 113 0;
+#X connect 111 0 110 0;
+#X connect 114 0 244 0;
+#X connect 114 0 242 0;
+#X connect 114 0 116 0;
+#X connect 114 0 241 0;
+#X connect 115 0 243 0;
+#X connect 116 0 115 0;
+#X connect 119 0 210 0;
+#X connect 119 0 199 0;
+#X connect 119 0 121 0;
+#X connect 119 0 198 0;
+#X connect 120 0 200 0;
+#X connect 121 0 120 0;
+#X connect 127 0 128 0;
+#X connect 135 0 141 0;
+#X connect 135 0 138 0;
+#X connect 135 0 139 0;
+#X connect 135 0 137 0;
+#X connect 136 0 140 0;
+#X connect 137 0 136 0;
+#X connect 144 0 166 0;
+#X connect 144 0 151 0;
+#X connect 144 0 152 0;
+#X connect 144 0 150 0;
+#X connect 145 0 153 0;
+#X connect 146 0 149 0;
+#X connect 147 0 148 0;
+#X connect 148 0 146 0;
+#X connect 150 0 145 0;
+#X connect 154 0 84 0;
+#X connect 176 0 179 0;
+#X connect 177 0 176 0;
+#X connect 185 0 194 0;
+#X connect 185 0 186 0;
+#X connect 185 0 187 0;
+#X connect 185 0 188 0;
+#X connect 186 0 32 0;
+#X connect 187 0 33 0;
+#X connect 188 0 34 0;
+#X connect 194 0 197 0;
+#X connect 195 0 197 0;
+#X connect 196 0 197 0;
+#X connect 197 0 29 0;
+#X connect 203 0 211 0;
+#X connect 203 0 207 0;
+#X connect 203 0 205 0;
+#X connect 203 0 206 0;
+#X connect 204 0 209 0;
+#X connect 205 0 204 0;
+#X connect 212 0 219 0;
+#X connect 212 0 216 0;
+#X connect 212 0 214 0;
+#X connect 212 0 215 0;
+#X connect 213 0 218 0;
+#X connect 214 0 213 0;
+#X connect 221 0 224 0;
+#X connect 221 0 226 0;
+#X connect 221 0 223 0;
+#X connect 221 0 225 0;
+#X connect 222 0 227 0;
+#X connect 223 0 222 0;
+#X connect 236 0 238 0;
+#X connect 237 0 236 0;
+#X restore 1130 514 pd Partie_1;
+#X msg 284 882 \; net ecran sendsafe invoke_plugin_command 3 inverse
+ON;
+#X text 306 782 FULL;
+#N canvas 0 0 1289 628 echainementvideo 0;
+#X obj 281 114 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 373 187 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 323 185 0;
+#X msg 324 154 \; net e0f sendsafe play 4 start;
+#X msg 509 156 \; net e0f sendsafe play 4 stop;
+#X msg 509 182 \; net e0f sendsafe unload 4;
+#X msg 323 207 \; net e0f send fade 4 \$1;
+#X obj 278 32 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 311 36 \; net e0f sendsafe color 0 0.8 0.8 1 1 2;
+#X msg 555 36 \; net e0f send unload 0;
+#X obj 275 248 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 367 321 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 317 319 0;
+#X msg 318 288 \; net e0f sendsafe play 4 start;
+#X msg 503 290 \; net e0f sendsafe play 4 stop;
+#X msg 503 316 \; net e0f sendsafe unload 4;
+#X msg 317 341 \; net e0f send fade 4 \$1;
+#X msg 316 258 \; net e0f sendsafe movie 4 yukie/rocherTempete5min.mov
+;
+#X obj 274 377 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 366 450 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 316 448 0;
+#X msg 317 417 \; net e0f sendsafe play 4 start;
+#X msg 502 419 \; net e0f sendsafe play 4 stop;
+#X msg 502 445 \; net e0f sendsafe unload 4;
+#X msg 316 470 \; net e0f send fade 4 \$1;
+#X msg 315 387 \; net e0f sendsafe movie 4 yukie/SeqOiseauxfermestatiq2min.mov
+;
+#X obj 20 495 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 112 568 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 62 566 0;
+#X msg 63 535 \; net e0f sendsafe play 4 start;
+#X msg 248 537 \; net e0f sendsafe play 4 stop;
+#X msg 248 563 \; net e0f sendsafe unload 4;
+#X msg 62 588 \; net e0f send fade 4 \$1;
+#X obj 412 497 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 504 570 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 454 568 0;
+#X msg 455 537 \; net e0f sendsafe play 4 start;
+#X msg 640 539 \; net e0f sendsafe play 4 stop;
+#X msg 640 565 \; net e0f sendsafe unload 4;
+#X msg 454 590 \; net e0f send fade 4 \$1;
+#X msg 453 507 \; net e0f sendsafe movie 4 yukie/NuageNB3min1024.mov
+;
+#X obj 655 240 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 747 313 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 697 311 0;
+#X msg 699 277 \; net e0f sendsafe play 5 start;
+#X msg 697 335 \; net e0f send fade 5 \$1;
+#X msg 882 282 \; net e0f sendsafe play 5 stop;
+#X msg 883 309 \; net e0f sendsafe unload 5;
+#X msg 695 250 \; net e0f sendsafe movie 5 yukie/ChienCarreB.mov;
+#X obj 678 107 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 770 180 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 720 178 0;
+#X msg 721 147 \; net e0f sendsafe play 4 start;
+#X msg 906 149 \; net e0f sendsafe play 4 stop;
+#X msg 906 175 \; net e0f sendsafe unload 4;
+#X msg 720 200 \; net e0f send fade 4 \$1;
+#X msg 719 118 \; net e0f sendsafe movie 4 yukie/PiedsC.mov;
+#X obj -47 375 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 45 448 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg -5 446 0;
+#X msg -4 415 \; net e0f sendsafe play 4 start;
+#X msg 181 417 \; net e0f sendsafe play 4 stop;
+#X msg 181 443 \; net e0f sendsafe unload 4;
+#X msg -5 468 \; net e0f send fade 4 \$1;
+#X msg 61 507 \; net e0f sendsafe movie 4 yukie/GlaconB.mov;
+#X msg 711 368 \; net e0f sendsafe scaletrans 5 3 2 0 -0.25;
+#X msg 154 622 \; net e0f sendsafe scaletrans 4 0.3 0.3 0.1 0.1;
+#X obj 688 -8 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 780 65 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 730 63 0;
+#X msg 731 32 \; net e0f sendsafe play 4 start;
+#X msg 916 34 \; net e0f sendsafe play 4 stop;
+#X msg 916 60 \; net e0f sendsafe unload 4;
+#X msg 730 85 \; net e0f send fade 4 \$1;
+#X msg 729 1 \; net e0f sendsafe movie 4 yukie/Maraie+Peigne.mov;
+#X obj 729 404 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 821 477 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 771 475 0;
+#X msg 772 444 \; net e0f sendsafe play 4 start;
+#X msg 957 446 \; net e0f sendsafe play 4 stop;
+#X msg 957 472 \; net e0f sendsafe unload 4;
+#X msg 771 497 \; net e0f send fade 4 \$1;
+#X msg 769 415 \; net e0f sendsafe movie 4 yukie/SangCoag.mov;
+#X obj 833 488 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 925 561 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 875 559 0;
+#X msg 1061 530 \; net e0f sendsafe play 4 stop;
+#X msg 1061 556 \; net e0f sendsafe unload 4;
+#X msg 873 500 \; net ep sendsafe movie 4 yukie/SangCoag.mov;
+#X msg 876 528 \; net ep sendsafe play 4 start;
+#X msg 875 584 \; net ep send fade 4 \$1;
+#X obj 1039 228 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1131 301 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 1081 299 0;
+#X msg 1083 265 \; net e0f sendsafe play 5 start;
+#X msg 1081 323 \; net e0f send fade 5 \$1;
+#X msg 1266 270 \; net e0f sendsafe play 5 stop;
+#X msg 1267 297 \; net e0f sendsafe unload 5;
+#X msg 1095 356 \; net e0f sendsafe scaletrans 5 3 2 0 -0.25;
+#X msg 1079 238 \; net e0f sendsafe movie 5 yukie/CochonCarreB.mov
+;
+#X msg 322 124 \; net e0f sendsafe movie 4 yukie/PanBlurHorizon.mov
+;
+#X msg -4 385 \; net e0f sendsafe movie 4 yukie/SeqVillageoisB.mov
+;
+#X connect 0 0 100 0;
+#X connect 0 0 3 0;
+#X connect 0 0 2 0;
+#X connect 1 0 6 0;
+#X connect 2 0 1 0;
+#X connect 7 0 8 0;
+#X connect 10 0 17 0;
+#X connect 10 0 13 0;
+#X connect 10 0 12 0;
+#X connect 11 0 16 0;
+#X connect 12 0 11 0;
+#X connect 18 0 25 0;
+#X connect 18 0 21 0;
+#X connect 18 0 20 0;
+#X connect 19 0 24 0;
+#X connect 20 0 19 0;
+#X connect 26 0 64 0;
+#X connect 26 0 29 0;
+#X connect 26 0 28 0;
+#X connect 27 0 32 0;
+#X connect 28 0 27 0;
+#X connect 33 0 40 0;
+#X connect 33 0 36 0;
+#X connect 33 0 35 0;
+#X connect 34 0 39 0;
+#X connect 35 0 34 0;
+#X connect 41 0 48 0;
+#X connect 41 0 44 0;
+#X connect 41 0 43 0;
+#X connect 42 0 45 0;
+#X connect 43 0 42 0;
+#X connect 49 0 56 0;
+#X connect 49 0 52 0;
+#X connect 49 0 51 0;
+#X connect 50 0 55 0;
+#X connect 51 0 50 0;
+#X connect 57 0 101 0;
+#X connect 57 0 60 0;
+#X connect 57 0 59 0;
+#X connect 58 0 63 0;
+#X connect 59 0 58 0;
+#X connect 67 0 74 0;
+#X connect 67 0 70 0;
+#X connect 67 0 69 0;
+#X connect 68 0 73 0;
+#X connect 69 0 68 0;
+#X connect 75 0 82 0;
+#X connect 75 0 78 0;
+#X connect 75 0 77 0;
+#X connect 76 0 81 0;
+#X connect 77 0 76 0;
+#X connect 83 0 88 0;
+#X connect 83 0 89 0;
+#X connect 83 0 85 0;
+#X connect 84 0 90 0;
+#X connect 85 0 84 0;
+#X connect 91 0 99 0;
+#X connect 91 0 94 0;
+#X connect 91 0 93 0;
+#X connect 92 0 95 0;
+#X connect 93 0 92 0;
+#X restore 1053 484 pd echainementvideo;
+#N canvas 20 180 1155 610 serpentNarratif10 0;
+#X obj 282 -3 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 370 81 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 320 79 0;
+#X obj 339 307 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 252 245 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 299 308 0;
+#X obj 479 305 r fadecam;
+#X obj 619 243 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X text 945 292 FULL;
+#X obj 718 406 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 711 344 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 678 345 0;
+#X msg 677 407 0.95;
+#X msg 853 406 0.8;
+#X text 951 321 TOP;
+#X text 380 -34 RIEN N'est BON la dedans;
+#X text 569 398 DROITE;
+#X obj 662 -16 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 750 68 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 700 66 0;
+#X msg 322 7 \; net e3b sendsafe movie 4 yukie/rocherTempete5min.mov
+;
+#X msg 306 49 \; net e3b sendsafe play 4 start;
+#X msg 320 99 \; net e3b send fade 4 \$1;
+#X msg 502 48 \; net e3b sendsafe play 4 stop;
+#X msg 513 77 \; net e3b sendsafe unload 4;
+#X msg 702 -6 \; net e3b sendsafe movie 5 yukie/NuageD.mov;
+#X msg 686 36 \; net e3b sendsafe play 5 start;
+#X msg 700 87 \; net e3b send fade 5 \$1;
+#X msg 882 34 \; net e3b sendsafe play 5 stop;
+#X msg 893 64 \; net e3b sendsafe unload 5;
+#X obj 650 121 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 759 181 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 709 179 0;
+#X msg 695 149 \; net e3b sendsafe play 5 start;
+#X msg 709 200 \; net e3b send fade 5 \$1;
+#X msg 891 147 \; net e3b sendsafe play 5 stop;
+#X msg 902 177 \; net e3b sendsafe unload 5;
+#X msg 689 121 \; net e3b sendsafe movie 5 yukie/trilogie_ligneBlanche.mov
+;
+#X obj 650 506 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 738 590 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 688 588 0;
+#X obj 526 161 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 476 159 0;
+#X obj -102 326 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj -33 407 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg -64 408 0;
+#X msg 132 200 \; net e3f sendsafe image 5 yukie/p1_video.png \; net
+e3f sendsafe fade 5 1;
+#X msg 476 179 \; net e3f send fade 4 \$1;
+#X msg 351 132 \; net e3f sendsafe color 4 0.8 0.8 1 1 0;
+#X obj 5 146 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg -45 144 0;
+#X msg -9 107 \; net e3f sendsafe color 1 0.8 0.8 1 1 2;
+#X msg -58 212 \; net e3f send unload 1;
+#X msg -61 249 \; net e3f send unload 4;
+#X msg 439 326 \; net e0f sendsafe unload 2;
+#X msg 74 304 \; net e3f sendsafe unload 0;
+#X text 537 460 BOTTOM;
+#X msg 298 245 \; net e0f sendsafe capturefiltre 2 12145 15;
+#X msg 294 276 \; net e0f sendsafe loadAlpha 2 alpha_borders.png;
+#X msg 299 325 \; net e0f send fade 2 \$1;
+#X msg 309 369 \; net e0f sendsafe color 0 0.8 0.8 1 1 2;
+#X msg 299 394 \; net e0f sendsafe scaletrans 2 2 -1 0.05 1;
+#X msg 265 463 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.25;
+#X msg 296 427 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.75;
+#X msg 676 256 \; net e0f sendsafe captureblend 3 13137 0.8;
+#X msg 703 231 \; net e0f sendsafe loadAlpha 3 alpha_borders.png;
+#X msg 676 285 \; net e0f sendsafe scaletrans 3 1 -0.5 0 0.75;
+#X msg 677 313 \; net e0f sendsafe scaletrans 3 1 -0.5 0 1.25;
+#X msg 679 371 \; net e0f send fade 3 \$1;
+#X msg 675 429 \; net e0f send set_plugin_param 3 frameblend Ratio
+\$1;
+#X msg 678 463 \; net e0f sendsafe scaletrans 3 2 -1 -1.05 1;
+#X msg 824 371 \; net e0f sendsafe unload 3;
+#X msg 674 559 \; net e0f sendsafe play 5 start;
+#X msg 688 609 \; net e0f send fade 5 \$1;
+#X msg 871 557 \; net e0f sendsafe play 5 stop;
+#X msg 881 586 \; net e0f sendsafe unload 5;
+#X obj -140 513 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj -53 607 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg -102 595 0;
+#X obj -97 706 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X floatatom 55 703 5 0 0 0 - - -;
+#X msg -97 528 \; net e0f sendsafe movie 4 yukie/VillageStrip5min.mov
+;
+#X msg -115 565 \; net e0f sendsafe play 4 start;
+#X msg -99 629 \; net e0f send fade 4 \$1;
+#X msg 80 564 \; net e0f sendsafe play 4 stop;
+#X msg 93 595 \; net e0f sendsafe unload 4;
+#X msg -99 677 \; net e0f sendsafe scaletrans 4 -1 -1 0.212 0.244;
+#X msg -104 726 \; net e0f sendsafe scaletrans 4 1 1 0 0;
+#X obj 270 570 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 357 664 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 308 652 0;
+#X msg 295 622 \; net e0f sendsafe play 4 start;
+#X msg 311 686 \; net e0f send fade 4 \$1;
+#X msg 479 622 \; net e0f sendsafe play 4 stop;
+#X msg 492 653 \; net e0f sendsafe unload 4;
+#X msg -78 377 \; net e0f sendsafe play 5 start;
+#X msg -64 429 \; net e0f send fade 5 \$1;
+#X msg 129 406 \; net e0f sendsafe unload 5;
+#X msg 118 375 \; net e0f sendsafe play 5 stop;
+#X msg -45 164 \; net e3f send fade 1 \$1;
+#X msg 265 492 \; net e0f sendsafe invoke_plugin_command 2 scannereffect
+ON;
+#X msg 266 519 \; net e0f sendsafe invoke_plugin_command 2 scannereffect
+OFF;
+#X obj 36 452 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg -41 473 \; net e0f sendsafe color 1 0.8 0.8 1 1 0;
+#X msg -38 500 \; net e0f send fade 1 \$1;
+#X msg 691 515 \; net e0f sendsafe movie 5 yukie/23-rocherTempete-1024.mov
+;
+#X msg 314 586 \; net e0f sendsafe movie 4 yukie/25-NuageFace-1024.mov
+;
+#X msg -62 336 \; net e0f sendsafe movie 5 yukie/26-Finale1024.mov
+;
+#X connect 0 0 20 0;
+#X connect 0 0 21 0;
+#X connect 0 0 2 0;
+#X connect 1 0 22 0;
+#X connect 2 0 1 0;
+#X connect 3 0 59 0;
+#X connect 4 0 57 0;
+#X connect 4 0 5 0;
+#X connect 4 0 60 0;
+#X connect 4 0 58 0;
+#X connect 4 0 63 0;
+#X connect 5 0 3 0;
+#X connect 6 0 3 0;
+#X connect 7 0 64 0;
+#X connect 7 0 12 0;
+#X connect 7 0 11 0;
+#X connect 7 0 70 0;
+#X connect 7 0 65 0;
+#X connect 7 0 67 0;
+#X connect 9 0 69 0;
+#X connect 10 0 68 0;
+#X connect 11 0 10 0;
+#X connect 12 0 9 0;
+#X connect 13 0 9 0;
+#X connect 17 0 25 0;
+#X connect 17 0 26 0;
+#X connect 17 0 19 0;
+#X connect 18 0 27 0;
+#X connect 19 0 18 0;
+#X connect 30 0 37 0;
+#X connect 30 0 33 0;
+#X connect 30 0 32 0;
+#X connect 31 0 34 0;
+#X connect 32 0 31 0;
+#X connect 38 0 105 0;
+#X connect 38 0 72 0;
+#X connect 38 0 40 0;
+#X connect 39 0 73 0;
+#X connect 40 0 39 0;
+#X connect 41 0 47 0;
+#X connect 42 0 41 0;
+#X connect 43 0 107 0;
+#X connect 43 0 95 0;
+#X connect 43 0 45 0;
+#X connect 44 0 96 0;
+#X connect 45 0 44 0;
+#X connect 49 0 52 0;
+#X connect 50 0 49 0;
+#X connect 51 0 49 0;
+#X connect 76 0 81 0;
+#X connect 76 0 82 0;
+#X connect 76 0 78 0;
+#X connect 77 0 83 0;
+#X connect 78 0 77 0;
+#X connect 79 0 80 0;
+#X connect 88 0 106 0;
+#X connect 88 0 91 0;
+#X connect 88 0 90 0;
+#X connect 89 0 92 0;
+#X connect 90 0 89 0;
+#X connect 102 0 104 0;
+#X restore 1047 381 pd serpentNarratif10;
+#N canvas 0 0 1350 652 finale 0;
+#X obj -20 133 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 67 227 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 18 215 0;
+#X obj -32 320 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 57 399 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 6 402 0;
+#X obj -19 20 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 79 74 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 29 72 0;
+#X msg 27 43 \; net e0b sendsafe play 4 start;
+#X msg 28 90 \; net e0b send fade 4 \$1;
+#X msg 212 42 \; net e0b sendsafe play 4 stop;
+#X obj -38 613 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 43 682 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 6 681 0;
+#X msg 4 650 \; net e0f sendsafe play 4 start;
+#X msg 6 703 \; net e0f send fade 4 \$1;
+#X msg 188 653 \; net e0f sendsafe play 4 stop;
+#X msg 3 622 \; net e0f sendsafe movie 4 yukie/trilogie_nuages.mov
+;
+#X msg 29 12 \; net e0b sendsafe movie 4 yukie/trilogie_nuages.mov
+;
+#X obj 179 277 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X floatatom 331 274 5 0 0 0 - - -;
+#X msg 3 451 \; net e1 sendsafe loadAlpha 4 alpha_borders.png;
+#X msg 4 475 \; net e1b sendsafe loadAlpha 4 alpha_borders.png;
+#X msg 233 711 \; net e1 sendsafe unload 0;
+#X obj 437 510 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 527 572 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 498 572 0;
+#X obj 642 597 hsl 128 15 -2 0 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X floatatom 784 602 5 0 0 0 - - -;
+#X msg -8 372 \; net e1f sendsafe play 4 start;
+#X msg 5 420 \; net e1f send fade 4 \$1;
+#X msg 200 402 \; net e1f sendsafe unload 4;
+#X msg 188 372 \; net e1f sendsafe play 4 stop;
+#X obj 435 -6 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 501 76 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 473 76 0;
+#X msg 476 2 \; net e1b sendsafe movie 5 yukie/rocherTempete5min.mov
+;
+#X msg 459 46 \; net e1b sendsafe play 5 start;
+#X msg 473 98 \; net e1b send fade 5 \$1;
+#X msg 655 48 \; net e1b sendsafe play 5 stop;
+#X msg 667 76 \; net e1b sendsafe unload 5;
+#X obj 539 212 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 452 152 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 499 213 0;
+#X obj 679 212 r fadecam;
+#X text 748 268 DROITE;
+#X text 775 291 BOTTOM;
+#X text 775 321 CENTRE;
+#X text 749 351 A COTE DES FILINS;
+#X text 788 377 FULL;
+#X text 814 408 TOP;
+#X msg 645 234 \; net e1f sendsafe unload 2;
+#X msg 492 482 \; net e1f sendsafe movie 1 yukie/ChienCarreB.mov;
+#X msg 481 514 \; net e1f sendsafe unload 1;
+#X msg 483 543 \; net e1f sendsafe play 1 start;
+#X msg 498 594 \; net e1f send fade 1 \$1;
+#X msg 680 544 \; net e1f sendsafe play 1 stop;
+#X msg 692 572 \; net e1f sendsafe unload 1;
+#X msg 638 624 \; net e1f sendsafe scaletrans 1 7 3 \$1 -0.7;
+#X msg 635 651 \; net e1f sendsafe scaletrans 1 2.5 1 0 0;
+#X obj 916 208 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 829 148 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 876 209 0;
+#X obj 1056 208 r fadecam;
+#X text 1125 264 DROITE;
+#X text 1152 287 BOTTOM;
+#X text 1152 317 CENTRE;
+#X text 1126 347 A COTE DES FILINS;
+#X text 1165 373 FULL;
+#X text 1191 404 TOP;
+#X msg 1022 230 \; net e1f sendsafe unload 2;
+#X msg 528 182 \; net e1b sendsafe scaletrans 2 1 -0.5 0 0.75;
+#X msg 499 262 \; net e1b sendsafe scaletrans 2 2 -1 -1 1;
+#X msg 499 286 \; net e1b sendsafe scaletrans 2 1 -0.5 0 0.25;
+#X msg 499 316 \; net e1b sendsafe scaletrans 2 2.3 -1 -0.6 1;
+#X msg 497 345 \; net e1b sendsafe scaletrans 2 2 -1 0.56 1;
+#X msg 514 376 \; net e1b sendsafe scaletrans 2 1 -0.5 0 0.75;
+#X msg 526 403 \; net e1b sendsafe scaletrans 2 1 -0.5 0 1.25;
+#X obj 887 458 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 976 537 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 925 540 0;
+#X msg 911 510 \; net e1f sendsafe play 4 start;
+#X msg 924 558 \; net e1f send fade 4 \$1;
+#X msg 1119 540 \; net e1f sendsafe unload 4;
+#X msg 1107 510 \; net e1f sendsafe play 4 stop;
+#X msg 926 468 \; net e1f sendsafe movie 4 yukie/rocherTempete5min.mov
+;
+#X obj -32 504 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 49 573 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 12 572 0;
+#X msg 10 541 \; net e0b sendsafe play 4 start;
+#X msg 12 594 \; net e0b send fade 4 \$1;
+#X msg 206 572 \; net e0b sendsafe unload 4;
+#X msg 194 544 \; net e0b sendsafe play 4 stop;
+#X obj 909 595 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 990 664 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 953 663 0;
+#X msg 200 681 \; net e0f sendsafe unload 4;
+#X msg 416 664 \; net e0f sendsafe fps 4 10;
+#X msg 415 690 \; net e0b sendsafe fps 4 10;
+#X msg 951 632 \; net e0f sendsafe play 5 start;
+#X msg 1135 635 \; net e0f sendsafe play 5 stop;
+#X msg 1147 663 \; net e0f sendsafe unload 5;
+#X msg 953 685 \; net e0f send fade 5 \$1;
+#X msg 950 605 \; net e0f sendsafe movie 5 yukie/rocherTempete5min.mov
+;
+#X msg 528 436 \; net e1b sendsafe set_plugin_param 2 distorsion Scale
+0;
+#X msg 875 146 \; net e1b sendsafe capturefiltre 3 13137 15;
+#X msg 905 179 \; net e1b sendsafe scaletrans 3 1 -0.5 0 0.75;
+#X msg 876 228 \; net e1b send fade 3 \$1;
+#X msg 876 258 \; net e1b sendsafe scaletrans 3 2 -1 -1 1;
+#X msg 877 282 \; net e1b sendsafe scaletrans 3 1 -0.5 0 0.25;
+#X msg 876 312 \; net e1b sendsafe scaletrans 3 2.3 -1 -0.6 1;
+#X msg 874 341 \; net e1b sendsafe scaletrans 3 2 -1 0.56 1;
+#X msg 919 431 \; net e1b sendsafe set_plugin_param 3 distorsion Scale
+0;
+#X msg 903 399 \; net e1b sendsafe scaletrans 3 1 -0.5 0 1.25;
+#X msg 891 371 \; net e1b sendsafe scaletrans 3 1 -0.5 0 0.75;
+#X obj 960 58 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 873 -2 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 920 59 0;
+#X obj 1100 58 r fadecam;
+#X text 1169 114 DROITE;
+#X msg 1066 80 \; net e1f sendsafe unload 2;
+#X msg 919 -4 \; net e1f sendsafe capturefiltre 3 13137 15;
+#X msg 949 29 \; net e1f sendsafe scaletrans 3 1 -0.5 0 0.75;
+#X msg 920 78 \; net e1f send fade 3 \$1;
+#X msg 920 108 \; net e1f sendsafe scaletrans 3 2 -1 -1 1;
+#X msg 77 526 \; net e0b sendsafe movie 4 yukie/trilogie_nuages.mov
+;
+#X msg 39 502 \; net e0b sendsafe movie 4 yukie/rocherTempete5min.mov
+;
+#X msg 11 330 \; net e1f sendsafe movie 4 yukie/oiesB.mov;
+#X msg 499 233 \; net e1b send fade 2 \$1;
+#X msg 498 148 \; net e1b sendsafe capturefiltre 2 12145 15;
+#X msg 137 114 \; net e3b sendsafe scaletrans 4 1 1 0 0;
+#X msg 23 147 \; net e3f sendsafe movie 4 yukie/VillageStrip5min.mov
+;
+#X msg 4 185 \; net e3f sendsafe play 4 start;
+#X msg 21 249 \; net e3f send fade 4 \$1;
+#X msg 177 248 \; net e3f sendsafe scaletrans 4 -1 -1 0.212 0.244;
+#X msg 173 297 \; net e3f sendsafe scaletrans 4 1 1 0 0;
+#X msg 213 215 \; net e3f sendsafe unload 4;
+#X msg 200 184 \; net e3f sendsafe play 4 stop;
+#X connect 0 0 132 0;
+#X connect 0 0 133 0;
+#X connect 0 0 2 0;
+#X connect 1 0 134 0;
+#X connect 2 0 1 0;
+#X connect 3 0 128 0;
+#X connect 3 0 30 0;
+#X connect 3 0 5 0;
+#X connect 4 0 31 0;
+#X connect 5 0 4 0;
+#X connect 6 0 19 0;
+#X connect 6 0 9 0;
+#X connect 6 0 8 0;
+#X connect 7 0 10 0;
+#X connect 8 0 7 0;
+#X connect 12 0 18 0;
+#X connect 12 0 15 0;
+#X connect 12 0 14 0;
+#X connect 13 0 16 0;
+#X connect 14 0 13 0;
+#X connect 20 0 21 0;
+#X connect 25 0 53 0;
+#X connect 25 0 27 0;
+#X connect 26 0 56 0;
+#X connect 27 0 26 0;
+#X connect 28 0 59 0;
+#X connect 28 0 29 0;
+#X connect 34 0 37 0;
+#X connect 34 0 38 0;
+#X connect 34 0 36 0;
+#X connect 35 0 39 0;
+#X connect 36 0 35 0;
+#X connect 42 0 129 0;
+#X connect 43 0 130 0;
+#X connect 43 0 44 0;
+#X connect 43 0 72 0;
+#X connect 44 0 42 0;
+#X connect 45 0 42 0;
+#X connect 61 0 108 0;
+#X connect 62 0 106 0;
+#X connect 62 0 63 0;
+#X connect 62 0 107 0;
+#X connect 63 0 61 0;
+#X connect 64 0 61 0;
+#X connect 79 0 86 0;
+#X connect 79 0 82 0;
+#X connect 79 0 81 0;
+#X connect 80 0 83 0;
+#X connect 81 0 80 0;
+#X connect 87 0 127 0;
+#X connect 87 0 90 0;
+#X connect 87 0 89 0;
+#X connect 88 0 91 0;
+#X connect 89 0 88 0;
+#X connect 94 0 104 0;
+#X connect 94 0 100 0;
+#X connect 94 0 96 0;
+#X connect 95 0 103 0;
+#X connect 96 0 95 0;
+#X connect 116 0 124 0;
+#X connect 117 0 122 0;
+#X connect 117 0 118 0;
+#X connect 117 0 123 0;
+#X connect 118 0 116 0;
+#X connect 119 0 116 0;
+#X restore 1052 440 pd finale;
+#X obj 468 627 mcnetsend;
+#X msg 477 606 connect 11041;
+#X obj 593 628 mcnetsend;
+#X obj 720 628 mcnetsend;
+#X msg 602 607 connect 11042;
+#X msg 729 607 connect 11031;
+#X obj 413 545 mcnetsend;
+#X obj 535 545 mcnetsend;
+#X obj 672 545 mcnetsend;
+#X obj 800 543 mcnetsend;
+#X obj 934 544 mcnetsend;
+#X msg 422 524 connect 10052;
+#X msg 544 524 connect 10051;
+#X msg 674 525 connect 10021;
+#X msg 809 522 connect 10023;
+#X msg 943 523 connect 10022;
+#X obj 733 545 r p21;
+#X obj 995 544 r p22;
+#X obj 861 543 r p23;
+#X obj 781 628 r p31;
+#X obj 529 627 r p41;
+#X obj 654 628 r p42;
+#X obj 596 545 r p51;
+#X obj 474 545 r p52;
+#X msg 331 788 \; net e0f sendsafe loadAlpha 2 /home/vision/lighttwist/data/alpha_borders_100.png
+;
+#X msg 331 752 \; net e0f sendsafe loadAlpha 2 /home/vision/lighttwist/data/alpha_borders_100.png
+;
+#X obj 764 467 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 0 1340 597 setLUT 0;
+#X obj 34 24 receive set_ecran;
+#X obj 387 66 print set_screen_error;
+#X msg 111 637 \; p23 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_1/out/imapXY_01_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_1/out/01_support_proj.png
+;
+#X msg 598 324 \; p23 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_3/out/imapXY_01_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_3/out/01_support_proj.png
+;
+#X obj 1035 707 pack f f f f;
+#X obj 1037 566 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1135 566 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1103 682 line -1 100;
+#X obj 1177 682 line -1 100;
+#X obj 1251 681 line 1 100;
+#X msg 1111 661 -1 10000;
+#X msg 1184 662 -1 10000;
+#X msg 1258 661 1 10000;
+#X msg 1177 644 0 10000;
+#X msg 1251 641 0.75 10000;
+#X msg 1103 643 -0.5 10000;
+#X text 1033 546 ECRAN COMPLET;
+#X text 1138 545 ECRAN DROIT;
+#X msg 1035 644 1 10000;
+#X msg 1045 662 2 10000;
+#X obj 1035 683 line 2 100;
+#X msg 1035 732 \; net e0f send scaletrans 2 \$1 \$2 \$3 \$4;
+#X msg 882 474 \; p42 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_plancher/out/imapXY_01_crop.lut.png
+/home/vision/lighttwist/scan_yukie_plancher/out/01_support_proj.png
+;
+#X msg 852 402 \; p41 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_plancher/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_plancher/out/00_support_proj.png
+;
+#X msg 531 637 \; p23 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_5/out/imapXY_01_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_5/out/01_support_proj.png
+;
+#X msg 613 1 \; p21 sendsafe fade_in_all 1;
+#X msg 613 28 \; p22 sendsafe fade_in_all 1;
+#X msg 613 56 \; p23 sendsafe fade_in_all 1;
+#X msg 613 84 \; p51 sendsafe fade_in_all 1;
+#X msg 613 111 \; p52 sendsafe fade_in_all 1;
+#X msg 613 139 \; p31 sendsafe fade_in_all 1;
+#X msg 613 166 \; p41 sendsafe fade_in_all 1;
+#X msg 793 1 \; p21 sendsafe fade_out_all 0;
+#X msg 793 28 \; p22 sendsafe fade_out_all 0;
+#X msg 793 56 \; p23 sendsafe fade_out_all 0;
+#X msg 793 84 \; p51 sendsafe fade_out_all 0;
+#X msg 793 111 \; p52 sendsafe fade_out_all 0;
+#X msg 793 139 \; p31 sendsafe fade_out_all 0;
+#X msg 793 166 \; p41 sendsafe fade_out_all 0;
+#X msg 613 194 \; p42 sendsafe fade_in_all 1;
+#X msg 794 194 \; p42 sendsafe fade_out_all 0;
+#X msg 189 323 \; p41 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecranmono_3/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecranmono_3/out/00_support_proj.png
+\; p42 send fade_out_all 0;
+#X msg 137 253 \; p41 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecranmono_2/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecranmono_2/out/00_support_proj.png
+\; p42 send fade_out_all 0;
+#X msg 86 182 \; p41 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecranmono_1/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecranmono_1/out/00_support_proj.png
+\; p42 send fade_out_all 0;
+#X msg 34 112 \; p41 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecranmono_0/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecranmono_0/out/00_support_proj.png
+\; p42 send fade_out_all 0;
+#X msg 997 323 \; p41 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecranmono_5/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecranmono_5/out/00_support_proj.png
+\; p42 send fade_out_all 0;
+#X msg 996 239 \; p41 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecranmono_4/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecranmono_4/out/00_support_proj.png
+\; p42 send fade_out_all 0;
+#X msg 440 401 \; p21 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_2/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_2/out/00_support_proj.png
+\; p22 send fade_out_all 0 \; p23 send fade_out_all 0;
+#X msg 440 489 \; p51 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_2/out/imapXY_01_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_2/out/01_support_proj.png
+\; p52 send fade_out_all 0;
+#X msg 59 401 \; p22 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_0/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_0/out/00_support_proj.png
+\; p23 send fade_out_all 0;
+#X msg 59 488 \; p52 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_0/out/imapXY_01_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_0/out/01_support_proj.png
+;
+#X msg 111 567 \; p22 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_1/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_1/out/00_support_proj.png
+;
+#X msg 111 707 \; p52 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_1/out/imapXY_02_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_1/out/02_support_proj.png
+;
+#X msg 531 706 \; p52 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_5/out/imapXY_02_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_5/out/02_support_proj.png
+;
+#X msg 531 567 \; p22 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_5/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_5/out/00_support_proj.png
+;
+#X msg 598 246 \; p22 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecran_3/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecran_3/out/00_support_proj.png
+\; p21 sendsafe fade_out_all 0;
+#X obj 34 65 route e0f e0b e1f e1b e2f e2b e3f e3b ep e4f e5f e5b e2f
+;
+#X msg 994 157 \; p41 sendsafe loadLutBlend /home/vision/lighttwist/scan_yukie_ecranmono_2/out/imapXY_00_crop.lut.png
+/home/vision/lighttwist/scan_yukie_ecranmono_2/out/00_support_proj.png
+\; p42 send fade_out_all 0;
+#X connect 0 0 56 0;
+#X connect 4 0 21 0;
+#X connect 5 0 18 0;
+#X connect 5 0 15 0;
+#X connect 5 0 13 0;
+#X connect 5 0 14 0;
+#X connect 6 0 19 0;
+#X connect 6 0 10 0;
+#X connect 6 0 11 0;
+#X connect 6 0 12 0;
+#X connect 7 0 4 1;
+#X connect 8 0 4 2;
+#X connect 9 0 4 3;
+#X connect 10 0 7 0;
+#X connect 11 0 8 0;
+#X connect 12 0 9 0;
+#X connect 13 0 8 0;
+#X connect 14 0 9 0;
+#X connect 15 0 7 0;
+#X connect 18 0 20 0;
+#X connect 19 0 20 0;
+#X connect 20 0 4 0;
+#X connect 56 0 44 0;
+#X connect 56 1 49 0;
+#X connect 56 1 50 0;
+#X connect 56 2 43 0;
+#X connect 56 3 51 0;
+#X connect 56 3 2 0;
+#X connect 56 3 52 0;
+#X connect 56 4 42 0;
+#X connect 56 5 47 0;
+#X connect 56 5 48 0;
+#X connect 56 6 41 0;
+#X connect 56 7 3 0;
+#X connect 56 7 55 0;
+#X connect 56 8 23 0;
+#X connect 56 8 22 0;
+#X connect 56 9 46 0;
+#X connect 56 10 45 0;
+#X connect 56 11 54 0;
+#X connect 56 11 24 0;
+#X connect 56 11 53 0;
+#X connect 56 12 57 0;
+#X connect 56 13 1 0;
+#X restore 828 10 pd setLUT;
+#N canvas 18 248 1350 652 finale 0;
+#X obj 27 510 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 117 572 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 88 572 0;
+#X obj 232 597 hsl 128 15 -2 0 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X floatatom 374 602 5 0 0 0 - - -;
+#X obj 119 92 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 32 32 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 79 93 0;
+#X obj 259 92 r fadecam;
+#X text 328 148 DROITE;
+#X text 355 171 BOTTOM;
+#X text 355 201 CENTRE;
+#X text 329 231 A COTE DES FILINS;
+#X text 368 257 FULL;
+#X text 394 288 TOP;
+#X msg 225 114 \; net e1f sendsafe unload 2;
+#X msg 78 27 \; net e0f sendsafe capturefiltre 2 12145 15;
+#X msg 108 63 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.75;
+#X msg 79 112 \; net e0f send fade 2 \$1;
+#X msg 79 140 \; net e0f sendsafe scaletrans 2 2 -1 -1 1;
+#X msg 79 166 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.25;
+#X msg 79 196 \; net e0f sendsafe scaletrans 2 2.3 -1 -0.6 1;
+#X msg 77 225 \; net e0f sendsafe scaletrans 2 2 -1 0.56 1;
+#X msg 94 255 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.75;
+#X msg 106 283 \; net e0f sendsafe scaletrans 2 1 -0.5 0 1.25;
+#X msg 82 482 \; net e0f sendsafe movie 1 yukie/ChienCarreB.mov;
+#X msg 70 513 \; net e0f sendsafe unload 1;
+#X msg 73 543 \; net e0f sendsafe play 1 start;
+#X msg 89 594 \; net e0f send fade 1 \$1;
+#X msg 270 545 \; net e0f sendsafe play 1 stop;
+#X msg 282 572 \; net e0f sendsafe unload 1;
+#X msg 228 623 \; net e0f sendsafe scaletrans 1 7 3 \$1 -0.7;
+#X msg 225 651 \; net e0f sendsafe scaletrans 1 2.5 1 0 0;
+#X msg 60 344 \; net e0f sendsafe invoke_plugin_command 2 scannereffect
+ON;
+#X msg 61 371 \; net e0f sendsafe invoke_plugin_command 2 scannereffect
+OFF;
+#X obj 502 563 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 568 645 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 540 645 0;
+#X msg 526 615 \; net e0f sendsafe play 5 start;
+#X msg 540 667 \; net e0f send fade 5 \$1;
+#X msg 722 617 \; net e0f sendsafe play 5 stop;
+#X obj 98 677 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 164 759 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 136 759 0;
+#X msg 122 729 \; net e0b sendsafe play 5 start;
+#X msg 136 781 \; net e0b send fade 5 \$1;
+#X msg 318 731 \; net e0b sendsafe play 5 stop;
+#X msg 330 759 \; net e0b sendsafe unload 5;
+#X obj 820 142 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 886 225 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 858 225 0;
+#X msg 844 196 \; net ep sendsafe play 5 start;
+#X msg 858 247 \; net ep send fade 5 \$1;
+#X msg 1040 197 \; net ep sendsafe play 5 stop;
+#X msg 1053 225 \; net ep sendsafe unload 5;
+#X msg 734 645 \; net e0f sendsafe unload 5;
+#X msg 537 703 \; net e0f sendsafe unload 0;
+#X obj 823 302 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 889 384 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 861 384 0;
+#X msg 847 355 \; net e1b sendsafe play 5 start;
+#X msg 861 407 \; net e1b send fade 5 \$1;
+#X msg 1043 356 \; net e1b sendsafe play 5 stop;
+#X msg 1056 384 \; net e1b sendsafe unload 5;
+#X msg 863 311 \; net e1b sendsafe movie 5 yukie/26b_FeuSeul.mov;
+#X obj 911 469 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 977 551 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 949 551 0;
+#X msg 935 522 \; net ep sendsafe play 5 start;
+#X msg 949 573 \; net ep send fade 5 \$1;
+#X msg 1131 523 \; net ep sendsafe play 5 stop;
+#X msg 1144 551 \; net ep sendsafe unload 5;
+#X msg 950 477 \; net ep sendsafe movie 5 yukie/29-SerpentSeul.mov
+;
+#X obj 425 -122 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 449 -87 \; net e0f sendsafe play 4 start;
+#X msg 645 -86 \; net e0f sendsafe play 4 stop;
+#X obj 844 -120 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 884 -112 \; net e0b sendsafe movie 4 yukie/26-Finale1024.mov
+;
+#X msg 868 -85 \; net e0b sendsafe play 4 start;
+#X msg 1064 -84 \; net e0b sendsafe play 4 stop;
+#X msg 465 -114 \; net e0f sendsafe movie 4 yukie/28-PanBlur5min.mov
+;
+#X msg 543 570 \; net e0f sendsafe movie 5 yukie/23-rocherTempete-1024.mov
+;
+#X msg 138 686 \; net e0b sendsafe movie 5 yukie/23-rocherTempete-1024.mov
+;
+#X obj 910 658 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 976 740 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 948 740 0;
+#X msg 950 667 \; net e0f sendsafe movie 5 yukie/26b_FeuSeul.mov;
+#X msg 934 711 \; net e0f sendsafe play 5 start;
+#X msg 1143 740 \; net e0f sendsafe unload 5;
+#X msg 1130 713 \; net e0f sendsafe play 5 stop;
+#X msg 948 763 \; net e0f send fade 5 \$1;
+#X obj 35 -142 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 119 -91 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 79 -90 0;
+#X msg 78 -154 \; net e0b sendsafe movie 4 yukie/03-VillageNB-1024.mov
+;
+#X msg 70 -121 \; net e0b sendsafe play 4 start;
+#X msg 859 151 \; net ep sendsafe movie 5 yukie/26b_FeuSeul.mov;
+#X connect 0 0 25 0;
+#X connect 0 0 2 0;
+#X connect 1 0 28 0;
+#X connect 2 0 1 0;
+#X connect 3 0 31 0;
+#X connect 3 0 4 0;
+#X connect 5 0 18 0;
+#X connect 6 0 16 0;
+#X connect 6 0 7 0;
+#X connect 6 0 17 0;
+#X connect 7 0 5 0;
+#X connect 8 0 5 0;
+#X connect 35 0 81 0;
+#X connect 35 0 38 0;
+#X connect 35 0 37 0;
+#X connect 35 0 56 0;
+#X connect 36 0 39 0;
+#X connect 37 0 36 0;
+#X connect 41 0 82 0;
+#X connect 41 0 44 0;
+#X connect 41 0 43 0;
+#X connect 42 0 45 0;
+#X connect 43 0 42 0;
+#X connect 48 0 96 0;
+#X connect 48 0 51 0;
+#X connect 48 0 50 0;
+#X connect 49 0 52 0;
+#X connect 50 0 49 0;
+#X connect 57 0 64 0;
+#X connect 57 0 60 0;
+#X connect 57 0 59 0;
+#X connect 58 0 61 0;
+#X connect 59 0 58 0;
+#X connect 65 0 72 0;
+#X connect 65 0 68 0;
+#X connect 65 0 67 0;
+#X connect 66 0 69 0;
+#X connect 67 0 66 0;
+#X connect 73 0 80 0;
+#X connect 73 0 74 0;
+#X connect 76 0 77 0;
+#X connect 76 0 78 0;
+#X connect 83 0 86 0;
+#X connect 83 0 87 0;
+#X connect 83 0 85 0;
+#X connect 84 0 90 0;
+#X connect 85 0 84 0;
+#X connect 91 0 94 0;
+#X connect 91 0 95 0;
+#X connect 91 0 93 0;
+#X connect 93 0 92 0;
+#X restore 1051 414 pd finale;
+#N canvas 0 0 1086 661 test 0;
+#X obj 962 67 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 880 34 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 922 68 0;
+#X obj 966 172 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 884 139 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 926 173 0;
+#X msg 925 142 \; net e3b sendsafe color 0 0 0 0 1 0;
+#X msg 926 198 \; net e3b send set_color 0 \$1 \$1 \$1 \$1;
+#X obj 91 422 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 9 387 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 51 423 0;
+#X msg 51 347 \; set_ecran e0b;
+#X msg 51 379 \; net e0b sendsafe movie 5 yukie/01-TitreD.avi \; net
+e0b sendsafe play 5 start;
+#X msg 51 443 \; net e0b send fade 5 \$1;
+#X msg 333 415 \; net e0b sendsafe play 5 start;
+#X msg 333 387 \; net e0b sendsafe play 5 stop;
+#X msg 922 36 \; net e0b sendsafe color 0 1 1 1 1 2;
+#X msg 922 93 \; net e0b send fade 0 \$1;
+#X msg 323 148 \; net e0b sendsafe image 1 statue_fleurs.png \; net
+e0b sendsafe fade 1 1;
+#X msg 322 106 \; net e1b sendsafe image 1 statue_fleurs.png \; net
+e1b sendsafe fade 1 1;
+#X msg 321 63 \; net e2b sendsafe image 1 statue_fleurs.png \; net
+e2b sendsafe fade 1 1;
+#X msg 323 225 \; net ep sendsafe image 0 statue_fleurs.png \; net
+ep sendsafe fade 0 1;
+#X msg 323 186 \; net ef sendsafe image 0 statue_fleurs.png \; net
+ef sendsafe fade 0 1;
+#X msg 322 23 \; net e5b sendsafe image 1 statue_fleurs.png \; net
+e5b sendsafe fade 1 1;
+#X msg 320 -15 \; net e3b sendsafe image 1 statue_fleurs.png \; net
+e3b sendsafe fade 1 1;
+#X msg 172 114 \; set_ecran e3b;
+#X msg 172 64 \; set_ecran e2b;
+#X msg 172 14 \; set_ecran e1b;
+#X msg 172 -36 \; set_ecran e0b;
+#X msg 172 214 \; set_ecran e5b;
+#X msg 173 263 \; set_ecran ep \; lua dl1_plancher;
+#X msg 52 214 \; set_ecran e5f \; lua dl1_ecran5;
+#X msg 52 164 \; set_ecran e4f \; lua dl1_ecran4;
+#X msg 52 114 \; set_ecran e3f \; lua dl1_ecran3;
+#X msg 52 14 \; set_ecran e1f \; lua dl1_ecran1;
+#X msg 52 -36 \; set_ecran e0f \; lua dl1_ecran0;
+#X msg 197 442 \; net e0b sendsafe unload 5;
+#X msg 604 -9 \; net e3b sendsafe unload 1;
+#X msg 604 28 \; net e5b sendsafe unload 1;
+#X msg 604 70 \; net e2b sendsafe unload 1;
+#X msg 605 111 \; net e1b sendsafe unload 1;
+#X msg 604 154 \; net e0b sendsafe unload 1;
+#X msg 605 193 \; net ef sendsafe unload 1;
+#X msg 606 230 \; net ep sendsafe unload 1;
+#X obj 632 423 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 550 388 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 592 424 0;
+#X obj 92 569 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 10 534 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 52 570 0;
+#X obj 633 570 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 551 535 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 593 571 0;
+#X msg 592 348 \; set_ecran e2b;
+#X msg 592 380 \; net e2b sendsafe movie 5 yukie/01-TitreD.avi \; net
+e2b sendsafe play 5 start;
+#X msg 592 444 \; net e2b send fade 5 \$1;
+#X msg 738 443 \; net e2b sendsafe unload 5;
+#X msg 874 416 \; net e2b sendsafe play 5 start;
+#X msg 874 388 \; net e2b sendsafe play 5 stop;
+#X msg 52 494 \; set_ecran e3b;
+#X msg 52 526 \; net e3b sendsafe movie 5 yukie/01-TitreD.avi \; net
+e3b sendsafe play 5 start;
+#X msg 52 590 \; net e3b send fade 5 \$1;
+#X msg 198 589 \; net e3b sendsafe unload 5;
+#X msg 334 562 \; net e3b sendsafe play 5 start;
+#X msg 334 534 \; net e3b sendsafe play 5 stop;
+#X msg 593 495 \; set_ecran e5b;
+#X msg 593 527 \; net e5b sendsafe movie 5 yukie/01-TitreD.avi \; net
+e5b sendsafe play 5 start;
+#X msg 593 591 \; net e5b send fade 5 \$1;
+#X msg 739 590 \; net e5b sendsafe unload 5;
+#X msg 876 535 \; net e5b sendsafe play 5 stop;
+#X msg 875 563 \; net e5b sendsafe play 5 start;
+#X connect 0 0 17 0;
+#X connect 1 0 16 0;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 3 0 7 0;
+#X connect 4 0 6 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 0;
+#X connect 8 0 13 0;
+#X connect 9 0 12 0;
+#X connect 9 0 10 0;
+#X connect 10 0 8 0;
+#X connect 44 0 55 0;
+#X connect 45 0 54 0;
+#X connect 45 0 46 0;
+#X connect 46 0 44 0;
+#X connect 47 0 61 0;
+#X connect 48 0 60 0;
+#X connect 48 0 49 0;
+#X connect 49 0 47 0;
+#X connect 50 0 67 0;
+#X connect 51 0 66 0;
+#X connect 51 0 52 0;
+#X connect 52 0 50 0;
+#X restore 1128 411 pd test;
+#N canvas 0 0 1242 522 Partie_2 0;
+#X obj 39 36 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 131 109 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 81 107 0;
+#X msg 81 77 \; net e2b sendsafe play 7 start;
+#X msg 81 128 \; net e2b send fade 7 \$1;
+#X msg 267 79 \; net e2b sendsafe play 7 stop;
+#X msg 267 103 \; net e2b sendsafe unload 7;
+#X msg 79 47 \; net e2b sendsafe movie 7 yukie/ScanVerti_InCity.mov
+;
+#X obj 286 292 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 286 401 5 0 0 0 - - -;
+#X obj 323 294 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 323 401 5 0 0 0 - - -;
+#X obj 359 294 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 359 401 5 0 0 0 - - -;
+#X text 287 268 R;
+#X text 324 266 G;
+#X text 361 267 B;
+#X obj 127 370 t b f;
+#X obj 163 370 t b f;
+#X obj 215 368 t b f;
+#X obj 111 408 pack f f f f;
+#X obj 397 292 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 399 399 5 0 0 0 - - -;
+#X text 397 268 A;
+#X msg 98 437 \; net ep send set_color 0 \$1 \$2 \$3 \$4;
+#X msg 120 233 \; net ep sendsafe color 0 1 1 1 1 0;
+#X obj 466 31 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 558 104 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 508 102 0;
+#X msg 508 72 \; net e2b sendsafe play 3 start;
+#X msg 508 123 \; net e2b send fade 3 \$1;
+#X msg 694 74 \; net e2b sendsafe play 3 stop;
+#X msg 694 98 \; net e2b sendsafe unload 3;
+#X msg 505 41 \; net e2b sendsafe movie 3 yukie/MotoRide.mov;
+#X obj 464 191 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 556 264 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 506 262 0;
+#X msg 503 200 \; net ep sendsafe movie 3 yukie/MotoRide.mov;
+#X msg 506 232 \; net ep sendsafe play 3 start;
+#X msg 506 283 \; net ep send fade 3 \$1;
+#X msg 692 234 \; net ep sendsafe play 3 stop;
+#X msg 693 258 \; net ep sendsafe unload 3;
+#X obj 152 476 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 102 474 0;
+#X msg 102 495 \; net ep send fade 0 \$1;
+#X obj 462 323 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 554 396 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 504 394 0;
+#X msg 503 364 \; net ep sendsafe play 4 start;
+#X msg 504 415 \; net ep send fade 4 \$1;
+#X msg 690 366 \; net ep sendsafe play 4 stop;
+#X msg 690 393 \; net ep sendsafe unload 4;
+#X msg 501 332 \; net ep sendsafe movie 4 yukie/ScanObliqB.mov;
+#X obj 858 26 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 950 99 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 900 97 0;
+#X msg 899 68 \; net e2b sendsafe play 4 start;
+#X msg 900 117 \; net e2b send fade 4 \$1;
+#X msg 1085 71 \; net e2b sendsafe play 4 stop;
+#X msg 1086 97 \; net e2b sendsafe unload 4;
+#X msg 897 35 \; net e2b sendsafe movie 4 yukie/ScanObliq.mov;
+#X obj 861 149 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 953 222 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 903 220 0;
+#X msg 902 191 \; net e2b sendsafe play 5 start;
+#X msg 903 239 \; net e2b send fade 5 \$1;
+#X msg 1088 193 \; net e2b sendsafe play 5 stop;
+#X msg 1089 220 \; net e2b sendsafe unload 5;
+#X msg 901 159 \; net e2b sendsafe movie 5 yukie/ScanVertical.mov;
+#X connect 0 0 7 0;
+#X connect 0 0 3 0;
+#X connect 0 0 2 0;
+#X connect 1 0 4 0;
+#X connect 2 0 1 0;
+#X connect 8 0 9 0;
+#X connect 9 0 20 0;
+#X connect 10 0 11 0;
+#X connect 11 0 17 0;
+#X connect 12 0 13 0;
+#X connect 13 0 18 0;
+#X connect 17 0 20 0;
+#X connect 17 1 20 1;
+#X connect 18 0 20 0;
+#X connect 18 1 20 2;
+#X connect 19 0 20 0;
+#X connect 19 1 20 3;
+#X connect 20 0 24 0;
+#X connect 21 0 22 0;
+#X connect 22 0 19 0;
+#X connect 25 0 20 0;
+#X connect 26 0 33 0;
+#X connect 26 0 29 0;
+#X connect 26 0 28 0;
+#X connect 27 0 30 0;
+#X connect 28 0 27 0;
+#X connect 34 0 37 0;
+#X connect 34 0 38 0;
+#X connect 34 0 36 0;
+#X connect 35 0 39 0;
+#X connect 36 0 35 0;
+#X connect 42 0 44 0;
+#X connect 43 0 42 0;
+#X connect 45 0 52 0;
+#X connect 45 0 48 0;
+#X connect 45 0 47 0;
+#X connect 46 0 49 0;
+#X connect 47 0 46 0;
+#X connect 53 0 60 0;
+#X connect 53 0 56 0;
+#X connect 53 0 55 0;
+#X connect 54 0 57 0;
+#X connect 55 0 54 0;
+#X connect 61 0 68 0;
+#X connect 61 0 64 0;
+#X connect 61 0 63 0;
+#X connect 62 0 65 0;
+#X connect 63 0 62 0;
+#X restore 1131 536 pd Partie_2;
+#X obj 414 370 r net;
+#N canvas 0 0 791 533 old_config 0;
+#X obj 213 106 r net;
+#X text 214 82 Receive NET messages;
+#X text 253 96 e0f = Ecran 0 front (DL1);
+#X text 253 107 e0b = Ecran 0 back (Opto);
+#X obj 634 232 mcnetsend;
+#X obj 628 300 mcnetsend;
+#X msg 638 279 connect 10013;
+#X msg 643 210 connect 10003;
+#X obj 318 241 mcnetsend;
+#X obj 312 309 mcnetsend;
+#X msg 327 220 connect 10001;
+#X msg 322 288 connect 10011;
+#X obj 19 234 mcnetsend;
+#X obj 117 234 mcnetsend;
+#X msg 28 212 connect 11000;
+#X msg 128 213 connect 10000;
+#X obj 213 235 mcnetsend;
+#X msg 224 214 connect 11001;
+#X obj 428 240 mcnetsend;
+#X msg 437 218 connect 10002;
+#X obj 214 134 route e0f e0b e1f e1b e2f e2b e3f e3b ep;
+#X obj 524 241 mcnetsend;
+#X msg 534 220 connect 11003;
+#X obj 746 229 mcnetsend;
+#X msg 756 208 connect 11011;
+#X connect 6 0 5 0;
+#X connect 7 0 4 0;
+#X connect 10 0 8 0;
+#X connect 11 0 9 0;
+#X connect 14 0 12 0;
+#X connect 15 0 13 0;
+#X connect 17 0 16 0;
+#X connect 19 0 18 0;
+#X connect 20 0 12 0;
+#X connect 20 1 13 0;
+#X connect 20 2 16 0;
+#X connect 20 3 8 0;
+#X connect 20 3 9 0;
+#X connect 20 5 18 0;
+#X connect 20 6 21 0;
+#X connect 20 7 4 0;
+#X connect 20 7 5 0;
+#X connect 20 8 23 0;
+#X connect 22 0 21 0;
+#X connect 24 0 23 0;
+#X restore 555 12 pd old_config;
+#X msg 804 192 \; set_ecran e3b;
+#X msg 804 142 \; set_ecran e2b;
+#X msg 804 92 \; set_ecran e1b;
+#X msg 804 42 \; set_ecran e0b;
+#X text 681 10 Configurations d'ecrans;
+#X text 424 389 Reception des commandes pour chaque config d'ecran
+;
+#X msg 78 60 dofile /home/vision/svn3d/lighttwist/src/player-master/lua/RemoteControl.lua
+;
+#X msg 804 292 \; set_ecran e5b;
+#X obj 15 143 print;
+#X obj 78 37 loadbang;
+#X msg 805 341 \; set_ecran ep \; lua dl1_plancher;
+#X msg 684 292 \; set_ecran e5f \; lua dl1_ecran5;
+#X msg 684 242 \; set_ecran e4f \; lua dl1_ecran4;
+#X msg 684 192 \; set_ecran e3f \; lua dl1_ecran3;
+#X msg 684 42 \; set_ecran e0f \; lua dl1_ecran0;
+#X msg 270 197 \; lua kill_all;
+#X msg 170 197 \; lua start_all;
+#X msg 270 237 \; lua kill_front;
+#X msg 270 267 \; lua kill_back;
+#X msg 170 237 \; lua start_front;
+#X msg 170 267 \; lua start_back;
+#X msg 479 73 \; p21 sendsafe fade_out_all 0 \; p22 sendsafe fade_out_all
+0 \; p23 sendsafe fade_out_all 0 \; p51 sendsafe fade_out_all 0 \;
+p52 sendsafe fade_out_all 0;
+#X msg 479 151 \; p41 sendsafe fade_out_all 0 \; p42 sendsafe fade_out_all
+0;
+#X obj 419 409 route e0f e0b e1f e1b e2f e2b e3f e3b e4f e5f e5b ep
+ef;
+#X obj 764 442 loadbang;
+#X obj 436 288 track_yukie;
+#X obj 832 795 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 750 762 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 792 796 0;
+#X msg 792 815 \; net e0b send set_color 0 \$1 \$1 \$1 \$1;
+#X msg 791 764 \; net e0b sendsafe color 0 0 0 0 1 0;
+#X msg 313 335 \; net ep sendsafe unload 0;
+#N canvas 0 25 1348 753 finaleFeu 0;
+#X obj 459 257 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 533 306 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 505 306 0;
+#X obj 462 121 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 540 169 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 505 169 0;
+#X obj 459 605 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 532 672 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 499 672 0;
+#X msg 499 615 \; net e2b sendsafe movie 5 yukie/26b_FeuSeul.mov;
+#X msg 499 643 \; net e2b sendsafe play 5 start;
+#X msg 499 692 \; net e2b send fade 5 \$1;
+#X msg 685 643 \; net e2b sendsafe play 5 stop;
+#X msg 685 669 \; net e2b sendsafe unload 5;
+#X obj 458 732 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 530 803 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 498 803 0;
+#X msg 684 774 \; net e2b sendsafe play 4 stop;
+#X msg 641 825 \; net e2b sendsafe unload 4;
+#X msg 498 774 \; net e2b sendsafe play 4 start;
+#X msg 498 825 \; net e2b send fade 4 \$1;
+#X msg 498 742 \; net e2b sendsafe movie 4 yukie/03-VillageNB-1024.mov
+;
+#X msg 499 585 \; set_ecran e2b;
+#X obj 904 414 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 979 491 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 946 491 0;
+#X obj 545 449 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 458 390 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 505 450 0;
+#X obj 685 449 r fadecam;
+#X msg 504 384 \; net e0f sendsafe capturefiltre 2 12145 15;
+#X msg 534 420 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.75;
+#X msg 505 469 \; net e0f send fade 2 \$1;
+#X msg 503 500 \; net e0f sendsafe invoke_plugin_command 2 scannereffect
+ON;
+#X msg 503 529 \; net e0f sendsafe invoke_plugin_command 2 scannereffect
+OFF;
+#X msg 651 471 \; net e0f sendsafe unload 2;
+#X obj 29 564 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 104 630 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 70 632 0;
+#X msg 70 601 \; net e0f sendsafe play 5 start;
+#X msg 70 654 \; net e0f send fade 5 \$1;
+#X msg 257 601 \; net e0f sendsafe play 5 stop;
+#X msg 236 684 \; net e0f sendsafe unload 5;
+#X msg 70 684 \; net e0f sendsafe unload 0;
+#X msg 70 571 \; net e0f sendsafe movie 5 yukie/23-rocherTempete-1024.mov
+;
+#X obj 34 396 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 106 465 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 73 465 0;
+#X msg 73 404 \; net e0b sendsafe movie 5 yukie/23-rocherTempete-1024.mov
+;
+#X msg 73 435 \; net e0b sendsafe play 5 start;
+#X msg 73 486 \; net e0b send fade 5 \$1;
+#X msg 262 435 \; net e0b sendsafe play 5 stop;
+#X msg 222 486 \; net e0b sendsafe unload 5;
+#X obj 34 221 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 109 290 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 74 290 0;
+#X obj 34 84 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 104 148 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 76 148 0;
+#X msg 76 118 \; net e0f sendsafe play 4 start;
+#X msg 76 170 \; net e0f send fade 4 \$1;
+#X msg 262 117 \; net e0f sendsafe play 4 stop;
+#X msg 76 88 \; net e0f sendsafe movie 4 yukie/29-SerpentSeul.mov;
+#X msg 74 228 \; net e0f sendsafe movie 6 yukie/3Yukis-1024.mov;
+#X msg 74 260 \; net e0f sendsafe play 6 start;
+#X msg 260 260 \; net e0f sendsafe play 6 stop;
+#X msg 222 312 \; net e0f sendsafe unload 6;
+#X msg 74 312 \; net e0f send fade 6 \$1;
+#X obj 905 261 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 979 333 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 946 333 0;
+#X msg 944 427 \; net e2b sendsafe movie 5 yukie/27-Asuivre-1024.mov
+;
+#X msg 945 459 \; net e2b sendsafe play 5 start;
+#X msg 946 514 \; net e2b send fade 5 \$1;
+#X msg 1133 459 \; net e2b sendsafe play 5 stop;
+#X msg 1092 514 \; net e2b sendsafe unload 5;
+#X msg 482 28 \; net e0f sendsafe unload4to16 \; set_ecran e0f \; lua
+dl1_ecran0;
+#X msg 73 516 \; net e0f sendsafe unload 0;
+#X msg 945 269 \; net e2b sendsafe movie 7 yukie/IleFeuZoomOutSeul-1024.mov
+;
+#X msg 945 302 \; net e2b sendsafe play 7 start;
+#X msg 1130 302 \; net e2b sendsafe play 7 stop;
+#X msg 1093 355 \; net e2b sendsafe unload 7;
+#X msg 946 355 \; net e2b send fade 7 \$1;
+#X msg 688 58 \; net e2b sendsafe image 1 contour.png \; net e2b sendsafe
+fade 1 1;
+#X msg 922 57 \; net e0b sendsafe image 1 contour.png \; net e0b sendsafe
+fade 1 1;
+#X msg 1160 56 \; net ef sendsafe image 1 contour.png \; net ef sendsafe
+fade 1 1;
+#X obj 688 15 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X text 728 23 Contours smooth;
+#X msg 947 207 \; net e2b sendsafe unload4to16 \; set_ecran e2b;
+#X msg 504 248 \; net e0f sendsafe movie 4 yukie/26b_FeuSeul.mov;
+#X msg 504 278 \; net e0f sendsafe play 4 start;
+#X msg 505 329 \; net e0f send fade 4 \$1;
+#X msg 648 329 \; net e0f sendsafe unload 4;
+#X msg 700 278 \; net e0f sendsafe play 4 stop;
+#X msg 221 170 \; net e0f sendsafe unload 4;
+#X msg 78 38 \; net e0f sendsafe unload 0;
+#X msg 243 37 \; net e0b sendsafe unload 0;
+#X text 806 172 FADE IN village quand Fred dit va-t-en;
+#X text 807 187 FADE OUT vague;
+#X obj 458 427 t b b b;
+#X msg 504 110 \; net e0f sendsafe movie 6 yukie/03-VillageNB-1024.mov
+;
+#X msg 504 140 \; net e0f sendsafe play 6 start;
+#X msg 505 189 \; net e0f send fade 6 \$1;
+#X msg 650 189 \; net e0f send unload 6;
+#X msg 692 139 \; net e0f sendsafe play 6 stop;
+#X msg 73 363 \; net e0b sendsafe unload4to16 \; set_ecran e0b;
+#X msg 82 -7 \; net e0f sendsafe unload4to16;
+#X connect 0 0 89 0;
+#X connect 0 0 90 0;
+#X connect 0 0 2 0;
+#X connect 1 0 91 0;
+#X connect 2 0 1 0;
+#X connect 3 0 100 0;
+#X connect 3 0 101 0;
+#X connect 3 0 5 0;
+#X connect 4 0 102 0;
+#X connect 5 0 4 0;
+#X connect 6 0 9 0;
+#X connect 6 0 10 0;
+#X connect 6 0 8 0;
+#X connect 7 0 11 0;
+#X connect 8 0 7 0;
+#X connect 14 0 21 0;
+#X connect 14 0 19 0;
+#X connect 14 0 16 0;
+#X connect 15 0 20 0;
+#X connect 16 0 15 0;
+#X connect 23 0 71 0;
+#X connect 23 0 25 0;
+#X connect 24 0 73 0;
+#X connect 25 0 24 0;
+#X connect 26 0 32 0;
+#X connect 27 0 99 0;
+#X connect 28 0 26 0;
+#X connect 29 0 26 0;
+#X connect 36 0 44 0;
+#X connect 36 0 39 0;
+#X connect 36 0 38 0;
+#X connect 36 0 43 0;
+#X connect 37 0 40 0;
+#X connect 38 0 37 0;
+#X connect 45 0 48 0;
+#X connect 45 0 49 0;
+#X connect 45 0 47 0;
+#X connect 45 0 77 0;
+#X connect 46 0 50 0;
+#X connect 47 0 46 0;
+#X connect 53 0 63 0;
+#X connect 53 0 64 0;
+#X connect 53 0 55 0;
+#X connect 54 0 67 0;
+#X connect 55 0 54 0;
+#X connect 56 0 62 0;
+#X connect 56 0 59 0;
+#X connect 56 0 58 0;
+#X connect 56 0 53 0;
+#X connect 56 0 96 0;
+#X connect 56 0 95 0;
+#X connect 57 0 60 0;
+#X connect 58 0 57 0;
+#X connect 68 0 78 0;
+#X connect 68 0 79 0;
+#X connect 68 0 70 0;
+#X connect 69 0 82 0;
+#X connect 70 0 69 0;
+#X connect 86 0 83 0;
+#X connect 86 0 84 0;
+#X connect 86 0 85 0;
+#X connect 99 0 28 0;
+#X connect 99 1 31 0;
+#X connect 99 2 30 0;
+#X restore 1004 284 pd finaleFeu;
+#N canvas 0 46 1062 685 serpentNarratif-2-3 0;
+#X obj -140 179 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj -271 111 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg -178 180 0;
+#X obj -268 391 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X text 74 181 FULL;
+#X obj -126 497 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj -133 435 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg -166 436 0;
+#X msg -167 498 0.95;
+#X msg 9 497 0.8;
+#X text 62 244 Layer bleu;
+#X text -168 338 CAMERA COULEUR;
+#X text -180 92 CAMERA NOIR ET BLANC;
+#X obj 192 284 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 271 312 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 236 313 0;
+#X obj 191 77 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 271 144 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 236 145 0;
+#X msg -3 179 1;
+#X text 110 402 FULL;
+#X msg 18 11 \; net e5f sendsafe image 1 contour.png \; net e5f sendsafe
+fade 1 1;
+#X msg -179 109 \; net ef sendsafe capturefiltre 2 12145 15;
+#X msg -178 138 \; net ef sendsafe scaletrans 2 1 -0.5 0 0.75 \; net
+ef sendsafe loadAlpha 2 alpha_no.png;
+#X msg -179 203 \; net ef send fade 2 \$1;
+#X msg -179 235 \; net ef sendsafe color 0 0.8 0.8 1 1 2;
+#X msg -179 266 \; net ef send unload 0;
+#X msg -33 203 \; net ef sendsafe unload 2;
+#X msg -168 357 \; net ef sendsafe captureblend 3 13137 0.8;
+#X msg -167 391 \; net ef sendsafe scaletrans 3 1 -0.5 0 0.75 \; net
+ef sendsafe loadAlpha 2 alpha_no.png;
+#X msg -165 461 \; net ef send fade 3 \$1;
+#X msg -168 519 \; net ef send set_plugin_param 3 frameblend Ratio
+\$1;
+#X msg -21 461 \; net ef sendsafe unload 3;
+#X obj 18 -26 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 233 76 \; net e5f sendsafe movie 7 yukie/07E-TransitionSerpentNarr3-1024.mov
+;
+#X msg 235 113 \; net e5f sendsafe play 7 start;
+#X msg 421 113 \; net e5f send unload 7;
+#X msg 405 141 \; net e5f sendsafe play 7 stop;
+#X msg 236 164 \; net e5f send fade 7 \$1;
+#X msg 236 280 \; net e5f sendsafe image 8 yukie/PeigneOr.png;
+#X msg 235 330 \; net e5f send fade 8 \$1;
+#X msg 236 361 \; net e5f send unload 8;
+#X obj -271 189 t b b b b;
+#X obj -268 449 t b b b b;
+#X floatatom 549 241 5 0 0 0 - - -;
+#X obj 549 204 * -0.8;
+#X obj 549 222 + 0.8;
+#X obj 611 206 * -1;
+#X obj 611 225 + 1;
+#X obj 549 271 pack 0.8 0.8 1 1;
+#X msg 549 298 \; net ef sendsafe set_color 0 \$1 \$2 \$3 1;
+#X msg -180 8 \; net e0f sendsafe unload4to16 \; set_ecran e5f \; lua
+dl1_ecran5;
+#X msg 549 298 \; net ef sendsafe set_color 0 \$1 \$2 \$3 1;
+#X connect 0 0 24 0;
+#X connect 1 0 42 0;
+#X connect 2 0 0 0;
+#X connect 3 0 43 0;
+#X connect 5 0 31 0;
+#X connect 6 0 30 0;
+#X connect 7 0 6 0;
+#X connect 8 0 5 0;
+#X connect 9 0 5 0;
+#X connect 13 0 39 0;
+#X connect 13 0 15 0;
+#X connect 14 0 40 0;
+#X connect 15 0 14 0;
+#X connect 16 0 34 0;
+#X connect 16 0 18 0;
+#X connect 16 0 35 0;
+#X connect 17 0 38 0;
+#X connect 17 0 45 0;
+#X connect 17 0 47 0;
+#X connect 18 0 17 0;
+#X connect 19 0 0 0;
+#X connect 33 0 21 0;
+#X connect 42 0 25 0;
+#X connect 42 0 21 0;
+#X connect 42 1 23 0;
+#X connect 42 2 2 0;
+#X connect 42 3 22 0;
+#X connect 43 0 8 0;
+#X connect 43 0 21 0;
+#X connect 43 1 29 0;
+#X connect 43 2 7 0;
+#X connect 43 3 28 0;
+#X connect 44 0 49 0;
+#X connect 44 0 49 1;
+#X connect 45 0 46 0;
+#X connect 46 0 44 0;
+#X connect 47 0 48 0;
+#X connect 48 0 49 2;
+#X restore 997 121 pd serpentNarratif-2-3;
+#N canvas 0 25 1267 697 serpentNarratif-6-7-8 0;
+#X obj 42 230 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 125 289 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 84 289 0;
+#X msg 83 648 \; net e0f send fade 2 \$1;
+#X obj 123 628 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 18 483 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 83 629 0;
+#X msg 83 563 \; net e0f sendsafe capturefiltre 2 12145 15;
+#X text 365 686 DROITE;
+#X msg 229 649 \; net e0f sendsafe unload 2;
+#X text 363 722 BOTTOM;
+#X obj 452 531 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X text 798 564 FULL;
+#X obj 560 685 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 663 654 \; net e0f sendsafe unload 3;
+#X msg 518 525 \; net e0f sendsafe captureblend 3 13137 0.8;
+#X obj 552 633 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 519 633 0;
+#X msg 519 654 \; net e0f send fade 3 \$1;
+#X msg 695 685 0.8;
+#X msg 518 707 \; net e0f send set_plugin_param 3 frameblend Ratio
+\$1;
+#X text 797 603 TOP;
+#X text 363 762 CENTRE;
+#X msg 69 792 \; net e0f sendsafe color 0 0.8 0.8 1 1 2;
+#X obj 561 416 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 522 416 0;
+#X msg 522 387 \; net e0b send image 6 yukie/p1_lissieres.png \;;
+#X msg 522 435 \; net e0b send fade 6 \$1;
+#X msg 667 434 \; net e0b send unload 6;
+#X obj 875 103 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 976 162 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 926 160 0;
+#X msg 925 130 \; net e0f sendsafe play 4 start;
+#X msg 926 180 \; net e0f send fade 4 \$1;
+#X msg 1111 130 \; net e0f sendsafe play 4 stop;
+#X obj 42 111 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 120 170 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 86 170 0;
+#X msg 85 141 \; net ep sendsafe play 1 start;
+#X msg 86 189 \; net ep send fade 1 \$1;
+#X msg 266 141 \; net ep sendsafe play 1 stop;
+#X msg 225 189 \; net ep sendsafe unload 1;
+#X text 358 596 FULL;
+#X obj 469 393 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 85 111 \; net ep sendsafe movie 1 yukie/16-SangCoag1024.mov
+;
+#X obj 41 351 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 122 411 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 83 412 0;
+#X msg 924 100 \; net e0f sendsafe movie 4 yukie/19-PanOiseaux-1024.mov
+;
+#X obj 824 313 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 915 386 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 865 384 0;
+#X msg 864 355 \; net e0f sendsafe play 7 start;
+#X msg 865 404 \; net e0f send fade 7 \$1;
+#X msg 1050 354 \; net e0f sendsafe play 7 stop;
+#X msg 1058 383 \; net e0f sendsafe unload 7;
+#X obj 455 105 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 561 164 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 494 164 0;
+#X msg 522 464 \; net e0b sendsafe unload 0;
+#X obj 489 912 pack f f f f;
+#X obj 491 801 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 589 801 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 565 866 -1 10000;
+#X msg 731 867 1 10000;
+#X msg 645 849 0 10000;
+#X msg 719 846 0.75 10000;
+#X msg 557 848 -0.5 10000;
+#X text 487 781 ECRAN COMPLET;
+#X msg 489 937 \; net e0f sendsafe scaletrans 2 \$1 \$2 \$3 \$4;
+#X msg 489 849 1 10000;
+#X text 592 780 ECRAN CENTRE;
+#X msg 499 867 2.1 10000;
+#X msg 652 867 -0.56 10000;
+#X msg 519 686 0;
+#X msg 728 685 0.95;
+#X obj 489 888 line 1 100;
+#X obj 557 887 line -0.5 100;
+#X obj 645 887 line 0 100;
+#X obj 719 886 line 0.75 100;
+#X text 869 447 ICI Klervie en chien attache;
+#X msg 863 324 \; net e0f sendsafe movie 7 yukie/PaysageChampC5min.mov
+;
+#X msg 926 214 \; net e0f send unload 0;
+#X obj 827 475 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 918 548 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 868 546 0;
+#X msg 867 517 \; net e0f sendsafe play 8 start;
+#X msg 868 566 \; net e0f send fade 8 \$1;
+#X msg 1061 545 \; net e0f sendsafe unload 8;
+#X msg 1053 517 \; net e0f sendsafe play 8 stop;
+#X msg 866 486 \; net e0f sendsafe movie 8 yukie/28-PanBlur5min.mov
+;
+#X msg 519 593 \; net e0f sendsafe scaletrans 3 1 -0.5 0 1.25 \; net
+e0f sendsafe loadAlpha 3 alpha_top.png;
+#X msg 518 555 \; net e0f sendsafe scaletrans 3 1 -0.5 0 0.75 \; net
+e0f sendsafe loadAlpha 3 alpha_no.png;
+#X msg 92 51 \; net e2b sendsafe unload4to16 \; set_ecran e2b;
+#X msg 1119 157 \; net e0f sendsafe unload 4;
+#X msg 494 106 \; net e2b sendsafe movie 4 yukie/16-SangCoag1024.mov
+;
+#X msg 494 135 \; net e2b sendsafe play 4 start;
+#X msg 494 184 \; net e2b send fade 4 \$1;
+#X msg 680 135 \; net e2b sendsafe play 4 stop;
+#X msg 84 230 \; net e2b sendsafe movie 5 yukie/17b-QuenouilleBleu-1024.mov
+;
+#X msg 84 260 \; net e2b sendsafe play 5 start;
+#X msg 272 260 \; net e2b sendsafe play 5 stop;
+#X msg 233 309 \; net e2b sendsafe unload 5;
+#X msg 84 309 \; net e2b send fade 5 \$1;
+#X msg 233 432 \; net e2b sendsafe unload 6;
+#X msg 272 381 \; net e2b sendsafe play 6 stop;
+#X msg 83 352 \; net e2b sendsafe movie 6 yukie/chien_klervi.avi;
+#X msg 83 381 \; net e2b sendsafe play 6 start;
+#X msg 83 432 \; net e2b send fade 6 \$1;
+#X msg 83 461 \; net e2b sendsafe scaletrans 6 1 0.6 0 0;
+#X msg 83 713 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.25 \; net
+e0f sendsafe loadAlpha 2 alpha_bottom.png;
+#X msg 83 750 \; net e0f sendsafe scaletrans 2 2.1 -1 -0.56 1 \; net
+e0f sendsafe loadAlpha 2 alpha_centre.png;
+#X msg 83 515 \; net e0f sendsafe unload4to16 \; set_ecran e0f \; lua
+dl1_ecran0;
+#X msg 577 58 \; net e2b sendsafe image 1 contour.png \; net e2b sendsafe
+fade 1 1;
+#X msg 811 57 \; net e0b sendsafe image 1 contour.png \; net e0b sendsafe
+fade 1 1;
+#X msg 1049 56 \; net ef sendsafe image 1 contour.png \; net ef sendsafe
+fade 1 1;
+#X obj 577 15 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X text 617 23 Contours smooth;
+#X msg 284 51 \; net ep sendsafe unload4to16 \; set_ecran ep \; lua
+dl1_plancher;
+#X obj 18 534 t b b b b;
+#X msg 83 676 \; net e0f sendsafe scaletrans 2 2 -1 -1 1 \; net e0f
+sendsafe loadAlpha 2 alpha_droit.png;
+#X msg 83 591 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.75 \; net
+e0f sendsafe loadAlpha 2 alpha_no.png;
+#X msg 676 775 \; net e0f sendsafe loadAlpha 2 alpha_centre.png;
+#X obj 452 571 t b b b b;
+#X msg 292 171 \; net ef sendsafe unload 0;
+#X msg 677 805 \; net e0f sendsafe loadAlpha 2 alpha_no.png;
+#X msg 644 184 \; net e2b sendsafe unload 4;
+#X msg 522 345 \; net e0b sendsafe unload4to16 \; set_ecran e0b;
+#X obj 492 249 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 511 227 1;
+#X connect 0 0 99 0;
+#X connect 0 0 100 0;
+#X connect 0 0 2 0;
+#X connect 1 0 103 0;
+#X connect 2 0 1 0;
+#X connect 4 0 3 0;
+#X connect 5 0 119 0;
+#X connect 6 0 4 0;
+#X connect 11 0 123 0;
+#X connect 13 0 20 0;
+#X connect 16 0 18 0;
+#X connect 17 0 16 0;
+#X connect 19 0 13 0;
+#X connect 24 0 27 0;
+#X connect 25 0 24 0;
+#X connect 29 0 48 0;
+#X connect 29 0 31 0;
+#X connect 30 0 33 0;
+#X connect 31 0 30 0;
+#X connect 35 0 44 0;
+#X connect 35 0 38 0;
+#X connect 35 0 37 0;
+#X connect 35 0 124 0;
+#X connect 36 0 39 0;
+#X connect 37 0 36 0;
+#X connect 43 0 26 0;
+#X connect 43 0 25 0;
+#X connect 43 0 59 0;
+#X connect 45 0 106 0;
+#X connect 45 0 47 0;
+#X connect 45 0 109 0;
+#X connect 46 0 108 0;
+#X connect 47 0 46 0;
+#X connect 49 0 81 0;
+#X connect 49 0 51 0;
+#X connect 49 0 52 0;
+#X connect 50 0 53 0;
+#X connect 51 0 50 0;
+#X connect 56 0 95 0;
+#X connect 56 0 96 0;
+#X connect 56 0 58 0;
+#X connect 57 0 97 0;
+#X connect 58 0 57 0;
+#X connect 60 0 69 0;
+#X connect 61 0 70 0;
+#X connect 61 0 67 0;
+#X connect 61 0 65 0;
+#X connect 61 0 66 0;
+#X connect 61 0 125 0;
+#X connect 62 0 72 0;
+#X connect 62 0 63 0;
+#X connect 62 0 73 0;
+#X connect 62 0 64 0;
+#X connect 62 0 122 0;
+#X connect 63 0 77 0;
+#X connect 64 0 79 0;
+#X connect 65 0 78 0;
+#X connect 66 0 79 0;
+#X connect 67 0 77 0;
+#X connect 70 0 76 0;
+#X connect 72 0 76 0;
+#X connect 73 0 78 0;
+#X connect 74 0 13 0;
+#X connect 75 0 13 0;
+#X connect 76 0 60 0;
+#X connect 77 0 60 1;
+#X connect 78 0 60 2;
+#X connect 79 0 60 3;
+#X connect 83 0 90 0;
+#X connect 83 0 85 0;
+#X connect 83 0 86 0;
+#X connect 84 0 87 0;
+#X connect 85 0 84 0;
+#X connect 116 0 113 0;
+#X connect 116 0 114 0;
+#X connect 116 0 115 0;
+#X connect 119 0 121 0;
+#X connect 119 0 115 0;
+#X connect 119 1 6 0;
+#X connect 119 2 7 0;
+#X connect 119 3 23 0;
+#X connect 123 0 115 0;
+#X connect 123 0 74 0;
+#X connect 123 1 92 0;
+#X connect 123 2 17 0;
+#X connect 123 3 15 0;
+#X connect 128 0 57 0;
+#X connect 128 0 36 0;
+#X connect 129 0 128 0;
+#X restore 1002 239 pd serpentNarratif-6-7-8;
+#N canvas 0 25 1341 740 ouverture-1 0;
+#X msg 529 713 \; net e0f sendsafe color 0 0.8 0.8 1 1 2;
+#X msg 530 597 \; net e0f send fade 2 \$1;
+#X obj 570 577 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 440 548 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 530 578 0;
+#X text 803 678 DROITE;
+#X msg 676 598 \; net e0f sendsafe unload 2;
+#X msg 529 546 \; net e0f sendsafe capturefiltre 2 12145 15;
+#X obj 439 118 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 523 180 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 483 181 0;
+#X obj 432 289 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 517 350 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 477 351 0;
+#X obj 948 664 pack f f f f;
+#X obj 948 523 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1048 523 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1016 639 line -1 100;
+#X obj 1090 639 line -1 100;
+#X obj 1164 639 line 1 100;
+#X msg 1024 618 -1 10000;
+#X msg 1097 619 -1 10000;
+#X msg 1171 618 1 10000;
+#X msg 1090 601 0 10000;
+#X msg 1164 598 0.75 10000;
+#X msg 1016 600 -0.5 10000;
+#X text 946 503 ECRAN COMPLET;
+#X text 1051 502 ECRAN DROIT;
+#X msg 948 689 \; net e0f sendsafe scaletrans 2 \$1 \$2 \$3 \$4;
+#X msg 948 601 1 10000;
+#X msg 958 619 2 10000;
+#X obj 948 639 line 2 100;
+#X text 632 230 tasser le village un peu a gauche;
+#X obj 92 584 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 10 551 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 52 585 0;
+#X obj 93 438 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 11 405 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 53 439 0;
+#X obj 90 844 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 9 803 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 50 845 0;
+#X obj 90 726 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 8 693 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 50 727 0;
+#X text 533 525 ----> CAMERA 12145;
+#X msg 670 357 \; set_ecran e0f \; lua dl1_ecran0;
+#X text 942 119 Apres le glacon;
+#X obj 944 135 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 900 318 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 986 385 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 946 387 0;
+#X msg 49 658 \; set_ecran e0b;
+#X obj 869 624 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 869 606 loadbang;
+#X msg 52 400 \; net e2b sendsafe movie 4 yukie/trilogie_ligneBlanche.mov
+\; net e2b sendsafe play 4 start;
+#X msg 53 458 \; net e2b send fade 4 \$1;
+#X msg 200 458 \; net e2b sendsafe unload 4;
+#X msg 52 547 \; net e0f sendsafe movie 4 yukie/trilogie_ligneBlanche.mov
+\; net e0f sendsafe play 4 start;
+#X msg 52 605 \; net e0f send fade 4 \$1;
+#X msg 199 605 \; net e0f sendsafe unload 4;
+#X msg 49 689 \; net e0b sendsafe movie 5 yukie/trilogie_ligneBlanche.mov
+\; net e0b sendsafe play 5 start;
+#X msg 51 749 \; net e0b send fade 5 \$1;
+#X msg 195 749 \; net e0b sendsafe unload 5;
+#X msg 49 803 \; net e0b sendsafe movie 6 yukie/02B-Vaguetempete.mov
+\; net e0b sendsafe play 6 start;
+#X msg 50 864 \; net e0b send fade 6 \$1;
+#X msg 198 863 \; net e0b sendsafe unload 6;
+#X msg 945 323 \; net e0b sendsafe movie 7 yukie/04b-GlaconNBcourt-1024.mov
+;
+#X msg 945 355 \; net e0b sendsafe play 7 start;
+#X msg 946 409 \; net e0b send fade 7 \$1;
+#X msg 946 440 \; net e0b send unload 7;
+#X msg 1085 440 \; net e0b sendsafe scaletrans 7 1 1 0 0;
+#X msg 482 117 \; net e0f sendsafe movie 5 yukie/03-VillageNB-1024.mov
+;
+#X msg 482 148 \; net e0f sendsafe play 5 start;
+#X msg 669 148 \; net e0f sendsafe play 5 stop;
+#X msg 483 202 \; net e0f send fade 5 \$1;
+#X msg 483 232 \; net e0f send unload 5;
+#X msg 631 202 \; net e0f sendsafe scaletrans 5 1 1 0.1 0;
+#X msg 477 288 \; net e0f sendsafe movie 6 yukie/04b-GlaconNBcourt-1024.mov
+;
+#X msg 477 319 \; net e0f sendsafe play 6 start;
+#X msg 662 319 \; net e0f sendsafe play 6 stop;
+#X msg 617 402 \; net e0f sendsafe scaletrans 6 1 1 0 0;
+#X msg 477 402 \; net e0f send unload 6;
+#X msg 477 372 \; net e0f send fade 6 \$1;
+#X text 806 639 FULL;
+#X msg 530 668 \; net e0f sendsafe scaletrans 2 2 -1 -1 1 \; net e0f
+sendsafe loadAlpha 2 alpha_droit.png;
+#X msg 944 159 \; net e0f sendsafe unload4to16 \; lua dl1_ecran5 \;
+set_ecran e5f;
+#X msg 947 235 \; set_ecran e0b;
+#X msg 559 51 \; net e2b sendsafe image 1 contour.png \; net e2b sendsafe
+fade 1 1;
+#X msg 793 50 \; net e0b sendsafe image 1 contour.png \; net e0b sendsafe
+fade 1 1;
+#X msg 1031 39 \; net ef sendsafe image 1 contour.png \; net ef sendsafe
+fade 1 1;
+#X obj 559 8 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X text 599 16 Contours smooth;
+#X msg 530 628 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.75 \; net
+ef sendsafe loadAlpha 2 alpha_no.png;
+#X text 54 379 Son de cloche = GO;
+#X text 948 296 Attendre que Annabelle soit arrivee sur le cote!!;
+#X msg 52 498 \; net ep sendsafe unload4to16 \; set_ecran e0f \; lua
+dl1_ecran0;
+#X msg 49 10 \; set_ecran ep \; lua dl1_plancher;
+#X obj 89 85 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 7 60 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 49 86 0;
+#X msg 49 107 \; net ep send fade 4 \$1;
+#X msg 49 52 \; net ep sendsafe image 4 yukie/debut_plancher.png;
+#X msg 169 8 \; net ep sendsafe image 1 contour.png \; net ep sendsafe
+fade 1 1;
+#X msg 348 52 \; net ep sendsafe unload 1;
+#X msg 198 107 \; net ep sendsafe unload 4;
+#X obj 440 596 t b b b b;
+#X obj 109 273 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 27 238 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 69 274 0;
+#X text 347 243 cloches;
+#X msg 69 295 \; net e2f send fade 5 \$1;
+#X msg 69 230 \; net e2f sendsafe movie 5 yukie/01-TitreD.avi \; net
+e2f sendsafe play 5 start;
+#X msg 169 170 \; net e2f sendsafe play 5 stop;
+#X msg 168 198 \; net e2f sendsafe play 5 start;
+#X msg 54 351 \; set_ecran e2b;
+#X msg -17 181 \; net e0f sendsafe unload4to16 \; set_ecran e2f \;
+lua dl1_ecran2;
+#X msg 218 295 \; net e2f sendsafe unload 5;
+#X connect 2 0 1 0;
+#X connect 3 0 106 0;
+#X connect 4 0 2 0;
+#X connect 8 0 72 0;
+#X connect 8 0 73 0;
+#X connect 8 0 10 0;
+#X connect 8 0 77 0;
+#X connect 9 0 75 0;
+#X connect 10 0 9 0;
+#X connect 11 0 78 0;
+#X connect 11 0 79 0;
+#X connect 11 0 13 0;
+#X connect 12 0 83 0;
+#X connect 13 0 12 0;
+#X connect 14 0 28 0;
+#X connect 15 0 29 0;
+#X connect 15 0 25 0;
+#X connect 15 0 23 0;
+#X connect 15 0 24 0;
+#X connect 16 0 30 0;
+#X connect 16 0 20 0;
+#X connect 16 0 21 0;
+#X connect 16 0 22 0;
+#X connect 17 0 14 1;
+#X connect 18 0 14 2;
+#X connect 19 0 14 3;
+#X connect 20 0 17 0;
+#X connect 21 0 18 0;
+#X connect 22 0 19 0;
+#X connect 23 0 18 0;
+#X connect 24 0 19 0;
+#X connect 25 0 17 0;
+#X connect 29 0 31 0;
+#X connect 30 0 31 0;
+#X connect 31 0 14 0;
+#X connect 33 0 59 0;
+#X connect 34 0 58 0;
+#X connect 34 0 35 0;
+#X connect 35 0 33 0;
+#X connect 36 0 56 0;
+#X connect 37 0 55 0;
+#X connect 37 0 38 0;
+#X connect 38 0 36 0;
+#X connect 39 0 65 0;
+#X connect 40 0 64 0;
+#X connect 40 0 41 0;
+#X connect 41 0 39 0;
+#X connect 42 0 62 0;
+#X connect 43 0 61 0;
+#X connect 43 0 44 0;
+#X connect 44 0 42 0;
+#X connect 48 0 86 0;
+#X connect 49 0 67 0;
+#X connect 49 0 68 0;
+#X connect 49 0 51 0;
+#X connect 50 0 69 0;
+#X connect 51 0 50 0;
+#X connect 53 0 31 0;
+#X connect 53 0 17 0;
+#X connect 53 0 18 0;
+#X connect 53 0 19 0;
+#X connect 54 0 53 0;
+#X connect 91 0 88 0;
+#X connect 91 0 89 0;
+#X connect 91 0 90 0;
+#X connect 98 0 101 0;
+#X connect 99 0 102 0;
+#X connect 99 0 100 0;
+#X connect 100 0 98 0;
+#X connect 106 0 0 0;
+#X connect 106 0 90 0;
+#X connect 106 1 93 0;
+#X connect 106 2 4 0;
+#X connect 106 3 7 0;
+#X connect 107 0 111 0;
+#X connect 108 0 112 0;
+#X connect 108 0 109 0;
+#X connect 109 0 107 0;
+#X restore 997 89 pd ouverture-1;
+#N canvas 0 25 1364 732 serpentNarratif-5 0;
+#X msg 82 195 \; net e0f send fade 2 \$1;
+#X obj 115 175 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 19 103 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 82 175 0;
+#X obj 1383 184 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 1383 161 UNLOAD ALL;
+#X obj 481 178 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X text 807 147 FULL;
+#X obj 569 269 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 678 237 \; net e0f sendsafe unload 3;
+#X obj 568 216 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 536 216 0;
+#X msg 535 237 \; net e0f send fade 3 \$1;
+#X msg 704 269 0.8;
+#X msg 536 291 \; net e0f send set_plugin_param 3 frameblend Ratio
+\$1;
+#X text 357 234 DROITE;
+#X obj 1373 638 pack f f f f;
+#X obj 1375 497 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1473 497 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1441 613 line -1 100;
+#X obj 1515 613 line -1 100;
+#X obj 1589 612 line 1 100;
+#X msg 1449 592 -1 10000;
+#X msg 1522 593 -1 10000;
+#X msg 1596 592 1 10000;
+#X msg 1515 575 0 10000;
+#X msg 1589 572 0.75 10000;
+#X msg 1441 574 -0.5 10000;
+#X text 1371 477 ECRAN COMPLET;
+#X text 1476 476 ECRAN DROIT;
+#X msg 1373 663 \; net e0f sendsafe scaletrans 2 \$1 \$2 \$3 \$4;
+#X msg 1373 575 1 10000;
+#X msg 1383 593 2 10000;
+#X obj 1373 614 line 2 100;
+#X obj 587 687 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 494 657 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X msg 548 687 0;
+#X msg 228 196 \; net e0f sendsafe unload 2;
+#X text 358 272 BOTTOM;
+#X text 809 185 TOP;
+#X obj 904 247 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 981 314 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 944 314 0;
+#X msg 548 659 \; net e0b send image 7 yukie/p1_rouge.png \;;
+#X msg 548 708 \; net e0b send fade 7 \$1;
+#X msg 82 377 \; net e0f sendsafe invoke_plugin_command 2 inverse OFF
+;
+#X msg 82 405 \; net e0f sendsafe invoke_plugin_command 2 inverse ON
+;
+#X obj 38 552 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 114 618 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 79 618 0;
+#X obj 938 459 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1012 524 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 978 525 0;
+#X text 82 124 CAMERA N & B;
+#X text 359 312 FULL;
+#X msg 978 497 \; net e0b sendsafe play 5 start;
+#X msg 978 544 \; net e0b send fade 5 \$1;
+#X msg 1163 497 \; net e0b sendsafe play 5 stop;
+#X msg 944 285 \; net e0f sendsafe play 6 start;
+#X msg 1129 285 \; net e0f sendsafe play 6 stop;
+#X msg 1089 334 \; net e0f sendsafe unload 6;
+#X msg 944 334 \; net e0f send fade 6 \$1;
+#X msg 735 269 0.95;
+#X msg 82 146 \; net e0f sendsafe capturefiltre 2 12145;
+#X msg 945 248 \; net e0f sendsafe movie 6 yukie/13-NuageSeul-1024.mov
+;
+#X msg 978 441 \; net e0b sendsafe color 0 0.8 0.8 1 1 2;
+#X msg 1122 544 \; net e0b sendsafe unload 5;
+#X obj 62 413 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 250 176 1;
+#X text 814 335 GAUCHE;
+#X obj 500 756 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 592 816 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 548 816 0;
+#X msg 548 786 \; net e0f sendsafe play 7 start;
+#X msg 551 839 \; net e0f send fade 7 \$1;
+#X msg 734 786 \; net e0f sendsafe play 7 stop;
+#X msg 734 813 \; net e0f sendsafe unload 7;
+#X msg 548 755 \; net e0f sendsafe movie 7 yukie/30-Spiral+effect1min.mov
+;
+#X msg 978 469 \; net e0b sendsafe movie 5 yukie/25B-NuageFace-1024.mov
+;
+#X msg 536 107 \; net e0f sendsafe captureblend 3 13137 0;
+#X obj 488 474 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 592 535 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 542 533 0;
+#X msg 541 504 \; net e0f sendsafe play 6 start;
+#X msg 727 502 \; net e0f sendsafe play 6 stop;
+#X msg 542 553 \; net e0f send fade 6 \$1;
+#X msg 735 531 \; net e0f sendsafe unload 6;
+#X msg 693 558 \; net e0f sendsafe fps 6 7;
+#X msg 79 560 \; net e3b sendsafe movie 6 yukie/10-PlageFricheNegatif1024.mov
+;
+#X msg 79 588 \; net e3b sendsafe play 6 start;
+#X msg 79 637 \; net e3b send fade 6 \$1;
+#X msg 224 638 \; net e3b send unload 6;
+#X msg 263 588 \; net e3b sendsafe play 6 stop;
+#X msg 693 708 \; set_ecran e0b;
+#X msg 81 435 \; net e0f sendsafe color 0 0.8 0.8 1 1 2;
+#X msg 536 269 0;
+#X msg 82 338 \; set_ecran e3f \; lua dl1_ecran3;
+#X msg 541 472 \; net e0f sendsafe movie 6 yukie/20C-Montre2montage-1024.mov
+;
+#X obj 903 106 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 978 166 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 944 166 0;
+#X msg 943 107 \; net e0f sendsafe movie 4 yukie/12-Pieds+Nuage-1024.mov
+;
+#X msg 943 136 \; net e0f sendsafe play 4 start;
+#X msg 944 186 \; net e0f send fade 4 \$1;
+#X msg 1087 186 \; net e0f sendsafe unload 4;
+#X msg 1127 137 \; net e0f sendsafe play 4 stop;
+#X msg 547 612 \; net e0b sendsafe unload4to16 \; set_ecran e0b;
+#X msg 82 300 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.75 \; net
+e0f sendsafe loadAlpha 2 alpha_no.png;
+#X msg 535 138 \; net e0f sendsafe scaletrans 3 1 -0.5 0 0.75 \; net
+e0f sendsafe loadAlpha 3 alpha_no.png;
+#X msg 978 403 \; net e0b sendsafe unload4to16 \; set_ecran e0b;
+#X msg 420 46 \; net e0b sendsafe image 1 contour.png \; net e0b sendsafe
+fade 1 1;
+#X msg 658 45 \; net ef sendsafe image 1 contour.png \; net ef sendsafe
+fade 1 1;
+#X obj 420 4 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X text 460 12 Contours smooth;
+#X obj 21 147 t b b b b;
+#X obj 481 225 t b b b;
+#X msg 81 226 \; net e0f sendsafe scaletrans 2 2 -1 -1 1 \; net e0f
+sendsafe loadAlpha 2 alpha_droit.png;
+#X msg 536 325 \; net e0f sendsafe scaletrans 3 2 -1 0 1 \; net e0f
+sendsafe loadAlpha 3 alpha_gauche.png;
+#X text 908 624 FADE out rouge + spirale;
+#X text 918 684 FADE IN pieds;
+#X obj 912 645 hsl 128 15 1 0 0 0 empty empty empty -2 -8 0 10 -258113
+-1 -1 0 1;
+#X obj 909 667 * -1;
+#X obj 943 667 + 1;
+#X floatatom 972 669 5 0 0 0 - - -;
+#X obj 912 701 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 82 263 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.28 \; net
+e0f sendsafe loadAlpha 2 alpha_bottom.png;
+#X msg 535 174 \; net e0f sendsafe scaletrans 3 1 -0.5 0 1.24 \; net
+e0f sendsafe loadAlpha 3 alpha_top.png;
+#X msg 249 618 1;
+#X msg 21 48 \; net e0f sendsafe unload4to16 \; set_ecran e5f \; lua
+dl1_ecran5;
+#X msg 211 48 \; net e0f sendsafe unload4to16 \; set_ecran e3f \; lua
+dl1_ecran3;
+#X msg 79 515 \; net e3b sendsafe unload4to16 \; set_ecran e3b;
+#X msg 541 420 \; net e0f sendsafe unload4to16 \; set_ecran e0f \;
+lua dl1_ecran0;
+#X connect 1 0 0 0;
+#X connect 2 0 114 0;
+#X connect 3 0 1 0;
+#X connect 5 0 4 0;
+#X connect 6 0 115 0;
+#X connect 8 0 14 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 0;
+#X connect 13 0 8 0;
+#X connect 16 0 30 0;
+#X connect 17 0 31 0;
+#X connect 17 0 27 0;
+#X connect 17 0 25 0;
+#X connect 17 0 26 0;
+#X connect 18 0 32 0;
+#X connect 18 0 22 0;
+#X connect 18 0 23 0;
+#X connect 18 0 24 0;
+#X connect 19 0 16 1;
+#X connect 20 0 16 2;
+#X connect 21 0 16 3;
+#X connect 22 0 19 0;
+#X connect 23 0 20 0;
+#X connect 24 0 21 0;
+#X connect 25 0 20 0;
+#X connect 26 0 21 0;
+#X connect 27 0 19 0;
+#X connect 31 0 33 0;
+#X connect 32 0 33 0;
+#X connect 33 0 16 0;
+#X connect 34 0 44 0;
+#X connect 35 0 43 0;
+#X connect 35 0 36 0;
+#X connect 36 0 34 0;
+#X connect 40 0 64 0;
+#X connect 40 0 42 0;
+#X connect 40 0 58 0;
+#X connect 41 0 61 0;
+#X connect 42 0 41 0;
+#X connect 46 0 67 0;
+#X connect 47 0 88 0;
+#X connect 47 0 49 0;
+#X connect 47 0 89 0;
+#X connect 48 0 90 0;
+#X connect 49 0 48 0;
+#X connect 50 0 78 0;
+#X connect 50 0 52 0;
+#X connect 50 0 55 0;
+#X connect 50 0 65 0;
+#X connect 51 0 56 0;
+#X connect 52 0 51 0;
+#X connect 62 0 8 0;
+#X connect 67 0 107 0;
+#X connect 68 0 1 0;
+#X connect 70 0 77 0;
+#X connect 70 0 73 0;
+#X connect 70 0 72 0;
+#X connect 71 0 74 0;
+#X connect 72 0 71 0;
+#X connect 80 0 97 0;
+#X connect 80 0 83 0;
+#X connect 80 0 82 0;
+#X connect 81 0 85 0;
+#X connect 82 0 81 0;
+#X connect 95 0 8 0;
+#X connect 98 0 101 0;
+#X connect 98 0 100 0;
+#X connect 98 0 102 0;
+#X connect 98 0 94 0;
+#X connect 99 0 103 0;
+#X connect 100 0 99 0;
+#X connect 112 0 110 0;
+#X connect 112 0 111 0;
+#X connect 114 0 3 0;
+#X connect 114 0 111 0;
+#X connect 114 1 125 0;
+#X connect 114 2 63 0;
+#X connect 114 3 94 0;
+#X connect 115 0 11 0;
+#X connect 115 0 111 0;
+#X connect 115 1 126 0;
+#X connect 115 2 79 0;
+#X connect 120 0 121 0;
+#X connect 120 0 34 0;
+#X connect 120 0 71 0;
+#X connect 121 0 122 0;
+#X connect 122 0 123 0;
+#X connect 123 0 124 0;
+#X connect 124 0 99 0;
+#X connect 124 0 10 0;
+#X connect 127 0 48 0;
+#X restore 1000 196 pd serpentNarratif-5;
+#N canvas 37 25 944 661 serpentNarratif-4 0;
+#X msg 82 395 \; net e0f send fade 2 \$1;
+#X obj 115 375 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 19 303 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 82 375 0;
+#X obj 1383 184 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 1383 161 UNLOAD ALL;
+#X obj 501 178 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X text 827 147 FULL;
+#X obj 589 269 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 698 237 \; net e0f sendsafe unload 3;
+#X obj 588 216 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 556 216 0;
+#X msg 555 237 \; net e0f send fade 3 \$1;
+#X msg 724 269 0.8;
+#X msg 556 291 \; net e0f send set_plugin_param 3 frameblend Ratio
+\$1;
+#X text 357 434 DROITE;
+#X obj 1373 638 pack f f f f;
+#X obj 1375 497 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1473 497 bng 15 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 1441 613 line -1 100;
+#X obj 1515 613 line -1 100;
+#X obj 1589 612 line 1 100;
+#X msg 1449 592 -1 10000;
+#X msg 1522 593 -1 10000;
+#X msg 1596 592 1 10000;
+#X msg 1515 575 0 10000;
+#X msg 1589 572 0.75 10000;
+#X msg 1441 574 -0.5 10000;
+#X text 1371 477 ECRAN COMPLET;
+#X text 1476 476 ECRAN DROIT;
+#X msg 1373 663 \; net e0f sendsafe scaletrans 2 \$1 \$2 \$3 \$4;
+#X msg 1373 575 1 10000;
+#X msg 1383 593 2 10000;
+#X obj 1373 614 line 2 100;
+#X msg 228 396 \; net e0f sendsafe unload 2;
+#X text 358 472 BOTTOM;
+#X text 829 185 TOP;
+#X msg 82 590 \; net e0f sendsafe invoke_plugin_command 2 inverse OFF
+;
+#X msg 82 618 \; net e0f sendsafe invoke_plugin_command 2 inverse ON
+;
+#X obj 488 470 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097
+-1 -1;
+#X obj 564 536 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 529 536 0;
+#X text 82 324 CAMERA N & B;
+#X text 359 512 FULL;
+#X msg 755 269 0.95;
+#X msg 82 346 \; net e0f sendsafe capturefiltre 2 12145;
+#X obj 62 626 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 250 376 1;
+#X text 834 335 GAUCHE;
+#X msg 556 107 \; net e0f sendsafe captureblend 3 13137 0;
+#X obj 41 146 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X obj 139 216 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X msg 80 215 0;
+#X msg 529 478 \; net e3b sendsafe movie 6 yukie/10-PlageFricheNegatif1024.mov
+;
+#X msg 529 506 \; net e3b sendsafe play 6 start;
+#X msg 529 555 \; net e3b send fade 6 \$1;
+#X msg 674 556 \; net e3b send unload 6;
+#X msg 713 506 \; net e3b sendsafe play 6 stop;
+#X msg 80 283 \; net e0f sendsafe color 0 0.8 0.8 1 1 2;
+#X msg 556 269 0;
+#X msg 82 538 \; set_ecran e3f \; lua dl1_ecran3;
+#X msg 82 463 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.25 \; net
+e0f sendsafe loadAlpha 2 alpha_bottom.png;
+#X msg 82 500 \; net e0f sendsafe scaletrans 2 1 -0.5 0 0.75 \; net
+e0f sendsafe loadAlpha 2 alpha_no.png;
+#X msg 555 138 \; net e0f sendsafe scaletrans 3 1 -0.5 0 0.75 \; net
+e0f sendsafe loadAlpha 3 alpha_no.png;
+#X msg 555 174 \; net e0f sendsafe scaletrans 3 1 -0.5 0 1.25 \; net
+e0f sendsafe loadAlpha 3 alpha_top.png;
+#X msg 529 433 \; net e3b sendsafe unload4to16 \; set_ecran e3b;
+#X msg 420 46 \; net e0b sendsafe image 1 contour.png \; net e0b sendsafe
+fade 1 1;
+#X msg 658 45 \; net ef sendsafe image 1 contour.png \; net ef sendsafe
+fade 1 1;
+#X obj 420 4 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X text 460 12 Contours smooth;
+#X obj 21 347 t b b b b;
+#X obj 501 225 t b b b;
+#X msg 81 426 \; net e0f sendsafe scaletrans 2 2 -1 -1 1 \; net e0f
+sendsafe loadAlpha 2 alpha_droit.png;
+#X msg 556 325 \; net e0f sendsafe scaletrans 3 2 -1 0 1 \; net e0f
+sendsafe loadAlpha 3 alpha_gauche.png;
+#X obj 402 311 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -258113
+-1 -1 0 1;
+#X text 402 290 FADE IN cameras;
+#X obj 399 330 * -1;
+#X obj 433 330 + 1;
+#X floatatom 462 332 5 0 0 0 - - -;
+#X obj 402 364 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X text 402 348 FADE OUT cameras;
+#X msg 79 33 \; net e5f sendsafe unload4to16 \; set_ecran e5f \; lua
+dl1_ecran5;
+#X msg 412 592 \; net e3f sendsafe unload4to16 \; set_ecran e3f \;
+lua dl1_ecran3;
+#X msg 407 260 0;
+#X msg 80 185 \; net e5b sendsafe play 4 start;
+#X msg 80 154 \; net e5b sendsafe movie 4 yukie/08-PlageBleu-1024.mov
+;
+#X msg 265 185 \; net e5b sendsafe play 4 stop;
+#X msg 80 237 \; net e5b send fade 4 \$1;
+#X msg 224 237 \; net e5b sendsafe unload 4;
+#X msg 80 85 \; net e5b sendsafe unload4to16 \; set_ecran e5b \;;
+#X connect 1 0 0 0;
+#X connect 2 0 70 0;
+#X connect 3 0 1 0;
+#X connect 5 0 4 0;
+#X connect 6 0 71 0;
+#X connect 8 0 14 0;
+#X connect 10 0 12 0;
+#X connect 11 0 10 0;
+#X connect 13 0 8 0;
+#X connect 16 0 30 0;
+#X connect 17 0 31 0;
+#X connect 17 0 27 0;
+#X connect 17 0 25 0;
+#X connect 17 0 26 0;
+#X connect 18 0 32 0;
+#X connect 18 0 22 0;
+#X connect 18 0 23 0;
+#X connect 18 0 24 0;
+#X connect 19 0 16 1;
+#X connect 20 0 16 2;
+#X connect 21 0 16 3;
+#X connect 22 0 19 0;
+#X connect 23 0 20 0;
+#X connect 24 0 21 0;
+#X connect 25 0 20 0;
+#X connect 26 0 21 0;
+#X connect 27 0 19 0;
+#X connect 31 0 33 0;
+#X connect 32 0 33 0;
+#X connect 33 0 16 0;
+#X connect 38 0 46 0;
+#X connect 39 0 53 0;
+#X connect 39 0 41 0;
+#X connect 39 0 54 0;
+#X connect 40 0 55 0;
+#X connect 41 0 40 0;
+#X connect 44 0 8 0;
+#X connect 46 0 62 0;
+#X connect 47 0 1 0;
+#X connect 50 0 85 0;
+#X connect 50 0 52 0;
+#X connect 50 0 84 0;
+#X connect 50 0 58 0;
+#X connect 51 0 87 0;
+#X connect 52 0 51 0;
+#X connect 59 0 8 0;
+#X connect 68 0 66 0;
+#X connect 68 0 67 0;
+#X connect 70 0 3 0;
+#X connect 70 0 67 0;
+#X connect 70 1 72 0;
+#X connect 70 2 45 0;
+#X connect 70 3 58 0;
+#X connect 71 0 11 0;
+#X connect 71 0 67 0;
+#X connect 71 1 73 0;
+#X connect 71 2 49 0;
+#X connect 74 0 1 0;
+#X connect 74 0 10 0;
+#X connect 74 0 76 0;
+#X connect 74 0 79 0;
+#X connect 76 0 77 0;
+#X connect 77 0 78 0;
+#X connect 78 0 51 0;
+#X connect 79 0 1 0;
+#X connect 79 0 10 0;
+#X connect 83 0 74 0;
+#X restore 998 159 pd serpentNarratif-4;
+#X msg 684 92 \; set_ecran e1f \; lua dl1_ecran1;
+#X msg 128 422 \; set_ecran e2f \; lua dl1_ecran2;
+#N canvas 247 215 883 543 salut 0;
+#X msg 79 19 \; set_ecran ep \; lua dl1_plancher;
+#X obj 119 94 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 37 69 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 79 95 0;
+#X msg 79 116 \; net ep send fade 4 \$1;
+#X msg 79 61 \; net ep sendsafe image 4 yukie/debut_plancher.png;
+#X msg 199 17 \; net ep sendsafe image 1 contour.png \; net ep sendsafe
+fade 1 1;
+#X msg 378 61 \; net ep sendsafe unload 1;
+#X msg 228 116 \; net ep sendsafe unload 4;
+#X msg 76 192 \; net e2b sendsafe unload4to16 \; set_ecran e2b;
+#X obj 113 268 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -260097
+-1 -1 0 1;
+#X obj 20 238 bng 30 250 50 0 empty empty empty 17 7 0 10 -260097 -1
+-1;
+#X msg 74 268 0;
+#X msg 74 240 \; net e2b send image 7 yukie/p1_rouge.png \;;
+#X msg 74 289 \; net e2b send fade 7 \$1;
+#X msg 297 92 1;
+#X connect 1 0 4 0;
+#X connect 2 0 5 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 10 0 14 0;
+#X connect 11 0 13 0;
+#X connect 11 0 12 0;
+#X connect 12 0 10 0;
+#X connect 15 0 1 0;
+#X restore 1014 317 pd salut;
+#X connect 0 0 1 0;
+#X connect 1 0 65 0;
+#X connect 12 0 14 0;
+#X connect 13 0 14 0;
+#X connect 25 0 24 0;
+#X connect 28 0 26 0;
+#X connect 29 0 27 0;
+#X connect 35 0 30 0;
+#X connect 36 0 31 0;
+#X connect 37 0 32 0;
+#X connect 38 0 33 0;
+#X connect 39 0 34 0;
+#X connect 40 0 32 0;
+#X connect 41 0 34 0;
+#X connect 42 0 33 0;
+#X connect 43 0 27 0;
+#X connect 44 0 24 0;
+#X connect 45 0 26 0;
+#X connect 46 0 31 0;
+#X connect 47 0 30 0;
+#X connect 50 0 37 0;
+#X connect 50 0 38 0;
+#X connect 50 0 39 0;
+#X connect 50 0 36 0;
+#X connect 50 0 35 0;
+#X connect 50 0 29 0;
+#X connect 50 0 28 0;
+#X connect 50 0 25 0;
+#X connect 55 0 80 0;
+#X connect 63 0 1 0;
+#X connect 66 0 63 0;
+#X connect 80 0 24 0;
+#X connect 80 1 30 0;
+#X connect 80 1 34 0;
+#X connect 80 2 24 0;
+#X connect 80 3 30 0;
+#X connect 80 3 33 0;
+#X connect 80 3 34 0;
+#X connect 80 4 24 0;
+#X connect 80 5 31 0;
+#X connect 80 5 32 0;
+#X connect 80 6 24 0;
+#X connect 80 7 33 0;
+#X connect 80 7 34 0;
+#X connect 80 8 24 0;
+#X connect 80 8 26 0;
+#X connect 80 9 24 0;
+#X connect 80 10 30 0;
+#X connect 80 10 33 0;
+#X connect 80 10 34 0;
+#X connect 80 11 24 0;
+#X connect 80 11 26 0;
+#X connect 80 12 24 0;
+#X connect 81 0 50 0;
+#X connect 83 0 86 0;
+#X connect 84 0 87 0;
+#X connect 84 0 85 0;
+#X connect 85 0 83 0;

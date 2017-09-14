@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo apt-get install subversion cmake g++ libssl-dev openssh-server libpng12-dev libjpeg62-dev libopenscenegraph-dev libavformat-dev mplayer ffmpeg libswscale-dev puredata libfltk1.1-dev libxft-dev libxext-dev icewm icewm-themes unclutter clusterssh qjackctl gphoto2 swig liblua5.1-0-dev libjsw-dev

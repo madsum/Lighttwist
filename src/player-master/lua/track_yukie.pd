@@ -1,0 +1,70 @@
+#N canvas 381 167 1097 441 8;
+#X obj 966 -345 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 8 -262144
+-1 -1 0 1;
+#X msg 958 -321 \; track send fade \$1;
+#X msg 958 -285 \; track send fade 0;
+#X obj 502 -345 hsl 128 15 40 3 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 10297 1;
+#X msg 499 -324 \; track send threshold \$1;
+#X msg 506 -115 \; track send snapshot;
+#X msg 957 -88 \; track send quit;
+#X obj 16 -306 mcnetsend;
+#X msg 15 -344 connect 11099;
+#X obj 27 -325 r track;
+#X msg 732 -269 \; track send color 100 100 220;
+#X msg 732 -234 \; track send color 255 255 255;
+#X obj 502 -290 hsl 128 15 0 400 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 502 -234 hsl 128 15 400 10000 0 0 empty empty empty -2 -8 0
+10 -262144 -1 -1 0 1;
+#X obj 502 -178 hsl 128 15 20000 70000 0 0 empty empty empty -2 -8
+0 10 -262144 -1 -1 10160 1;
+#X msg 499 -269 \; track send minPerimeter \$1;
+#X msg 499 -213 \; track send maxPerimeter \$1;
+#X msg 499 -157 \; track send maxArea \$1;
+#X floatatom 654 -330 5 0 0 0 - - -;
+#X floatatom 667 -275 5 0 0 0 - - -;
+#X floatatom 670 -219 5 0 0 0 - - -;
+#X floatatom 639 -163 7 0 0 0 - - -;
+#X obj 397 -346 loadbang;
+#X obj 397 -329 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 450 -289 0;
+#X msg 451 -177 60000;
+#X msg 929 -344 0;
+#X obj 929 -90 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 733 -345 \; track send color 180 0 0;
+#X msg 458 -345 10;
+#X msg 958 -249 \; track send fade 1;
+#X msg 956 -214 \; track send freeze 1;
+#X msg 728 -305 \; track send color 0 0 170;
+#X msg 149 -83 \; lua trackHumans /dev/video1 dark;
+#X msg 151 -309 \; lua dlx dl1plancher;
+#X msg 152 -275 \; lua dlx dl1irisoff;
+#X msg 151 -241 \; lua dlx dl1trackiroff;
+#X msg 150 -143 \; lua dlx dl1iron;
+#X msg 153 -113 \; lua dlx dl1iroff;
+#X msg 151 -206 \; lua dlx dl1trackiron;
+#X msg 152 -175 \; lua dlx dl1trackfront;
+#X connect 0 0 1 0;
+#X connect 3 0 4 0;
+#X connect 3 0 18 0;
+#X connect 8 0 7 0;
+#X connect 9 0 7 0;
+#X connect 12 0 15 0;
+#X connect 12 0 19 0;
+#X connect 13 0 16 0;
+#X connect 13 0 20 0;
+#X connect 14 0 17 0;
+#X connect 14 0 21 0;
+#X connect 22 0 23 0;
+#X connect 23 0 29 0;
+#X connect 23 0 24 0;
+#X connect 23 0 25 0;
+#X connect 24 0 12 0;
+#X connect 25 0 14 0;
+#X connect 26 0 0 0;
+#X connect 27 0 26 0;
+#X connect 27 0 6 0;
+#X connect 29 0 3 0;

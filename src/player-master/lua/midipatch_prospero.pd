@@ -1,0 +1,1968 @@
+#N canvas 101 25 1123 665 10;
+#X obj 308 -2 loadbang;
+#X obj 19 271 r lua;
+#X msg 22 123 \; lua midiin \$1 \$2;
+#X msg 411 304 \; net send fade 0 \$1;
+#X msg 18 391 \; net sendsafe unload 0;
+#X obj 414 283 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 18 424 \; net sendsafe unload 1;
+#X obj 21 208 r midiout;
+#X obj 19 318 route net midiout;
+#X obj 19 347 s net;
+#X obj 63 347 s midiout;
+#X obj 135 347 print other;
+#X obj 19 294 luabox 1;
+#X msg 646 630 \; net sendsafe play 2 start;
+#X msg 646 663 \; net sendsafe play 2 stop;
+#N canvas 746 153 450 525 multimidiout 0;
+#X obj 104 434 ctlout;
+#X msg 185 116 0;
+#X obj 221 72 loadbang;
+#X text 76 50 midiout controleur valeur;
+#X obj 120 71 inlet;
+#X obj 274 144 r offset;
+#X obj 214 248 ==;
+#X obj 86 106 unpack f f;
+#X obj 205 154 / 1000;
+#X obj 205 181 int;
+#X obj 205 207 * 1000;
+#X obj 124 319 spigot 0;
+#X obj 127 211 % 1000;
+#X obj 55 240 pack;
+#X obj 324 78 inlet;
+#X text 321 55 direct;
+#X msg 348 137 \$2 \$1;
+#X msg 39 -10 \; midiout 81 60;
+#X msg 30 24 \; midiout 81 0;
+#X text 68 126 Ctl;
+#X text 156 124 Val;
+#X obj 95 154 t b f f;
+#X obj 70 180 float;
+#X msg 144 -11 \; midiout 1081 34;
+#X msg 261 -8 \; midiout 3081 90;
+#X connect 1 0 0 2;
+#X connect 2 0 1 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 1;
+#X connect 6 0 11 1;
+#X connect 7 0 21 0;
+#X connect 7 1 22 1;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 6 0;
+#X connect 11 0 0 0;
+#X connect 12 0 13 1;
+#X connect 13 0 11 0;
+#X connect 14 0 16 0;
+#X connect 16 0 0 0;
+#X connect 21 0 22 0;
+#X connect 21 1 12 0;
+#X connect 21 2 8 0;
+#X connect 22 0 13 0;
+#X restore 21 234 pd multimidiout;
+#N canvas 23 261 540 339 multimidiin 0;
+#X obj 77 13 ctlin;
+#X floatatom 61 60 5 0 0 0 - - -;
+#X floatatom 110 49 5 0 0 0 - - -;
+#X obj 44 130 pack;
+#X text 125 33 CC;
+#X text 50 43 VAL;
+#X obj 25 237 outlet;
+#X msg 17 262 \; midiout 81 0;
+#X obj 141 215 route 89 90 91 92;
+#X obj 122 102 + 0;
+#X obj 90 134 pack;
+#X obj 234 31 route 0 127;
+#X obj 148 71 r offset;
+#X obj 254 95 route 89 90 91 92;
+#X obj 270 63 % 1000;
+#X obj 205 125 % 1000;
+#X msg 380 135 \; offset 3000 \; dmidiout 89 0 \; dmidiout 90 0 \;
+dmidiout 92 0 \; lua refreshMidi;
+#X msg 307 219 \; offset 2000 \; dmidiout 89 0 \; dmidiout 91 0 \;
+dmidiout 92 0 \; lua refreshMidi;
+#X msg 423 215 \; offset 4000 \; dmidiout 89 0 \; dmidiout 90 0 \;
+dmidiout 91 0 \; lua refreshMidi;
+#X msg 150 256 \; offset 0 \; lua refreshMidi;
+#X obj 211 5 inlet;
+#X obj 132 13 unpack;
+#X msg 274 135 \; offset 1000 \; dmidiout 90 0 \; dmidiout 91 0 \;
+dmidiout 92 0 \; lua refreshMidi \;;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 1 0 3 0;
+#X connect 1 0 10 0;
+#X connect 2 0 9 0;
+#X connect 2 0 10 1;
+#X connect 3 0 6 0;
+#X connect 8 0 19 0;
+#X connect 8 1 19 0;
+#X connect 8 2 19 0;
+#X connect 8 3 19 0;
+#X connect 9 0 3 1;
+#X connect 10 0 11 0;
+#X connect 11 0 15 0;
+#X connect 11 1 14 0;
+#X connect 12 0 9 1;
+#X connect 13 0 22 0;
+#X connect 13 1 17 0;
+#X connect 13 2 16 0;
+#X connect 13 3 18 0;
+#X connect 14 0 13 0;
+#X connect 15 0 8 0;
+#X connect 20 0 21 0;
+#X connect 21 0 1 0;
+#X connect 21 1 2 0;
+#X restore 46 95 pd multimidiin;
+#X obj 123 208 r dmidiout;
+#X obj 877 162 loadbang;
+#X obj 22 71 r midiin;
+#X msg 754 20 \; midiin 0 89 \; midiin 0 90 \; midiin 0 91 \; midiin
+0 92 \; dmidiout 89 0 \; dmidiout 90 0 \; dmidiout 91 0 \; dmidiout
+92 0 \;;
+#X obj 854 629 hsl 128 15 1 60 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 851 651 \; net send fps 2 \$1;
+#X obj 308 136 mcnetsend;
+#X obj 877 139 print NETRECEIVE;
+#X text 15 253 Receive LUA messages;
+#X text 644 700 Example VIDEO files to play;
+#X text 17 371 Basic LAYER controls;
+#X text 644 610 Video controls;
+#X text 15 530 Layer FADER controls;
+#X text 871 16 Receive messages sent by Lighttwist \, otherwise Lighttwist
+crashes;
+#X text 310 25 Load the midi controls associated to the LUA parameters
+;
+#X text 18 187 midiout [controller \, value];
+#X text 18 51 MIDI DATA IN;
+#X text 18 169 MIDI DATA OUT;
+#X text 17 7 MIDI PATCH LUNE;
+#X obj 877 48 netreceive 10010;
+#X obj 882 71 netreceive 10020;
+#X obj 888 95 netreceive 10030;
+#X msg 308 41 \; lua dofile /usr/local/share/lighttwist/patch_yukie.lua
+;
+#X obj 425 138 mcnetsend;
+#X obj 488 84 r net;
+#X text 312 87 Envoie a l'ecran;
+#X msg 683 302 \; net plancher send set_plugin_param 1 frameblend Ratio
+0.95;
+#X msg 683 336 \; net plancher send set_plugin_param 1 frameblend Ratio
+0.01;
+#X msg 18 459 \; net sendsafe unload 2;
+#X msg 647 794 \; net ecran sendsafe loadAlpha 1 alpha_fade_short_vert.png
+;
+#X msg 308 113 connect 12000 1;
+#X msg 429 114 connect 12001 1;
+#X obj 265 249 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 265 356 5 0 0 0 - - -;
+#X obj 302 249 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 302 356 5 0 0 0 - - -;
+#X obj 339 249 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 339 356 5 0 0 0 - - -;
+#X text 267 223 R;
+#X text 300 223 G;
+#X text 340 222 B;
+#X obj 259 388 t b f;
+#X obj 301 388 t b f;
+#X obj 343 388 t b f;
+#X obj 252 427 pack f f f f;
+#X obj 376 249 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 376 356 5 0 0 0 - - -;
+#X text 377 223 A;
+#X text 681 224 Example to start streaming capture;
+#X msg 252 452 \; net send set_color 0 \$1 \$2 \$3 \$4;
+#X msg 252 186 \; net sendsafe color 0 1 1 1 1 0;
+#X msg 683 243 \; net sendsafe streamin 1 12345 1450 \; net sendsafe
+scaletrans 1 3.403 -0.91 -1.51 0.969 \; net sendsafe fade 1 1;
+#X obj 688 372 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 685 393 \; net send fade 1 \$1;
+#X msg 18 492 \; net sendsafe unload 3;
+#X msg 16 544 \; net sendsafe unload 4;
+#N canvas 400 135 847 627 storyboard 0;
+#X msg 22 13 \; net sendsafe image 1 norwaytoday/norway001.png \; net
+sendsafe fade 1 1;
+#X msg 22 59 \; net sendsafe image 1 norwaytoday/norway002.png \; net
+sendsafe fade 1 1;
+#X msg 23 106 \; net sendsafe image 1 norwaytoday/norway003.png \;
+net sendsafe fade 1 1;
+#X msg 23 199 \; net sendsafe image 1 norwaytoday/norway005.png \;
+net sendsafe fade 1 1;
+#X msg 24 246 \; net sendsafe image 1 norwaytoday/norway006.png \;
+net sendsafe fade 1 1;
+#X msg 26 294 \; net sendsafe image 1 norwaytoday/norway007.png \;
+net sendsafe fade 1 1;
+#X msg 27 339 \; net sendsafe image 1 norwaytoday/norway008.png \;
+net sendsafe fade 1 1;
+#X msg 27 386 \; net sendsafe image 1 norwaytoday/norway009-10.png
+\; net sendsafe fade 1 1;
+#X msg 27 433 \; net sendsafe image 1 norwaytoday/norway011.png \;
+net sendsafe fade 1 1;
+#X msg 27 479 \; net sendsafe image 1 norwaytoday/norway012.png \;
+net sendsafe fade 1 1;
+#X msg 28 526 \; net sendsafe image 1 norwaytoday/norway013.png \;
+net sendsafe fade 1 1;
+#X msg 410 12 \; net sendsafe image 1 norwaytoday/norway014.png \;
+net sendsafe fade 1 1;
+#X msg 409 58 \; net sendsafe image 1 norwaytoday/norway015.png \;
+net sendsafe fade 1 1;
+#X msg 411 105 \; net sendsafe image 1 norwaytoday/norway016.png \;
+net sendsafe fade 1 1;
+#X msg 411 152 \; net sendsafe image 1 norwaytoday/norway017.png \;
+net sendsafe fade 1 1;
+#X msg 411 198 \; net sendsafe image 1 norwaytoday/norway018.png \;
+net sendsafe fade 1 1;
+#X msg 412 245 \; net sendsafe image 1 norwaytoday/norway019.png \;
+net sendsafe fade 1 1;
+#X msg 414 293 \; net sendsafe image 1 norwaytoday/norway020.png \;
+net sendsafe fade 1 1;
+#X msg 415 338 \; net sendsafe image 1 norwaytoday/norway021.png \;
+net sendsafe fade 1 1;
+#X msg 415 385 \; net sendsafe image 1 norwaytoday/norway022png \;
+net sendsafe fade 1 1;
+#X msg 416 432 \; net sendsafe image 1 norwaytoday/norway023.png \;
+net sendsafe fade 1 1;
+#X msg 415 478 \; net sendsafe image 1 norwaytoday/norway024.png \;
+net sendsafe fade 1 1;
+#X msg 23 153 \; net sendsafe imagewrap 1 norwaytoday/norway004.png
+1 1 \; net sendsafe fade 1 1;
+#X restore 552 480 pd storyboard;
+#N canvas 62 81 1240 630 placement 0;
+#X obj 146 51 vsl 15 350 -10 10 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 146 452 5 0 0 0 - - -;
+#X obj 187 51 vsl 15 350 -10 2 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 187 451 5 0 0 0 - - -;
+#X obj 228 51 vsl 15 350 -3 3 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 228 451 5 0 0 0 - - -;
+#X obj 108 52 vsl 15 350 0 15 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 105 452 5 0 0 0 - - -;
+#X obj 146 472 t b f;
+#X obj 228 472 t b f;
+#X obj 105 472 t b f;
+#X obj 187 472 t b f;
+#X msg 105 27 1;
+#X msg 146 27 1;
+#X msg 187 26 0;
+#X msg 228 27 0;
+#X msg 55 563 \; net send scaletrans \$1 \$2 \$3 \$4 \$5;
+#X obj 105 505 pack f f f f f;
+#X obj 332 345 r ecran1;
+#X obj 332 408 r ecran2;
+#X msg 897 17 \; ecran1 1;
+#X msg 293 1 \; net sendsafe imagewrap 1 norwaytoday/carre_rose.png
+0 0 \; net sendsafe fade 1 1;
+#X obj 332 475 r ecran3;
+#X msg 897 85 \; ecran3 3;
+#X msg 898 118 \; ecran4 4;
+#X msg 898 152 \; ecran5 5;
+#X msg 293 143 \; net sendsafe imagewrap 4 norwaytoday/carre_rose.png
+0 0 \; net sendsafe fade 4 1;
+#X msg 52 215 1;
+#X msg 52 239 2;
+#X msg 52 263 3;
+#X msg 52 286 4;
+#X msg 52 310 5;
+#X obj 333 535 r ecran4;
+#X obj 333 595 r ecran5;
+#X obj 719 -25 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 720 93 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 721 150 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 719 35 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 718 168 \; net send fade 4 \$1;
+#X msg 717 111 \; net send fade 3 \$1;
+#X obj 722 209 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 716 -7 \; net send fade 1 \$1;
+#X msg 716 53 \; net send fade 2 \$1;
+#X obj 622 337 r ecranAuguste;
+#X msg 897 50 \; ecran2 2;
+#X msg 973 14 \; ecranAuguste 3;
+#X msg 293 49 \; net sendsafe imagewrap 2 norwaytoday/carre_vert.png
+0 0 \; net sendsafe fade 2 1;
+#X msg 293 96 \; net sendsafe imagewrap 3 norwaytoday/carre_bleu.png
+0 0 \; net sendsafe fade 3 1;
+#X msg 294 194 \; net sendsafe imagewrap 5 norwaytoday/carre_jaune.png
+0 0 \; net sendsafe fade 5 1;
+#X obj 623 405 r video2;
+#X obj 974 197 r cam45;
+#X msg 53 386 3;
+#X msg 53 409 4;
+#X msg 53 338 6;
+#X msg 53 362 7;
+#X obj 626 534 r videofull;
+#X msg 626 559 \; net send scaletrans \$1 1 -0.94 0 0.919;
+#X msg 46 444 15;
+#X obj 975 268 r cam1;
+#X msg 45 469 10;
+#X msg 332 365 \; net send scaletrans \$1 6.329 1 0 0;
+#X msg 332 428 \; net send scaletrans \$1 4.641 1 -0.74 0;
+#X msg 330 620 \; net send scaletrans \$1 5.587 1 -4.58 0;
+#X obj 976 340 r cam2;
+#X obj 977 409 r cam3;
+#X obj 978 479 r cam4;
+#X obj 976 554 r cam5;
+#X msg 30 497 11;
+#X msg 9 440 13;
+#X obj 625 473 r video234;
+#X msg 625 495 \; net send scaletrans \$1 1.472 -0.89 -0.13 0.919;
+#X obj 973 121 r camCentre;
+#X msg 719 227 \; net send fade 15 \$1;
+#X obj 621 273 r ecranJuliette;
+#X msg 622 360 \; net send scaletrans \$1 13.83 1 -5.2 0;
+#X msg 54 527 18;
+#X msg 334 558 \; net send scaletrans \$1 4.653 1 -2.81 0;
+#X msg 332 495 \; net send scaletrans \$1 4.395 1 -1.65 0;
+#X msg 621 296 \; net send scaletrans \$1 14.36 1 -8.66 0;
+#X obj 626 602 r videoMouton;
+#X msg 626 627 \; net send scaletrans \$1 5.889 -1 -1.61 1;
+#X msg 23 527 29;
+#X msg 623 427 \; net send scaletrans \$1 4.395 -1 -0.41 945;
+#X msg 973 147 \; net send scaletrans \$1 2.289 -0.48 -0.61 0.773 \;
+net send loadAlpha \$1 alpha_side.png;
+#X msg 974 219 \; net send scaletrans \$1 2.32 -1 -1.31 1 \; net send
+loadAlpha \$1 alpha_no.png;
+#X msg 975 290 \; net send scaletrans \$1 6.329 -1 0 1 \; net send
+loadAlpha \$1 alpha_no.png;
+#X msg 976 362 \; net send scaletrans \$1 4.481 -1 -0.68 1 \; net send
+loadAlpha \$1 alpha_no.png;
+#X msg 977 432 \; net send scaletrans \$1 4.438 -1 -1.71 1 \; net send
+loadAlpha \$1 alpha_no.png;
+#X msg 978 503 \; net send scaletrans \$1 4.696 -1 -2.88 1 \; net send
+loadAlpha \$1 alpha_no.png;
+#X msg 976 576 \; net send scaletrans \$1 5.341 -1 -4.4 1 \; net send
+loadAlpha \$1 alpha_no.png;
+#X connect 0 0 1 0;
+#X connect 1 0 8 0;
+#X connect 2 0 3 0;
+#X connect 3 0 11 0;
+#X connect 4 0 5 0;
+#X connect 5 0 9 0;
+#X connect 6 0 7 0;
+#X connect 7 0 10 0;
+#X connect 8 0 17 0;
+#X connect 8 1 17 2;
+#X connect 9 0 17 0;
+#X connect 9 1 17 4;
+#X connect 10 0 17 0;
+#X connect 10 1 17 1;
+#X connect 11 0 17 0;
+#X connect 11 1 17 3;
+#X connect 12 0 6 0;
+#X connect 13 0 0 0;
+#X connect 14 0 2 0;
+#X connect 15 0 4 0;
+#X connect 17 0 16 0;
+#X connect 18 0 60 0;
+#X connect 19 0 61 0;
+#X connect 22 0 77 0;
+#X connect 27 0 17 0;
+#X connect 28 0 17 0;
+#X connect 29 0 17 0;
+#X connect 30 0 17 0;
+#X connect 31 0 17 0;
+#X connect 32 0 76 0;
+#X connect 33 0 62 0;
+#X connect 34 0 41 0;
+#X connect 35 0 39 0;
+#X connect 36 0 38 0;
+#X connect 37 0 42 0;
+#X connect 40 0 72 0;
+#X connect 43 0 74 0;
+#X connect 49 0 82 0;
+#X connect 50 0 84 0;
+#X connect 51 0 17 0;
+#X connect 52 0 17 0;
+#X connect 53 0 17 0;
+#X connect 54 0 17 0;
+#X connect 55 0 56 0;
+#X connect 57 0 17 0;
+#X connect 58 0 85 0;
+#X connect 59 0 17 0;
+#X connect 63 0 86 0;
+#X connect 64 0 87 0;
+#X connect 65 0 88 0;
+#X connect 66 0 89 0;
+#X connect 67 0 17 0;
+#X connect 68 0 17 0;
+#X connect 69 0 70 0;
+#X connect 71 0 83 0;
+#X connect 73 0 78 0;
+#X connect 75 0 17 0;
+#X connect 79 0 80 0;
+#X connect 81 0 17 0;
+#X restore 552 507 pd placement;
+#N canvas 26 93 1273 694 cues 0;
+#X msg 27 -35 \; net sendsafe imagewrap 1 norwaytoday/mask.png 0 0
+\; net sendsafe fade 1 1 \;;
+#X msg 78 -317 load;
+#X obj 131 -316 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 218 -322 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#N canvas 522 134 691 625 strip-2 0;
+#X obj 30 -1 inlet;
+#X obj 30 25 route load fadein fadeout;
+#X obj 56 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 119 106 set 0;
+#X obj 87 73 t b b;
+#X msg 53 106 1 1000;
+#X obj 53 139 line 1 10;
+#X obj 208 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 205 73 t b b;
+#X msg 205 106 0 1000;
+#X msg 271 106 set 1;
+#X obj 205 139 line 0 10;
+#X obj 335 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 138 138 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 286 137 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 205 182 \; net send fade 27 \$1;
+#X msg 53 183 \; net send fade 27 \$1;
+#X msg 335 87 \; net send fade 27 \$1;
+#X msg 30 320 \; net sendsafe imagewrap 27 norwaytoday/lol.png 0 0
+\; ecran4 27;
+#X connect 0 0 1 0;
+#X connect 1 0 18 0;
+#X connect 1 1 4 0;
+#X connect 1 2 8 0;
+#X connect 1 3 12 0;
+#X connect 2 0 16 0;
+#X connect 3 0 6 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 0 13 0;
+#X connect 7 0 15 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 11 0 7 0;
+#X connect 11 0 14 0;
+#X connect 12 0 17 0;
+#X restore 247 -224 pd strip-2;
+#X obj 342 -322 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 284 -322 load;
+#X obj 247 -296 != 1;
+#X floatatom 247 -272 5 0 0 0 - - -;
+#X obj 329 -297 != 1;
+#X floatatom 329 -273 5 0 0 0 - - -;
+#N canvas 522 134 691 625 strip-4 0;
+#X obj 30 -1 inlet;
+#X obj 30 25 route load fadein fadeout;
+#X obj 56 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 119 106 set 0;
+#X obj 87 73 t b b;
+#X msg 53 106 1 1000;
+#X obj 53 139 line 1 10;
+#X obj 208 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 205 73 t b b;
+#X msg 205 106 0 1000;
+#X msg 271 106 set 1;
+#X obj 205 139 line 0 10;
+#X obj 335 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 138 138 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 286 137 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 205 182 \; net send fade 27 \$1;
+#X msg 53 183 \; net send fade 27 \$1;
+#X msg 30 320 \; net sendsafe imagewrap 27 norwaytoday/commeDejaDit.png
+0 0 \; ecran4 27;
+#X msg 335 87 \; net send fade 27 \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 17 0;
+#X connect 1 1 4 0;
+#X connect 1 2 8 0;
+#X connect 1 3 12 0;
+#X connect 2 0 16 0;
+#X connect 3 0 6 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 0 13 0;
+#X connect 7 0 15 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 11 0 7 0;
+#X connect 11 0 14 0;
+#X connect 12 0 18 0;
+#X restore 329 -224 pd strip-4;
+#X obj 409 -321 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 364 -323 load;
+#X obj 409 -300 != 1;
+#X floatatom 409 -276 5 0 0 0 - - -;
+#N canvas 522 134 691 625 strip-1-3-5 0;
+#X obj 30 -1 inlet;
+#X obj 30 25 route load fadein fadeout;
+#X obj 56 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 119 106 set 0;
+#X obj 87 73 t b b;
+#X msg 53 106 1 1000;
+#X obj 53 139 line 1 10;
+#X obj 208 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 205 73 t b b;
+#X msg 205 106 0 1000;
+#X msg 271 106 set 1;
+#X obj 205 139 line 0 10;
+#X obj 30 241 t b b;
+#X obj 335 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 138 138 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 286 137 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 53 183 \; net send fade 25 \$1 \; net send fade 26 \$1;
+#X msg 205 182 \; net send fade 25 \$1 \; net send fade 26 \$1;
+#X msg 30 320 \; net sendsafe imagewrap 25 norwaytoday/carre_blanc.png
+0 0 \; ecranJuliette 25;
+#X msg 62 270 \; net sendsafe imagewrap 26 norwaytoday/carre_rose.png
+0 0 \; ecran4 26;
+#X msg 335 87 \; net send fade 25 \$1 \; net send fade 26 \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 12 0;
+#X connect 1 1 4 0;
+#X connect 1 2 8 0;
+#X connect 1 3 13 0;
+#X connect 2 0 16 0;
+#X connect 3 0 6 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 0 14 0;
+#X connect 7 0 17 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 11 0 7 0;
+#X connect 11 0 15 0;
+#X connect 12 0 18 0;
+#X connect 12 1 19 0;
+#X connect 13 0 20 0;
+#X restore 131 -224 pd strip-1-3-5;
+#N canvas 563 76 691 625 strip-6 0;
+#X obj 30 -1 inlet;
+#X obj 30 25 route load fadein fadeout;
+#X obj 56 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 119 106 set 0;
+#X obj 87 73 t b b;
+#X msg 53 106 1 1000;
+#X obj 53 139 line 1 10;
+#X obj 208 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 205 73 t b b;
+#X msg 205 106 0 1000;
+#X msg 271 106 set 1;
+#X obj 205 139 line 0 10;
+#X obj 335 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 138 138 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 286 137 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 205 182 \; net send fade 27 \$1;
+#X msg 53 183 \; net send fade 27 \$1;
+#X msg 335 87 \; net send fade 27 \$1;
+#X msg 30 320 \; net sendsafe imagewrap 27 norwaytoday/neMenVoulezPas.png
+0 0 \; ecran4 27;
+#X connect 0 0 1 0;
+#X connect 1 0 18 0;
+#X connect 1 1 4 0;
+#X connect 1 2 8 0;
+#X connect 1 3 12 0;
+#X connect 2 0 16 0;
+#X connect 3 0 6 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 0 13 0;
+#X connect 7 0 15 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 11 0 7 0;
+#X connect 11 0 14 0;
+#X connect 12 0 17 0;
+#X restore 409 -223 pd strip-6;
+#N canvas 522 134 691 625 strip-7 0;
+#X obj 30 -1 inlet;
+#X obj 30 25 route load fadein fadeout;
+#X obj 56 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 119 106 set 0;
+#X obj 87 73 t b b;
+#X msg 53 106 1 1000;
+#X obj 53 139 line 1 10;
+#X obj 208 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 205 73 t b b;
+#X msg 205 106 0 1000;
+#X msg 271 106 set 1;
+#X obj 205 139 line 0 10;
+#X obj 335 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 138 138 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 286 137 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 30 320 \; net sendsafe imagewrap 24 norwaytoday/carre_bleu.png
+0 0 \; ecranAuguste 24;
+#X msg 205 183 \; net send fade 24 \$1;
+#X msg 53 183 \; net send fade 24 \$1;
+#X msg 335 87 \; net send fade 24 \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 15 0;
+#X connect 1 1 4 0;
+#X connect 1 2 8 0;
+#X connect 1 3 12 0;
+#X connect 2 0 17 0;
+#X connect 3 0 6 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 0 13 0;
+#X connect 7 0 16 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 0;
+#X connect 11 0 7 0;
+#X connect 11 0 14 0;
+#X connect 12 0 18 0;
+#X restore 491 -222 pd strip-7;
+#X obj 491 -321 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 451 -322 load;
+#X obj 624 -320 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 535 -322 load;
+#X msg 575 -321 flash;
+#N canvas 522 134 691 625 strip-8-12 0;
+#X obj 30 -1 inlet;
+#X obj 226 57 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 30 25 route load flash;
+#X obj 87 165 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 84 139 line 2 10;
+#X msg 140 106 set 2;
+#X obj 84 68 t b b;
+#X msg 84 106 0 400;
+#X msg 84 189 \; net send fade 23 \$1;
+#X msg 226 81 \; net send fade 23 \$1;
+#X msg 30 240 \; net sendsafe imagewrap 23 norwaytoday/space.png 0
+0 \; ecran3 23;
+#X connect 0 0 2 0;
+#X connect 1 0 9 0;
+#X connect 2 0 10 0;
+#X connect 2 1 6 0;
+#X connect 2 2 1 0;
+#X connect 3 0 8 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 6 0 7 0;
+#X connect 6 1 5 0;
+#X connect 7 0 4 0;
+#X restore 575 -222 pd strip-8-12;
+#X obj 699 -321 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 659 -322 load;
+#N canvas 522 134 691 625 strip-13 0;
+#X obj 30 -1 inlet;
+#X obj 97 57 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 30 25 route load;
+#X msg 97 81 \; net send fade 22 \$1;
+#X msg 30 240 \; net sendsafe imagewrap 22 norwaytoday/CetaitLeMoment.png
+0 0 \; ecran3 22;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 4 0;
+#X connect 2 1 1 0;
+#X restore 699 -222 pd strip-13;
+#X obj 796 -323 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 756 -324 load;
+#N canvas 522 134 691 625 strip-14 0;
+#X obj 30 -1 inlet;
+#X obj 97 57 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 30 25 route load;
+#X msg 62 176 \; net sendsafe imagewrap 23 norwaytoday/carre_blanc.png
+0 0 \; ecranAuguste 23;
+#X obj 30 113 t b b;
+#X msg 30 229 \; net sendsafe imagewrap 24 norwaytoday/carre_bleu.png
+0 0 \; ecran3 24;
+#X msg 97 82 \; net send fade 23 \$1 \; net send fade 24 \$1 \; net
+send fade 25 \$1 \; net send fade 26 \$1;
+#X obj 260 77 != 1;
+#X msg 260 120 \; net send fade 22 \$1;
+#X obj 260 99 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X connect 0 0 2 0;
+#X connect 1 0 6 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 0;
+#X connect 2 1 1 0;
+#X connect 4 0 5 0;
+#X connect 4 1 3 0;
+#X connect 7 0 9 0;
+#X connect 9 0 8 0;
+#X restore 796 -224 pd strip-14;
+#X obj 894 -322 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 854 -323 load;
+#N canvas 522 134 691 625 strip-15 0;
+#X obj 30 -1 inlet;
+#X obj 30 25 route load;
+#X obj 120 73 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 62 176 \; net sendsafe imagewrap 22 norwaytoday/degueux.png
+0 0 \; ecran3 22;
+#X msg 107 95 \; net send fade 22 \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
+#X connect 2 0 4 0;
+#X restore 895 -224 pd strip-15;
+#X obj 1046 -315 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 947 -323 load;
+#X msg 479 18 \; net send bye;
+#N canvas 37 155 691 625 strip-16 0;
+#X obj 30 -1 inlet;
+#X obj 139 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X msg 130 90 \; net send fade 30 \$1;
+#X obj 298 45 != 1;
+#X obj 298 73 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 138 386 1;
+#X floatatom 153 473 5 0 0 0 - - -;
+#X obj 162 444 env~;
+#X msg 197 402 0;
+#X obj 54 466 dac~ 1 2;
+#X obj 108 312 t b b;
+#X obj 81 222 t b b;
+#X msg 115 250 \; net sendsafe play 30 start;
+#X msg 30 147 \; net sendsafe moviewrap 30 norwaytoday/sheep15.flv
+0 0 \; videoMouton 30;
+#X msg 78 347 open /home/vision/lighttwist/media/norwaytoday/son/sheep.aiff
+;
+#X obj 77 410 readsf~ 1;
+#X msg 297 91 \; net send fade 22 \$1 \; net send fade 24 \$1;
+#X obj 29 26 route load start stop;
+#X obj 487 212 t b b b;
+#X msg 487 270 \; net send fade 30 0 \; net send unload 22 \; net send
+unload 30;
+#X msg 241 442 \; net send unload 30 \; net send unload 22;
+#X connect 0 0 17 0;
+#X connect 1 0 2 0;
+#X connect 1 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 16 0;
+#X connect 5 0 15 0;
+#X connect 7 0 6 0;
+#X connect 8 0 15 0;
+#X connect 10 0 5 0;
+#X connect 10 1 14 0;
+#X connect 11 0 10 0;
+#X connect 11 1 12 0;
+#X connect 14 0 15 0;
+#X connect 15 0 7 0;
+#X connect 15 0 9 0;
+#X connect 15 0 9 1;
+#X connect 15 1 20 0;
+#X connect 17 0 13 0;
+#X connect 17 1 11 0;
+#X connect 17 2 18 0;
+#X connect 17 3 1 0;
+#X connect 18 0 19 0;
+#X connect 18 1 8 0;
+#X connect 18 2 1 0;
+#X restore 988 -224 pd strip-16;
+#N canvas 522 134 691 625 strip-17 0;
+#X obj 30 -1 inlet;
+#X obj 30 25 route load;
+#X msg 30 147 \; net sendsafe moviewrap 30 norwaytoday/sheep15.flv
+0 0 \; videoMouton 30 \; net sendsafe play 30 start;
+#X msg 97 60 \; net send fade 30 0 \; net send fade 24 1;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X restore 1081 -225 pd strip-17;
+#X obj 1081 -325 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1228 -323 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 1136 -323 load;
+#X msg 1179 -323 start;
+#N canvas 212 210 1206 625 strip-18-19 0;
+#X obj 30 -1 inlet;
+#X obj 214 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 373 37 != 1;
+#X obj 373 65 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 117 365 1;
+#X floatatom 132 447 5 0 0 0 - - -;
+#X obj 141 418 env~;
+#X msg 57 326 open /home/vision/lighttwist/media/norwaytoday/son/dolly44.aiff
+;
+#X msg 176 381 0;
+#X obj 56 389 readsf~ 2;
+#X floatatom 179 449 5 0 0 0 - - -;
+#X obj 188 420 env~;
+#X obj 17 440 dac~ 1 2;
+#X obj 87 291 t b b;
+#X obj 30 25 route load start;
+#X obj 60 201 t b b;
+#X msg 205 82 \; net send fade 29 \$1;
+#X msg 372 83 \; net send fade 23 \$1 \; net send fade 25 \$1;
+#X msg 116 480 \; net sendsafe unload 29 \; net send fade 23 1 \; net
+send fade 25 1;
+#X msg 94 229 \; net sendsafe play 29 start \; net send fade 29 1;
+#X msg 21 138 \; net send moviewrap 29 norwaytoday/DollyPartonJolene.mov
+0 0 \; video2 29 \;;
+#X msg 676 100 \; net sendsafe moviewrap 13 norwaytoday/DollyPartonJolene.mov
+0 0 \; video2 13 \; net sendsafe play 13 start \; net sendsafe fade
+13 1;
+#X connect 0 0 14 0;
+#X connect 1 0 16 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 17 0;
+#X connect 4 0 9 0;
+#X connect 6 0 5 0;
+#X connect 7 0 9 0;
+#X connect 8 0 9 0;
+#X connect 9 0 6 0;
+#X connect 9 0 12 0;
+#X connect 9 1 11 0;
+#X connect 9 1 12 1;
+#X connect 9 2 18 0;
+#X connect 11 0 10 0;
+#X connect 13 0 4 0;
+#X connect 13 1 7 0;
+#X connect 14 0 20 0;
+#X connect 14 1 15 0;
+#X connect 14 2 1 0;
+#X connect 15 0 13 0;
+#X connect 15 1 19 0;
+#X restore 1177 -224 pd strip-18-19;
+#X obj 1305 -319 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 1265 -320 load;
+#N canvas 522 134 691 625 strip-20 0;
+#X obj 30 -1 inlet;
+#X obj 30 25 route load;
+#X obj 97 52 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 167 67 != 1;
+#X obj 250 69 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 250 94 \; net send fade 25 \$1;
+#X msg 97 95 \; net send fade 26 \$1;
+#X msg 29 157 \; net sendsafe imagewrap 26 norwaytoday/auguste.png
+0 0 \; ecran4 26;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 1 1 2 0;
+#X connect 2 0 6 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X restore 1306 -222 pd strip-20;
+#X obj 1398 -318 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 1358 -319 load;
+#N canvas 385 261 691 625 strip-21 0;
+#X obj 30 -1 inlet;
+#X obj 30 25 route load;
+#X obj 97 52 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 167 67 != 1;
+#X obj 250 69 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 29 157 \; net sendsafe imagewrap 22 norwaytoday/juliette2.png
+0 0 \; ecran3 22;
+#X msg 97 94 \; net send fade 22 \$1;
+#X msg 250 94 \; net send fade 23 \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 5 0;
+#X connect 1 1 2 0;
+#X connect 2 0 6 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 7 0;
+#X restore 1399 -221 pd strip-21;
+#N canvas 522 134 691 625 strip-22 0;
+#X obj 30 -1 inlet;
+#X obj 30 36 t b b;
+#X msg 62 72 \; net sendsafe imagewrap 22 norwaytoday/smiley1.png 0
+0 \; ecran3 22 \; net sendsafe imagewrap 27 norwaytoday/carre_rose.png
+0 0 \; ecran4 27;
+#X msg 30 204 \; net send fade 22 1 \; net send fade 27 1 \; net send
+fade 26 0 \;;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
+#X restore 1499 -222 pd strip-22;
+#N canvas 522 134 691 625 strip-23 0;
+#X obj 30 -1 inlet;
+#X obj 30 36 t b b;
+#X msg 62 66 \; net sendsafe imagewrap 22 norwaytoday/smiley2.png 0
+0 \; ecran3 22;
+#X msg 30 123 \; net send fade 22 1;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
+#X restore 1587 -222 pd strip-23;
+#X obj 1499 -318 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 102 -171 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 190 -170 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 492 444 691 625 strip-24 0;
+#X obj 30 -1 inlet;
+#X obj 30 36 t b b;
+#X msg 62 72 \; net sendsafe imagewrap 21 norwaytoday/carre_jaune.png
+0 0 \; ecran2 21;
+#X msg 30 132 \; net sendsafe fade 21 1;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 1 2 0;
+#X restore 102 -73 pd strip-24;
+#N canvas 522 134 691 625 strip-25 0;
+#X obj 31 21 inlet;
+#X obj 31 58 t b b;
+#X msg 31 154 \; net sendsafe fade 28 1;
+#X msg 63 94 \; net sendsafe imagewrap 28 norwaytoday/carre_vert.png
+0 0 \; ecran5 28;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X restore 190 -71 pd strip-25;
+#X obj 381 -171 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 283 -169 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 522 134 691 625 strip-26 0;
+#X obj 31 21 inlet;
+#X obj 31 58 t b b;
+#X msg 31 154 \; net sendsafe fade 18 1;
+#X msg 63 94 \; net sendsafe imagewrap 18 norwaytoday/carre_vert.png
+0 0 \; ecran1 18;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X restore 283 -70 pd strip-26;
+#X msg 381 -79 \; net send unloadAll;
+#N canvas 522 134 691 625 strip-28 0;
+#X obj 30 -1 inlet;
+#X obj 56 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X msg 119 106 set 0;
+#X obj 87 73 t b b;
+#X msg 53 106 1 1000;
+#X obj 53 139 line 1 10;
+#X obj 208 163 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 205 73 t b b;
+#X msg 205 106 0 1000;
+#X msg 271 106 set 1;
+#X obj 205 139 line 0 10;
+#X obj 335 63 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 138 138 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 286 137 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+0.01;
+#X msg 539 277 set 0;
+#X obj 547 366 spigot;
+#X obj 507 304 spigot;
+#X floatatom 418 334 5 0 0 0 - - -;
+#X floatatom 451 380 5 0 0 0 - - -;
+#X floatatom 500 380 5 0 0 0 - - -;
+#X obj 445 354 / 1.5;
+#X obj 495 356 / 2;
+#X msg 416 274 100 900000;
+#X obj 416 308 line 0 30;
+#X obj 416 244 t b b;
+#X msg 551 245 stop;
+#X msg 417 407 \; net send scaletrans 16 1 1 0.1 \$1;
+#X msg 420 461 \; net send scaletrans 17 1 1 0 \$1;
+#X msg 420 512 \; net send scaletrans 18 1 1 0.3 \$1;
+#X msg 53 183 \; net send fade 16 \$1 \; net send fade 17 \$1 \; net
+send fade 18 \$1;
+#X msg 205 182 \; net send fade 16 \$1 \; net send fade 17 \$1 \; net
+send fade 18 \$1;
+#X msg 335 87 \; net send fade 16 \$1 \; net send fade 17 \$1 \; net
+send fade 18 \$1;
+#X obj 21 306 t b b b;
+#X obj 32 36 route load fadein fadeout start stop;
+#X msg 15 457 \; net sendsafe imagewrap 17 norwaytoday/smilies2.png
+1 1 \; net sendsafe fade 17 0;
+#X msg 15 395 \; net sendsafe imagewrap 16 norwaytoday/smilies1.png
+1 1 \; net sendsafe fade 16 0;
+#X msg 14 515 \; net sendsafe imagewrap 18 norwaytoday/smilies3.png
+1 1 \; net sendsafe fade 18 0;
+#X connect 0 0 33 0;
+#X connect 1 0 29 0;
+#X connect 2 0 5 0;
+#X connect 3 0 4 0;
+#X connect 3 1 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 1 0;
+#X connect 5 0 12 0;
+#X connect 6 0 30 0;
+#X connect 7 0 8 0;
+#X connect 7 1 9 0;
+#X connect 8 0 10 0;
+#X connect 9 0 10 0;
+#X connect 10 0 6 0;
+#X connect 10 0 13 0;
+#X connect 11 0 31 0;
+#X connect 14 0 23 0;
+#X connect 17 0 26 0;
+#X connect 17 0 20 0;
+#X connect 17 0 21 0;
+#X connect 20 0 27 0;
+#X connect 20 0 18 0;
+#X connect 21 0 28 0;
+#X connect 21 0 19 0;
+#X connect 22 0 23 0;
+#X connect 23 0 17 0;
+#X connect 24 0 22 0;
+#X connect 24 1 14 0;
+#X connect 25 0 23 0;
+#X connect 32 0 35 0;
+#X connect 32 1 34 0;
+#X connect 32 2 36 0;
+#X connect 33 0 32 0;
+#X connect 33 1 3 0;
+#X connect 33 2 7 0;
+#X connect 33 3 24 0;
+#X connect 33 4 25 0;
+#X connect 33 5 11 0;
+#X restore 533 -70 pd strip-28;
+#X msg 485 -167 load;
+#X msg 541 -181 start;
+#X msg 566 -155 fadein;
+#X msg 591 -180 stop;
+#X msg 623 -155 fadeout;
+#X obj 247 -322 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 322 -321 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X text 1006 -200 Mouton;
+#X text 918 -200 Noyee;
+#X text 1203 -199 Jolene;
+#X msg 995 -317 start;
+#X obj 693 -168 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 562 65 691 625 strip-33 0;
+#X obj 40 -37 inlet;
+#X obj 31 208 t b b;
+#X msg 31 304 \; net sendsafe fade 18 1;
+#X msg 63 244 \; net sendsafe imagewrap 18 norwaytoday/etoiles.png
+1 1;
+#X obj 106 142 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 12700 1;
+#X msg 169 85 set 0;
+#X obj 137 52 t b b;
+#X msg 103 85 1 1000;
+#X obj 103 118 line 1 10;
+#X obj 258 142 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 255 52 t b b;
+#X msg 255 85 0 1000;
+#X msg 321 85 set 1;
+#X obj 255 118 line 0 10;
+#X obj 188 117 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 336 116 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+0.01;
+#X msg 255 161 \; net send fade 18 \$1;
+#X msg 103 162 \; net send fade 18 \$1;
+#X obj 19 21 route load fadein fadeout glitter;
+#X connect 0 0 18 0;
+#X connect 1 0 2 0;
+#X connect 1 1 3 0;
+#X connect 4 0 17 0;
+#X connect 5 0 8 0;
+#X connect 6 0 7 0;
+#X connect 6 1 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 4 0;
+#X connect 8 0 14 0;
+#X connect 9 0 16 0;
+#X connect 10 0 11 0;
+#X connect 10 1 12 0;
+#X connect 11 0 13 0;
+#X connect 12 0 13 0;
+#X connect 13 0 9 0;
+#X connect 13 0 15 0;
+#X connect 18 1 6 0;
+#X connect 18 2 10 0;
+#X connect 18 4 1 0;
+#X restore 693 -71 pd strip-33;
+#N canvas 243 25 1197 640 cameras 0;
+#X obj 39 -319 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 39 83 reset positions;
+#X obj 36 -366 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 195 -341 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 234 -341 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 265 -341 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 301 -341 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 334 -341 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 104 155 \; camCentre 13;
+#X obj 387 -299 spigot;
+#X obj 285 -299 spigot;
+#X obj 180 -299 spigot;
+#X obj 233 -299 spigot;
+#X obj 337 -299 spigot;
+#X obj 393 -332 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 389 -367 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 306 12 loadALL;
+#X text 103 -397 CAMERA 13002 -> layers 11 12 13 14 15;
+#X text 102 -436 CAMERA 13000 -> layers 1 2 3 4 5;
+#X text 103 -417 CAMERA 13001 -> layers 6 7 8 9 10;
+#X obj 48 -94 pack 1 13000;
+#X obj 145 -142 delay 1000;
+#X obj 427 -141 delay 1000;
+#X obj 239 -142 delay 1000;
+#X obj 333 -141 delay 1000;
+#X obj 52 -158 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 145 -115 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 239 -119 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 333 -118 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 427 -117 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 430 -169 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 39 121 \; cam1 1;
+#X msg 98 122 \; cam2 2;
+#X msg 161 121 \; cam3 3;
+#X msg 225 121 \; cam4 4;
+#X msg 288 120 \; cam5 5;
+#X msg 76 -264 \; net send fade 1 \$1;
+#X msg 36 -227 \; net send fade 2 \$1;
+#X msg 228 -266 \; net send fade 3 \$1;
+#X msg 181 -227 \; net send fade 4 \$1;
+#X msg 327 -229 \; net send fade 5 \$1;
+#X obj 145 -94 pack 2 13000;
+#X obj 239 -94 pack 3 13000;
+#X obj 333 -94 pack 4 13000;
+#X obj 427 -94 pack 5 13000;
+#X obj 669 -280 delay 1000;
+#X obj 1011 -279 delay 1000;
+#X obj 783 -280 delay 1000;
+#X obj 897 -279 delay 1000;
+#X obj 562 -281 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 669 -253 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 783 -257 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 897 -256 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1011 -255 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1011 -304 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 653 86 delay 1000;
+#X obj 995 87 delay 1000;
+#X obj 767 86 delay 1000;
+#X obj 881 87 delay 1000;
+#X obj 540 70 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 653 113 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 767 109 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 881 110 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 995 111 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 998 59 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 373 152 pack 1 13000;
+#X obj 377 88 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 373 219 print;
+#X msg 373 189 cam\$1 \$1;
+#X msg 48 -57 \; net send streamin \$1 \$2 1450 \; net send fade \$1
+0 \; cam\$1 \$1;
+#X obj 536 133 pack 11 13002 1;
+#X obj 653 134 pack 12 13002 2;
+#X obj 767 133 pack 13 13002 3;
+#X obj 881 134 pack 14 13002 4;
+#X obj 995 134 pack 15 13002 5;
+#X obj 562 -233 pack 6 13001 1;
+#X obj 670 -232 pack 7 13001 2;
+#X obj 783 -232 pack 8 13001 3;
+#X obj 897 -232 pack 9 13001 4;
+#X obj 1011 -232 pack 10 13001 5;
+#X obj 564 -431 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 561 -478 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 720 -453 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X obj 759 -453 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 790 -453 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 826 -453 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 859 -453 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 912 -411 spigot;
+#X obj 810 -411 spigot;
+#X obj 705 -411 spigot;
+#X obj 758 -411 spigot;
+#X obj 862 -411 spigot;
+#X obj 918 -444 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 914 -479 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text 103 -478 CAMERA 13001 = petite camera;
+#X text 102 -491 CAMERA 13000 = sans-fils;
+#X text 103 -464 CAMERA 13002 = grosse camera;
+#X msg 601 -376 \; net send fade 6 \$1;
+#X msg 562 -339 \; net send fade 7 \$1;
+#X msg 852 -341 \; net send fade 10 \$1;
+#X obj 562 -73 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 559 -120 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X obj 718 -95 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 757 -95 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 788 -95 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 824 -95 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 857 -95 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 910 -53 spigot;
+#X obj 808 -53 spigot;
+#X obj 703 -53 spigot;
+#X obj 756 -53 spigot;
+#X obj 860 -53 spigot;
+#X obj 916 -86 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 912 -121 tgl 25 0 empty empty empty 17 7 0 10 -262144 -1 -1
+1 1;
+#X msg 753 -378 \; net send fade 8 \$1;
+#X msg 706 -339 \; net send fade 9 \$1;
+#X msg 599 -18 \; net send fade 11 \$1;
+#X msg 559 21 \; net send fade 12 \$1;
+#X msg 751 -20 \; net send fade 13 \$1;
+#X msg 704 19 \; net send fade 14 \$1;
+#X msg 850 17 \; net send fade 15 \$1;
+#X msg 562 -195 \; net send streamin \$1 \$2 1450 \; net send fade
+\$1 0 \; camCentre \$1;
+#X msg 536 171 \; net send streamin \$1 \$2 1450 \; net send fade \$1
+0 \; camCentre \$1;
+#X connect 0 0 37 0;
+#X connect 0 0 36 0;
+#X connect 0 0 38 0;
+#X connect 0 0 39 0;
+#X connect 0 0 40 0;
+#X connect 1 0 31 0;
+#X connect 1 0 33 0;
+#X connect 1 0 34 0;
+#X connect 1 0 35 0;
+#X connect 2 0 0 0;
+#X connect 2 0 3 0;
+#X connect 2 0 4 0;
+#X connect 2 0 5 0;
+#X connect 2 0 6 0;
+#X connect 2 0 7 0;
+#X connect 3 0 11 1;
+#X connect 4 0 12 1;
+#X connect 5 0 10 1;
+#X connect 6 0 13 1;
+#X connect 7 0 9 1;
+#X connect 9 0 40 0;
+#X connect 10 0 38 0;
+#X connect 11 0 36 0;
+#X connect 12 0 37 0;
+#X connect 13 0 39 0;
+#X connect 14 0 11 0;
+#X connect 14 0 12 0;
+#X connect 14 0 10 0;
+#X connect 14 0 13 0;
+#X connect 14 0 9 0;
+#X connect 15 0 14 0;
+#X connect 20 0 69 0;
+#X connect 20 0 21 0;
+#X connect 21 0 23 0;
+#X connect 21 0 26 0;
+#X connect 22 0 29 0;
+#X connect 23 0 24 0;
+#X connect 23 0 27 0;
+#X connect 24 0 22 0;
+#X connect 24 0 28 0;
+#X connect 25 0 20 0;
+#X connect 26 0 41 0;
+#X connect 27 0 42 0;
+#X connect 28 0 43 0;
+#X connect 29 0 44 0;
+#X connect 30 0 22 0;
+#X connect 41 0 69 0;
+#X connect 42 0 69 0;
+#X connect 43 0 69 0;
+#X connect 44 0 69 0;
+#X connect 45 0 47 0;
+#X connect 45 0 50 0;
+#X connect 46 0 53 0;
+#X connect 47 0 48 0;
+#X connect 47 0 51 0;
+#X connect 48 0 46 0;
+#X connect 48 0 52 0;
+#X connect 49 0 75 0;
+#X connect 50 0 76 0;
+#X connect 51 0 77 0;
+#X connect 52 0 78 0;
+#X connect 53 0 79 0;
+#X connect 54 0 46 0;
+#X connect 55 0 57 0;
+#X connect 55 0 60 0;
+#X connect 56 0 63 0;
+#X connect 57 0 58 0;
+#X connect 57 0 61 0;
+#X connect 58 0 56 0;
+#X connect 58 0 62 0;
+#X connect 59 0 70 0;
+#X connect 60 0 71 0;
+#X connect 61 0 72 0;
+#X connect 62 0 73 0;
+#X connect 63 0 74 0;
+#X connect 64 0 56 0;
+#X connect 65 0 68 0;
+#X connect 66 0 65 0;
+#X connect 68 0 67 0;
+#X connect 70 0 122 0;
+#X connect 71 0 122 0;
+#X connect 72 0 122 0;
+#X connect 73 0 122 0;
+#X connect 74 0 122 0;
+#X connect 75 0 121 0;
+#X connect 76 0 121 0;
+#X connect 77 0 121 0;
+#X connect 78 0 121 0;
+#X connect 79 0 121 0;
+#X connect 80 0 98 0;
+#X connect 80 0 97 0;
+#X connect 80 0 114 0;
+#X connect 80 0 115 0;
+#X connect 80 0 99 0;
+#X connect 81 0 80 0;
+#X connect 81 0 82 0;
+#X connect 81 0 83 0;
+#X connect 81 0 84 0;
+#X connect 81 0 85 0;
+#X connect 81 0 86 0;
+#X connect 82 0 97 0;
+#X connect 82 0 89 1;
+#X connect 83 0 98 0;
+#X connect 83 0 90 1;
+#X connect 84 0 114 0;
+#X connect 84 0 88 1;
+#X connect 85 0 115 0;
+#X connect 85 0 91 1;
+#X connect 86 0 99 0;
+#X connect 86 0 87 1;
+#X connect 87 0 99 0;
+#X connect 88 0 114 0;
+#X connect 89 0 97 0;
+#X connect 90 0 98 0;
+#X connect 91 0 115 0;
+#X connect 92 0 89 0;
+#X connect 92 0 90 0;
+#X connect 92 0 88 0;
+#X connect 92 0 91 0;
+#X connect 92 0 87 0;
+#X connect 93 0 92 0;
+#X connect 100 0 117 0;
+#X connect 100 0 116 0;
+#X connect 100 0 118 0;
+#X connect 100 0 119 0;
+#X connect 100 0 120 0;
+#X connect 101 0 100 0;
+#X connect 101 0 102 0;
+#X connect 101 0 103 0;
+#X connect 101 0 104 0;
+#X connect 101 0 105 0;
+#X connect 101 0 106 0;
+#X connect 102 0 116 0;
+#X connect 102 0 109 1;
+#X connect 103 0 117 0;
+#X connect 103 0 110 1;
+#X connect 104 0 118 0;
+#X connect 104 0 108 1;
+#X connect 105 0 119 0;
+#X connect 105 0 111 1;
+#X connect 106 0 120 0;
+#X connect 106 0 107 1;
+#X connect 107 0 120 0;
+#X connect 108 0 118 0;
+#X connect 109 0 116 0;
+#X connect 110 0 117 0;
+#X connect 111 0 119 0;
+#X connect 112 0 109 0;
+#X connect 112 0 110 0;
+#X connect 112 0 108 0;
+#X connect 112 0 111 0;
+#X connect 112 0 107 0;
+#X connect 113 0 112 0;
+#X restore 28 12 pd cameras;
+#X obj 801 -165 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 901 -164 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 0 0 450 300 strip-34b 0;
+#X msg -136 99 \; net sendsafe imagewrap 17 norwaytoday/texteaurore.png
+1 1 \; net send fade 17 1;
+#X obj -136 19 inlet;
+#X connect 1 0 0 0;
+#X restore 901 -70 pd strip-34b;
+#N canvas 0 0 541 345 strip-34a 0;
+#X obj -22 -123 inlet;
+#X msg 122 -41 \; net sendsafe moviewrap 19 norwaytoday/norway_aurores.mp4
+0 0 \; net send scaletrans 19 1 -1.06 0 0.679 \; net send play 19 start
+\; net send fade 19 1;
+#X obj -22 -82 route load start stop;
+#X msg 74 50 \; net send fade 19 1 \; net send unload 19;
+#X connect 0 0 2 0;
+#X connect 2 2 3 0;
+#X connect 2 3 1 0;
+#X restore 801 -71 pd strip-34a;
+#X text 817 -48 aurore;
+#X text 899 -46 texte aurore;
+#X text 993 -97 camera;
+#X text 1109 -98 camera;
+#N canvas 0 0 450 300 strip-39 0;
+#X obj 4 18 inlet;
+#X msg 5 101 \; net sendsafe moviewrap 19 norwaytoday/fureur15.flv
+0 0 \; net send play 19 start \; net send fade 19 1 \; videoMouton
+19;
+#X msg 162 214 \; net send unload 19;
+#X connect 0 0 1 0;
+#X restore 1033 -71 pd strip-39;
+#N canvas 25 128 836 624 strip-46 0;
+#X obj 30 -1 inlet;
+#X obj 205 53 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 117 365 1;
+#X floatatom 132 447 5 0 0 0 - - -;
+#X obj 141 418 env~;
+#X msg 176 381 0;
+#X obj 56 389 readsf~ 2;
+#X floatatom 179 449 5 0 0 0 - - -;
+#X obj 188 420 env~;
+#X obj 17 440 dac~ 1 2;
+#X obj 87 291 t b b;
+#X obj 60 201 t b b;
+#X msg 205 82 \; net send fade 19 \$1;
+#X msg 57 326 open /home/vision/lighttwist/media/norwaytoday/son/bungee.aiff
+;
+#X msg 116 480 \; net sendsafe unload 19;
+#X obj 30 25 route load start stop;
+#X obj 537 155 t b b;
+#X msg 92 228 \; net sendsafe play 19 start \; net send fade 19 1;
+#X msg 537 262 \; net send fade 19 1 \; net send unload 19;
+#X msg 19 138 \; net sendsafe moviewrap 19 norwaytoday/bungee15.avi
+0 0 \; videofull 19 \;;
+#X connect 0 0 15 0;
+#X connect 1 0 12 0;
+#X connect 2 0 6 0;
+#X connect 4 0 3 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;
+#X connect 6 0 9 0;
+#X connect 6 1 8 0;
+#X connect 6 1 9 1;
+#X connect 6 2 14 0;
+#X connect 8 0 7 0;
+#X connect 10 0 2 0;
+#X connect 10 1 13 0;
+#X connect 11 0 10 0;
+#X connect 11 1 17 0;
+#X connect 13 0 6 0;
+#X connect 15 0 19 0;
+#X connect 15 1 11 0;
+#X connect 15 2 16 0;
+#X connect 15 3 1 0;
+#X connect 16 0 18 0;
+#X connect 16 1 5 0;
+#X restore 1201 -70 pd strip-46;
+#X obj 1587 -318 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1234 -113 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X msg 1186 -141 load;
+#X msg 1229 -141 start;
+#X msg 1288 -129 stop;
+#X msg 926 -159;
+#X msg 830 -163 stop;
+#X msg 1000 -295 stop;
+#X msg 1193 -370 stop;
+#X msg 677 -124 fadein;
+#X msg 734 -124 fadeout;
+#X msg 714 -1 glitter;
+#X msg 910 -13 \; net send fade 17 0;
+#X connect 1 0 16 0;
+#X connect 1 0 4 0;
+#X connect 2 0 16 0;
+#X connect 3 0 67 0;
+#X connect 5 0 9 0;
+#X connect 5 0 11 0;
+#X connect 6 0 11 0;
+#X connect 7 0 8 0;
+#X connect 8 0 2 0;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 14 0;
+#X connect 12 0 17 0;
+#X connect 13 0 17 0;
+#X connect 14 0 15 0;
+#X connect 15 0 2 0;
+#X connect 19 0 18 0;
+#X connect 20 0 18 0;
+#X connect 21 0 24 0;
+#X connect 22 0 24 0;
+#X connect 23 0 24 0;
+#X connect 25 0 27 0;
+#X connect 26 0 27 0;
+#X connect 28 0 30 0;
+#X connect 29 0 30 0;
+#X connect 31 0 33 0;
+#X connect 32 0 33 0;
+#X connect 34 0 37 0;
+#X connect 35 0 37 0;
+#X connect 39 0 38 0;
+#X connect 40 0 43 0;
+#X connect 41 0 43 0;
+#X connect 42 0 43 0;
+#X connect 44 0 46 0;
+#X connect 45 0 46 0;
+#X connect 47 0 49 0;
+#X connect 48 0 49 0;
+#X connect 52 0 50 0;
+#X connect 53 0 55 0;
+#X connect 54 0 56 0;
+#X connect 57 0 60 0;
+#X connect 58 0 59 0;
+#X connect 62 0 61 0;
+#X connect 63 0 61 0;
+#X connect 64 0 61 0;
+#X connect 65 0 61 0;
+#X connect 66 0 61 0;
+#X connect 67 0 4 0;
+#X connect 67 0 7 0;
+#X connect 68 0 5 0;
+#X connect 72 0 37 0;
+#X connect 73 0 74 0;
+#X connect 76 0 79 0;
+#X connect 77 0 78 0;
+#X connect 86 0 51 0;
+#X connect 87 0 85 0;
+#X connect 88 0 85 0;
+#X connect 89 0 85 0;
+#X connect 90 0 85 0;
+#X connect 92 0 79 0;
+#X connect 93 0 37 0;
+#X connect 94 0 43 0;
+#X connect 95 0 74 0;
+#X connect 96 0 74 0;
+#X restore 558 436 pd cues;
+#X msg 206 617 \; net sendsafe play 2 start;
+#X msg 206 650 \; net sendsafe play 2 stop;
+#X text 204 687 Example VIDEO files to play;
+#X text 204 597 Video controls;
+#X msg 17 577 \; net sendsafe unload 5;
+#X msg 17 613 \; net sendsafe unload 6;
+#X msg 647 718 \; net sendsafe moviewrap 2 norwaytoday/norway_aurores.mp4
+0 0 \; video2 2 \; net sendsafe fade 2 1;
+#X msg 207 705 \; net sendsafe moviewrap 2 norwaytoday/bungee.avi 0
+0 \; net sendsafe fps 2 15 \; video2 2 \; net sendsafe fade 2 1;
+#X msg 806 506 1;
+#X floatatom 801 588 5 0 0 0 - - -;
+#X obj 810 559 env~;
+#X msg 746 467 open /home/vision/lighttwist/media/norwaytoday/son/dolly44.aiff
+;
+#X msg 865 522 0;
+#X obj 745 530 readsf~ 2;
+#X floatatom 848 590 5 0 0 0 - - -;
+#X obj 857 561 env~;
+#X obj 706 581 dac~ 1 2;
+#N canvas 0 0 1361 746 scrap 0;
+#X msg -37 447 \; net sendsafe fade 1 0;
+#X msg 131 447 \; net sendsafe fade 1 1;
+#X obj 386 654 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg -42 3 strip 1;
+#X msg 35 4 strip 2;
+#X msg 112 5 strip 3;
+#X msg -40 199 \; net sendsafe fade 11 0;
+#X msg 127 167 \; net sendsafe fade 11 1;
+#X msg 196 5 strip 4;
+#X msg 269 4 strip 5;
+#X msg 351 9 strip 6;
+#X msg 426 9 strip 7;
+#X msg 504 11 strip 8;
+#X msg 383 672 \; net send fade 8 \$1;
+#X msg 526 671 \; net send fade 7 \$1;
+#X obj 383 628 line 2 10;
+#X msg 439 595 set 2;
+#X msg -41 582 \; net sendsafe imagewrap 7 norwaytoday/space.png 0
+0 \; ecran3 7 \; net sendsafe fade 7 0 \; net sendsafe imagewrap 8
+norwaytoday/carre_bleu.png 0 0 \; ecran3 8 \; net sendsafe fade 8 0
+;
+#X obj 504 47 t b b;
+#X msg 578 13 strip 9;
+#X msg 643 11 strip 10;
+#X msg 718 13 strip 11;
+#X msg 790 14 strip 12;
+#X msg 638 531 \; net sendsafe unload 7;
+#X msg 636 497 \; net sendsafe unload 11;
+#X msg 864 15 strip 13;
+#X msg 792 265 \; net sendsafe imagewrap 10 norwaytoday/degueux.png
+0 0 \; ecran4 10 \; net sendsafe fade 10 1;
+#X msg 938 14 strip 14;
+#X msg 693 404 \; net sendsafe unload 10 \; net sendsafe imagewrap
+12 norwaytoday/carre_rose.png 0 0 \; ecran4 12 \; net sendsafe fade
+12 1;
+#X msg 1007 10 strip 15;
+#X msg 1083 24 strip 16;
+#X msg 707 623 \; net sendsafe imagewrap 7 norwaytoday/juliette2.png
+0 0 \; ecran3 7 \; net sendsafe fade 7 1;
+#X msg 1096 62 strip 17;
+#X msg 1173 27 strip 18;
+#X msg 1135 615 \; net sendsafe imagewrap 7 norwaytoday/smiley2.png
+0 0 \; ecran3 7 \; net sendsafe fade 7 1;
+#X msg 769 526 \; net sendsafe unload 7 \; net sendsafe unload 11 \;
+net sendsafe imagewrap 7 norwaytoday/smiley1.png 0 0 \; ecran3 7 \;
+net sendsafe fade 7 1;
+#X msg 676 100 \; net sendsafe moviewrap 13 norwaytoday/DollyPartonJolene.mov
+0 0 \; video2 13 \; net sendsafe play 13 start \; net sendsafe fade
+13 1;
+#X msg 907 446 \; net sendsafe imagewrap 11 norwaytoday/auguste.png
+0 0 \; ecran4 11 \; net sendsafe fade 11 1 \; net sendsafe fade 13
+0 \; net sendsafe play 13 stop \; net sendsafe unload 13;
+#X msg 1254 18 strip 19;
+#X msg 1114 145 \; net sendsafe imagewrap 6 norwaytoday/carre_jaune.png
+0 0 \; ecran2 6 \; net sendsafe fade 6 1;
+#X msg 1283 54 strip 20;
+#X msg 1114 205 \; net sendsafe imagewrap 15 norwaytoday/carre_vert.png
+0 0 \; ecran5 15 \; net sendsafe fade 15 1;
+#X msg 1332 27 strip 21;
+#X msg 1125 256 \; net sendsafe imagewrap 3 norwaytoday/carre_bleu.png
+0 0 \; ecran1 3 \; net sendsafe fade 3 1;
+#X msg 1366 57 strip 22;
+#X msg 1509 425 \; net sendsafe imagewrap 0 norwaytoday/smiley.png
+1 1 \; net sendsafe fade 0 1;
+#X msg 1416 89 strip 23;
+#X msg 1470 50 strip 24;
+#X msg 1548 50 strip 25;
+#X msg 1621 37 strip 27;
+#X msg 1566 243 \; net sendsafe unloadAll;
+#X msg 1692 40 strip 26;
+#X msg 1763 34 strip 27;
+#X msg 1336 483 \; net sendsafe imagewrap 14 norwaytoday/texteaurore.png
+1 1 \; net sendsafe fade 14 1;
+#X msg 1804 63 strip 28;
+#X msg 2180 -1 strip 33;
+#X msg 1551 549 \; net sendsafe imagewrap 1 norwaytoday/smilies1.png
+1 1 \; net sendsafe fade 1 1;
+#X msg 1552 609 \; net sendsafe imagewrap 2 norwaytoday/smilies2.png
+1 1 \; net sendsafe fade 2 1;
+#X msg 1553 667 \; net sendsafe imagewrap 3 norwaytoday/smilies3.png
+1 1 \; net sendsafe fade 3 1;
+#X msg 1958 614 \; net send scaletrans 2 1 1 0 \$1;
+#X msg 2077 430 set 0;
+#X msg 1955 560 \; net send scaletrans 1 1 1 0.1 \$1;
+#X msg 1958 665 \; net send scaletrans 3 1 1 0.3 \$1;
+#X obj 2085 519 spigot;
+#X obj 2045 457 spigot;
+#X floatatom 1956 487 5 0 0 0 - - -;
+#X floatatom 1989 533 5 0 0 0 - - -;
+#X floatatom 2038 533 5 0 0 0 - - -;
+#X obj 1983 507 / 1.5;
+#X obj 2033 509 / 2;
+#X msg 1954 427 100 900000;
+#X obj 1954 461 line 0 30;
+#X obj 1950 389 t b b;
+#X msg 586 382 1;
+#X floatatom 581 464 5 0 0 0 - - -;
+#X obj 590 435 env~;
+#X msg 526 343 open /home/vision/lighttwist/media/norwaytoday/son/dolly44.aiff
+;
+#X msg 645 398 0;
+#X obj 525 406 readsf~ 2;
+#X floatatom 628 466 5 0 0 0 - - -;
+#X obj 637 437 env~;
+#X obj 486 457 dac~ 1 2;
+#X obj 556 308 t b b;
+#X msg 469 502 \; net sendsafe unload 13;
+#X msg 1126 329 \; net sendsafe unloadAll;
+#X msg 2246 117 1;
+#X floatatom 2241 199 5 0 0 0 - - -;
+#X obj 2250 170 env~;
+#X msg 2305 133 0;
+#X obj 2185 141 readsf~ 2;
+#X floatatom 2288 201 5 0 0 0 - - -;
+#X obj 2297 172 env~;
+#X obj 2146 192 dac~ 1 2;
+#X obj 2216 43 t b b;
+#X msg 2186 78 open /home/vision/lighttwist/media/norwaytoday/son/bungee.aiff
+;
+#X msg 2348 190 \; net sendsafe unload 7 \;;
+#X msg -42 -21 pre-1;
+#X msg -40 78 \; net sendsafe fade 12 1;
+#X msg -36 29 \; net sendsafe imagewrap 12 norwaytoday/carre_blanc.png
+0 0 \; ecran4 12;
+#X msg 41 -22 pre-2;
+#X msg -40 115 \; net sendsafe imagewrap 11 norwaytoday/lol.png 0 0
+\; ecran4 11;
+#X msg -37 283 \; net sendsafe fade 11 1 \;;
+#X msg -39 233 \; net sendsafe imagewrap 11 norwaytoday/commeDejaDit.png
+0 0 \; ecran4 11;
+#X msg 199 -22 pre-4;
+#X msg 144 284 \; net sendsafe fade 11 0 \; net sendsafe unload 11
+;
+#X msg -33 411 \; net sendsafe fade 11 1;
+#X msg -33 349 \; net sendsafe imagewrap 11 norwaytoday/neMenVoulezPas.png
+0 0 \; ecran4 11;
+#X msg 351 -19 pre-6;
+#X msg -38 544 \; net sendsafe fade 9 1;
+#X msg -38 496 \; net sendsafe imagewrap 9 norwaytoday/carre_bleu.png
+0 0 \; ecranAuguste 9;
+#X msg 431 -21 pre-7;
+#X msg 1924 53 strip 32;
+#X msg 720 -24 pre-11;
+#X msg 383 595 0 400;
+#X msg 171 699 \; net sendsafe fade 8 1 \; net sendsafe fade 7 1 \;
+;
+#X msg 527 196 \; net sendsafe imagewrap 7 norwaytoday/CetaitLeMoment.png
+0 0 \; ecran3 7;
+#X msg 529 260 \; net sendsafe fade 7 1 \;;
+#X msg 1225 567 \; net sendsafe unloadAll;
+#X msg 2089 398 stop;
+#X text 1697 13 p 61;
+#X text 1928 27 p 86;
+#X text 2180 -27 p 97;
+#X msg 1897 141 \; net sendsafe unload 7;
+#X msg 1539 112 \; net sendsafe streamin 10 13001 1450 \; cam3 10 \;
+net sendsafe fade 10 1;
+#X msg 2063 224 \; net sendsafe moviewrap 7 norwaytoday/bungee.avi
+0 0 \; net sendsafe fps 7 29.97 \; videofull 7 \; net sendsafe play
+7 start \; net sendsafe fade 7 1;
+#X msg 1819 327 \; net sendsafe imagewrap 3 norwaytoday/carre_noir.png
+0 0 \; ecran3 3 \; net sendsafe fade 3 1;
+#X msg 1701 240 \; net sendsafe moviewrap 7 norwaytoday/chute_1.flv
+0 0 \; net sendsafe fps 7 15 \; video234 7 \; net sendsafe play 7 start
+\; net sendsafe fade 7 1;
+#X msg 904 358 \; net send scaletrans \$1 2.32 -1 -1.31 1 \; net sendsafe
+loadAlpha 2 alpha_no.png;
+#X msg 1186 372 \; net sendsafe moviewrap 15 norwaytoday/aurore2.flv
+0 0 \; videofull 15 \; net sendsafe fps 15 \; net sendsafe play 15
+start \; net sendsafe fade 15 1;
+#X msg 1309 308 \; net sendsafe moviewrap 15 norwaytoday/norway_aurores.mp4
+0 0 \; net send scaletrans 15 1 -1.06 0 0.679 \; net sendsafe fps 15
+\; net sendsafe play 15 start \; net sendsafe fade 15 1;
+#X connect 2 0 14 0;
+#X connect 2 0 13 0;
+#X connect 3 0 97 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 8 0 101 0;
+#X connect 9 0 104 0;
+#X connect 10 0 105 0;
+#X connect 11 0 108 0;
+#X connect 11 0 17 0;
+#X connect 12 0 18 0;
+#X connect 15 0 2 0;
+#X connect 16 0 15 0;
+#X connect 18 0 113 0;
+#X connect 18 1 16 0;
+#X connect 19 0 18 0;
+#X connect 20 0 114 0;
+#X connect 21 0 116 0;
+#X connect 22 0 24 0;
+#X connect 22 0 23 0;
+#X connect 25 0 26 0;
+#X connect 27 0 28 0;
+#X connect 27 0 36 0;
+#X connect 27 0 82 0;
+#X connect 29 0 37 0;
+#X connect 30 0 31 0;
+#X connect 32 0 35 0;
+#X connect 33 0 34 0;
+#X connect 38 0 39 0;
+#X connect 40 0 41 0;
+#X connect 42 0 43 0;
+#X connect 44 0 84 0;
+#X connect 46 0 56 0;
+#X connect 46 0 57 0;
+#X connect 46 0 58 0;
+#X connect 46 0 72 0;
+#X connect 47 0 117 0;
+#X connect 47 0 118 0;
+#X connect 48 0 123 0;
+#X connect 49 0 50 0;
+#X connect 51 0 129 0;
+#X connect 52 0 53 0;
+#X connect 54 0 123 0;
+#X connect 55 0 124 0;
+#X connect 55 0 93 0;
+#X connect 60 0 71 0;
+#X connect 65 0 61 0;
+#X connect 65 0 68 0;
+#X connect 65 0 69 0;
+#X connect 68 0 59 0;
+#X connect 68 0 66 0;
+#X connect 69 0 62 0;
+#X connect 69 0 67 0;
+#X connect 70 0 71 0;
+#X connect 71 0 65 0;
+#X connect 72 0 60 0;
+#X connect 72 0 70 0;
+#X connect 73 0 78 0;
+#X connect 75 0 74 0;
+#X connect 76 0 78 0;
+#X connect 77 0 78 0;
+#X connect 78 0 75 0;
+#X connect 78 0 81 0;
+#X connect 78 1 80 0;
+#X connect 78 1 81 1;
+#X connect 78 2 83 0;
+#X connect 80 0 79 0;
+#X connect 82 0 73 0;
+#X connect 82 1 76 0;
+#X connect 85 0 89 0;
+#X connect 87 0 86 0;
+#X connect 88 0 89 0;
+#X connect 89 0 87 0;
+#X connect 89 0 92 0;
+#X connect 89 1 91 0;
+#X connect 89 1 92 1;
+#X connect 89 2 95 0;
+#X connect 91 0 90 0;
+#X connect 93 0 85 0;
+#X connect 93 1 94 0;
+#X connect 94 0 89 0;
+#X connect 96 0 98 0;
+#X connect 99 0 100 0;
+#X connect 103 0 102 0;
+#X connect 107 0 106 0;
+#X connect 110 0 109 0;
+#X connect 111 0 126 0;
+#X connect 112 0 115 0;
+#X connect 113 0 15 0;
+#X connect 118 0 71 0;
+#X connect 126 0 125 0;
+#X restore 450 584 pd scrap;
+#X connect 0 0 39 0;
+#X connect 0 0 47 0;
+#X connect 0 0 48 0;
+#X connect 1 0 12 0;
+#X connect 5 0 3 0;
+#X connect 7 0 15 0;
+#X connect 8 0 9 0;
+#X connect 8 1 10 0;
+#X connect 8 2 11 0;
+#X connect 12 0 8 0;
+#X connect 16 0 2 0;
+#X connect 17 0 15 1;
+#X connect 18 0 20 0;
+#X connect 19 0 2 0;
+#X connect 21 0 22 0;
+#X connect 36 0 24 0;
+#X connect 37 0 24 0;
+#X connect 38 0 24 0;
+#X connect 41 0 23 0;
+#X connect 41 0 40 0;
+#X connect 47 0 23 0;
+#X connect 48 0 40 0;
+#X connect 49 0 50 0;
+#X connect 50 0 61 0;
+#X connect 51 0 52 0;
+#X connect 52 0 58 0;
+#X connect 53 0 54 0;
+#X connect 54 0 59 0;
+#X connect 58 0 61 0;
+#X connect 58 1 61 1;
+#X connect 59 0 61 0;
+#X connect 59 1 61 2;
+#X connect 60 0 61 0;
+#X connect 60 1 61 3;
+#X connect 61 0 66 0;
+#X connect 62 0 63 0;
+#X connect 63 0 60 0;
+#X connect 67 0 61 0;
+#X connect 69 0 70 0;
+#X connect 84 0 89 0;
+#X connect 86 0 85 0;
+#X connect 87 0 89 0;
+#X connect 88 0 89 0;
+#X connect 89 0 86 0;
+#X connect 89 0 92 0;
+#X connect 89 1 91 0;
+#X connect 89 1 92 1;
+#X connect 91 0 90 0;

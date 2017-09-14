@@ -1,0 +1,309 @@
+#N canvas 18 25 1236 762 10;
+#X obj 308 -2 loadbang;
+#X obj 308 190 r lua;
+#X msg 60 154 \; lua midiin \$1 \$2;
+#X obj 639 245 print;
+#X obj 629 221 float;
+#X obj 629 166 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 649 165 0;
+#X msg 18 367 \; net send fade 0 \$1;
+#X msg 180 346 \; net sendsafe unload 0;
+#X obj 21 346 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 44 683 hsl 128 15 -3 3 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 21 408 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 18 429 \; net send fade 1 \$1;
+#X msg 180 379 \; net sendsafe unload 1;
+#X msg 180 413 \; net sendsafe unload 2;
+#X obj 63 268 r midiout;
+#X obj 308 237 route net midiout;
+#X obj 308 266 s net;
+#X obj 352 266 s midiout;
+#X obj 424 266 print other;
+#X obj 308 213 luabox 1;
+#X msg 877 446 \; net sendsafe play 2 stop;
+#X msg 629 268 \; net send time \$1;
+#X obj 629 192 metro 10000;
+#X obj 676 221 + 10;
+#X obj 22 468 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 19 490 \; net send fade 2 \$1;
+#X msg 41 642 \; net send scaletrans 2 1 1 0 0;
+#N canvas 746 153 450 525 multimidiout 0;
+#X obj 104 434 ctlout;
+#X msg 185 116 0;
+#X obj 221 72 loadbang;
+#X text 76 50 midiout controleur valeur;
+#X obj 120 71 inlet;
+#X obj 274 144 r offset;
+#X obj 214 248 ==;
+#X obj 86 106 unpack f f;
+#X obj 205 154 / 1000;
+#X obj 205 181 int;
+#X obj 205 207 * 1000;
+#X obj 124 319 spigot 0;
+#X obj 127 211 % 1000;
+#X obj 55 240 pack;
+#X obj 324 78 inlet;
+#X text 321 55 direct;
+#X msg 348 137 \$2 \$1;
+#X msg 39 -10 \; midiout 81 60;
+#X msg 30 24 \; midiout 81 0;
+#X text 68 126 Ctl;
+#X text 156 124 Val;
+#X obj 95 154 t b f f;
+#X obj 70 180 float;
+#X msg 144 -11 \; midiout 1081 34;
+#X msg 261 -8 \; midiout 3081 90;
+#X connect 1 0 0 2;
+#X connect 2 0 1 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 1;
+#X connect 6 0 11 1;
+#X connect 7 0 21 0;
+#X connect 7 1 22 1;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 6 0;
+#X connect 11 0 0 0;
+#X connect 12 0 13 1;
+#X connect 13 0 11 0;
+#X connect 14 0 16 0;
+#X connect 16 0 0 0;
+#X connect 21 0 22 0;
+#X connect 21 1 12 0;
+#X connect 21 2 8 0;
+#X connect 22 0 13 0;
+#X restore 63 294 pd multimidiout;
+#N canvas 23 261 540 339 multimidiin 0;
+#X obj 77 13 ctlin;
+#X floatatom 61 60 5 0 0 0 - - -;
+#X floatatom 110 49 5 0 0 0 - - -;
+#X obj 44 130 pack;
+#X text 125 33 CC;
+#X text 50 43 VAL;
+#X obj 25 237 outlet;
+#X msg 17 262 \; midiout 81 0;
+#X obj 141 215 route 89 90 91 92;
+#X obj 122 102 + 0;
+#X obj 90 134 pack;
+#X obj 234 31 route 0 127;
+#X obj 148 71 r offset;
+#X obj 254 95 route 89 90 91 92;
+#X obj 270 63 % 1000;
+#X obj 205 125 % 1000;
+#X msg 380 135 \; offset 3000 \; dmidiout 89 0 \; dmidiout 90 0 \;
+dmidiout 92 0 \; lua refreshMidi;
+#X msg 307 219 \; offset 2000 \; dmidiout 89 0 \; dmidiout 91 0 \;
+dmidiout 92 0 \; lua refreshMidi;
+#X msg 423 215 \; offset 4000 \; dmidiout 89 0 \; dmidiout 90 0 \;
+dmidiout 91 0 \; lua refreshMidi;
+#X msg 150 256 \; offset 0 \; lua refreshMidi;
+#X obj 211 5 inlet;
+#X obj 132 13 unpack;
+#X msg 274 135 \; offset 1000 \; dmidiout 90 0 \; dmidiout 91 0 \;
+dmidiout 92 0 \; lua refreshMidi \;;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 1 0 3 0;
+#X connect 1 0 10 0;
+#X connect 2 0 9 0;
+#X connect 2 0 10 1;
+#X connect 3 0 6 0;
+#X connect 8 0 19 0;
+#X connect 8 1 19 0;
+#X connect 8 2 19 0;
+#X connect 8 3 19 0;
+#X connect 9 0 3 1;
+#X connect 10 0 11 0;
+#X connect 11 0 15 0;
+#X connect 11 1 14 0;
+#X connect 12 0 9 1;
+#X connect 13 0 22 0;
+#X connect 13 1 17 0;
+#X connect 13 2 16 0;
+#X connect 13 3 18 0;
+#X connect 14 0 13 0;
+#X connect 15 0 8 0;
+#X connect 20 0 21 0;
+#X connect 21 0 1 0;
+#X connect 21 1 2 0;
+#X restore 84 126 pd multimidiin;
+#X obj 165 268 r dmidiout;
+#X obj 796 188 loadbang;
+#X obj 60 102 r midiin;
+#X msg 796 214 \; midiin 0 89 \; midiin 0 90 \; midiin 0 91 \; midiin
+0 92 \; dmidiout 89 0 \; dmidiout 90 0 \; dmidiout 91 0 \; dmidiout
+92 0 \;;
+#X obj 1094 434 hsl 128 15 1 60 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 1097 459 \; net send fps 2 \$1;
+#X msg 253 679 0;
+#X obj 482 350 mcnetsend;
+#X obj 461 374 print net;
+#X obj 461 324 r net;
+#X msg 324 41 \; lua dofile /usr/local/share/lighttwist/patch_lune.lua
+;
+#X msg 879 641 \; net sendsafe movie 2 flous/03_ReNeige_Daniel.mov
+\; net sendsafe fade 2 1;
+#X msg 360 727 \; net sendsafe model 0 test/particulesNeige.osg \;
+net sendsafe fade 0 1;
+#X msg 879 503 \; net sendsafe movie 2 test/plantspano2.mpg \; net
+sendsafe fade 2 1;
+#X obj 796 146 print NETRECEIVE;
+#X msg 360 491 \; net sendsafe crayon 0 \; net sendsafe fade 0 1;
+#X text 627 133 TIME SYNCHING (not in use);
+#X text 461 304 Receive NET messages;
+#X text 304 172 Receive LUA messages;
+#X msg 879 687 \; net sendsafe movie 2 flous/03_ReNeige_LigneBlanche.mov
+\; net sendsafe fade 2 1;
+#X msg 879 733 \; net sendsafe movie 2 flous/03_ReNeige_EtoilesFilantes.mov
+\; net sendsafe fade 2 1;
+#X text 875 483 Example VIDEO files to play;
+#X msg 360 681 \; net sendsafe model 2 test/robot_multi.osg \; net
+sendsafe fade 2 1;
+#X msg 360 635 \; net sendsafe model 2 test/test_scene.osg \; net sendsafe
+fade 2 1;
+#X text 357 616 Example 3D files to play;
+#X msg 879 549 \; net sendsafe movie 2 flous/01_JeNe01_NuageNoir.mov
+\; net sendsafe fade 2 1;
+#X msg 879 595 \; net sendsafe movie 2 flous/02_Rouge02_Vibration.mov
+\; net sendsafe fade 2 1;
+#X text 179 326 Basic LAYER controls;
+#X text 875 392 Video controls;
+#X text 357 471 Example to load the CRAYON;
+#X text 355 543 Example IMAGE file to load;
+#X text 14 325 Layer FADER controls;
+#X text 39 621 Example 3D controls;
+#X text 790 23 Receive messages sent by Lighttwist \, otherwise Lighttwist
+crashes;
+#X text 327 25 Load the midi controls associated to the LUA parameters
+;
+#X text 313 81 Connect to the projection machines;
+#X text 60 247 midiout [controller \, value];
+#X text 56 82 MIDI DATA IN;
+#X text 60 229 MIDI DATA OUT;
+#X text 17 7 MIDI PATCH LUNE;
+#X obj 796 55 netreceive 10010;
+#X obj 801 78 netreceive 10020;
+#X obj 807 102 netreceive 10030;
+#X msg 359 563 \; net sendsafe image 1 toto.png \; net sendsafe fade
+1 1;
+#X obj 659 447 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 659 554 5 0 0 0 - - -;
+#X obj 695 447 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 695 554 5 0 0 0 - - -;
+#X obj 735 446 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 731 554 5 0 0 0 - - -;
+#X obj 659 622 pack f f f;
+#X obj 695 582 t b f;
+#X obj 756 580 t b f;
+#X msg 659 646 \; net send background \$1 \$2 \$3;
+#X obj 611 447 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 611 554 5 0 0 0 - - -;
+#X text 660 421 R;
+#X text 696 421 G;
+#X text 731 421 B;
+#X text 603 421 Gris;
+#X text 610 400 Set background color;
+#X text 357 400 Example to start prosilica capture;
+#X text 305 129 Changer le port si necessaire;
+#X obj 181 569 pack f f;
+#X obj 230 538 t b f;
+#X obj 213 484 hsl 128 15 -3 3 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 192 512 hsl 128 15 0 3 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 225 604 print;
+#X msg 42 707 \; net send scaletrans 0 \$2 1 \$1 0;
+#X msg 879 412 \; net sendsafe play 2 start;
+#X msg 928 240 \; net sendsafe loadLutBlend /home/vision/lighttwist/caserne_grand_ecran/out/imapXY_02_crop.lut.png
+/home/vision/lighttwist/caserne_grand_ecran/out/02_support_proj.png
+;
+#X msg 925 153 \; net sendsafe loadLutBlend /home/vision/lighttwist/caserne_grand_ecran2/out/imapXY_02_crop.lut.png
+/home/vision/lighttwist/caserne_grand_ecran2/out/02_support_proj.png
+;
+#X msg 360 422 \; net sendsafe capture 0 36134 10 \; net sendsafe fade
+0 1;
+#X msg 930 331 \; net sendsafe plugin 0 crayon camera "" \; net sendsafe
+fade 0 1;
+#X msg 308 98 \; net connect 12000 1;
+#X obj 1075 122 print;
+#X obj 1292 1 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 1212 36 5 0 0 0 - - -;
+#X obj 1317 1 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 1248 36 5 0 0 0 - - -;
+#X obj 1216 63 t b f;
+#X text 1231 -109 R;
+#X text 1267 -109 G;
+#X obj 1170 94 pack f f;
+#X msg 1136 118 \; net send set_plugin_param 0 crayon POINT \$1 \$2
+;
+#X connect 0 0 40 0;
+#X connect 0 0 104 0;
+#X connect 1 0 20 0;
+#X connect 4 0 3 0;
+#X connect 4 0 22 0;
+#X connect 4 0 24 0;
+#X connect 5 0 23 0;
+#X connect 6 0 4 0;
+#X connect 9 0 7 0;
+#X connect 10 0 98 0;
+#X connect 11 0 12 0;
+#X connect 15 0 28 0;
+#X connect 16 0 17 0;
+#X connect 16 1 18 0;
+#X connect 16 2 19 0;
+#X connect 20 0 16 0;
+#X connect 23 0 4 0;
+#X connect 24 0 4 1;
+#X connect 25 0 26 0;
+#X connect 29 0 2 0;
+#X connect 30 0 28 1;
+#X connect 31 0 33 0;
+#X connect 32 0 2 0;
+#X connect 34 0 35 0;
+#X connect 36 0 98 0;
+#X connect 39 0 38 0;
+#X connect 39 0 37 0;
+#X connect 70 0 44 0;
+#X connect 71 0 44 0;
+#X connect 72 0 44 0;
+#X connect 74 0 75 0;
+#X connect 75 0 80 0;
+#X connect 76 0 77 0;
+#X connect 77 0 81 0;
+#X connect 78 0 79 0;
+#X connect 79 0 82 0;
+#X connect 80 0 83 0;
+#X connect 81 0 80 0;
+#X connect 81 1 80 1;
+#X connect 82 0 80 0;
+#X connect 82 1 80 2;
+#X connect 84 0 85 0;
+#X connect 85 0 74 0;
+#X connect 85 0 76 0;
+#X connect 85 0 78 0;
+#X connect 93 0 97 0;
+#X connect 93 0 98 0;
+#X connect 94 0 93 0;
+#X connect 94 1 93 1;
+#X connect 95 0 94 0;
+#X connect 96 0 93 0;
+#X connect 106 0 107 0;
+#X connect 107 0 113 0;
+#X connect 108 0 109 0;
+#X connect 109 0 110 0;
+#X connect 110 0 113 0;
+#X connect 110 1 113 1;
+#X connect 113 0 114 0;
+#X connect 114 0 105 0;

@@ -1,0 +1,343 @@
+#N canvas 103 25 1123 665 10;
+#X obj 308 -2 loadbang;
+#X obj 19 271 r lua;
+#X msg 22 123 \; lua midiin \$1 \$2;
+#X msg 19 572 \; net send fade 0 \$1;
+#X msg 18 391 \; net sendsafe unload 0;
+#X obj 22 551 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 23 819 hsl 128 15 -3 3 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 22 613 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 19 634 \; net send fade 1 \$1;
+#X msg 18 424 \; net sendsafe unload 1;
+#X obj 21 208 r midiout;
+#X obj 19 318 route net midiout;
+#X obj 19 347 s net;
+#X obj 63 347 s midiout;
+#X obj 135 347 print other;
+#X obj 19 294 luabox 1;
+#X msg 681 761 \; net sendsafe play 2 start;
+#X msg 681 794 \; net sendsafe play 2 stop;
+#X obj 23 673 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 20 695 \; net send fade 2 \$1;
+#X msg 20 778 \; net send scaletrans 2 1 1 0 0;
+#N canvas 746 153 450 525 multimidiout 0;
+#X obj 104 434 ctlout;
+#X msg 185 116 0;
+#X obj 221 72 loadbang;
+#X text 76 50 midiout controleur valeur;
+#X obj 120 71 inlet;
+#X obj 274 144 r offset;
+#X obj 214 248 ==;
+#X obj 86 106 unpack f f;
+#X obj 205 154 / 1000;
+#X obj 205 181 int;
+#X obj 205 207 * 1000;
+#X obj 124 319 spigot 0;
+#X obj 127 211 % 1000;
+#X obj 55 240 pack;
+#X obj 324 78 inlet;
+#X text 321 55 direct;
+#X msg 348 137 \$2 \$1;
+#X msg 39 -10 \; midiout 81 60;
+#X msg 30 24 \; midiout 81 0;
+#X text 68 126 Ctl;
+#X text 156 124 Val;
+#X obj 95 154 t b f f;
+#X obj 70 180 float;
+#X msg 144 -11 \; midiout 1081 34;
+#X msg 261 -8 \; midiout 3081 90;
+#X connect 1 0 0 2;
+#X connect 2 0 1 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 1;
+#X connect 6 0 11 1;
+#X connect 7 0 21 0;
+#X connect 7 1 22 1;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 6 0;
+#X connect 11 0 0 0;
+#X connect 12 0 13 1;
+#X connect 13 0 11 0;
+#X connect 14 0 16 0;
+#X connect 16 0 0 0;
+#X connect 21 0 22 0;
+#X connect 21 1 12 0;
+#X connect 21 2 8 0;
+#X connect 22 0 13 0;
+#X restore 21 234 pd multimidiout;
+#N canvas 23 261 540 339 multimidiin 0;
+#X obj 77 13 ctlin;
+#X floatatom 61 60 5 0 0 0 - - -;
+#X floatatom 110 49 5 0 0 0 - - -;
+#X obj 44 130 pack;
+#X text 125 33 CC;
+#X text 50 43 VAL;
+#X obj 25 237 outlet;
+#X msg 17 262 \; midiout 81 0;
+#X obj 141 215 route 89 90 91 92;
+#X obj 122 102 + 0;
+#X obj 90 134 pack;
+#X obj 234 31 route 0 127;
+#X obj 148 71 r offset;
+#X obj 254 95 route 89 90 91 92;
+#X obj 270 63 % 1000;
+#X obj 205 125 % 1000;
+#X msg 380 135 \; offset 3000 \; dmidiout 89 0 \; dmidiout 90 0 \;
+dmidiout 92 0 \; lua refreshMidi;
+#X msg 307 219 \; offset 2000 \; dmidiout 89 0 \; dmidiout 91 0 \;
+dmidiout 92 0 \; lua refreshMidi;
+#X msg 423 215 \; offset 4000 \; dmidiout 89 0 \; dmidiout 90 0 \;
+dmidiout 91 0 \; lua refreshMidi;
+#X msg 150 256 \; offset 0 \; lua refreshMidi;
+#X obj 211 5 inlet;
+#X obj 132 13 unpack;
+#X msg 274 135 \; offset 1000 \; dmidiout 90 0 \; dmidiout 91 0 \;
+dmidiout 92 0 \; lua refreshMidi \;;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 1 0 3 0;
+#X connect 1 0 10 0;
+#X connect 2 0 9 0;
+#X connect 2 0 10 1;
+#X connect 3 0 6 0;
+#X connect 8 0 19 0;
+#X connect 8 1 19 0;
+#X connect 8 2 19 0;
+#X connect 8 3 19 0;
+#X connect 9 0 3 1;
+#X connect 10 0 11 0;
+#X connect 11 0 15 0;
+#X connect 11 1 14 0;
+#X connect 12 0 9 1;
+#X connect 13 0 22 0;
+#X connect 13 1 17 0;
+#X connect 13 2 16 0;
+#X connect 13 3 18 0;
+#X connect 14 0 13 0;
+#X connect 15 0 8 0;
+#X connect 20 0 21 0;
+#X connect 21 0 1 0;
+#X connect 21 1 2 0;
+#X restore 46 95 pd multimidiin;
+#X obj 123 208 r dmidiout;
+#X obj 877 162 loadbang;
+#X obj 22 71 r midiin;
+#X msg 877 188 \; midiin 0 89 \; midiin 0 90 \; midiin 0 91 \; midiin
+0 92 \; dmidiout 89 0 \; dmidiout 90 0 \; dmidiout 91 0 \; dmidiout
+92 0 \;;
+#X obj 889 760 hsl 128 15 1 60 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 886 782 \; net send fps 2 \$1;
+#X msg 20 842 \; net send scaletrans 0 1 1 \$1 0;
+#X msg 165 818 0;
+#X obj 219 191 mcnetsend;
+#X obj 877 139 print NETRECEIVE;
+#X text 533 79 Receive NET messages;
+#X text 15 253 Receive LUA messages;
+#X text 679 831 Example VIDEO files to play;
+#X msg 682 849 \; net sendsafe movie 2 flous/01_JeNe01_NuageNoir.mov
+\; net sendsafe fade 2 1;
+#X text 17 371 Basic LAYER controls;
+#X text 679 741 Video controls;
+#X text 297 381 Example to load the CRAYON;
+#X text 15 530 Layer FADER controls;
+#X text 18 757 Example 3D controls;
+#X text 871 16 Receive messages sent by Lighttwist \, otherwise Lighttwist
+crashes;
+#X text 310 25 Load the midi controls associated to the LUA parameters
+;
+#X text 18 187 midiout [controller \, value];
+#X text 18 51 MIDI DATA IN;
+#X text 18 169 MIDI DATA OUT;
+#X text 17 7 MIDI PATCH LUNE;
+#X obj 877 48 netreceive 10010;
+#X obj 882 71 netreceive 10020;
+#X obj 888 95 netreceive 10030;
+#X obj 233 641 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 233 750 5 0 0 0 - - -;
+#X obj 270 643 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 270 750 5 0 0 0 - - -;
+#X obj 306 643 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 306 750 5 0 0 0 - - -;
+#X obj 261 857 pack f f f;
+#X obj 298 817 t b f;
+#X obj 334 817 t b f;
+#X obj 185 643 vsl 15 100 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 185 750 5 0 0 0 - - -;
+#X text 234 617 R;
+#X text 271 617 G;
+#X text 306 617 B;
+#X text 177 617 Gris;
+#X text 177 563 Set background color;
+#X text 174 238 Example to start prosilica capture;
+#X msg 308 41 \; lua dofile /usr/local/share/lighttwist/patch_yukie.lua
+;
+#X obj 455 193 mcnetsend;
+#X msg 336 168 connect 11002 1;
+#X msg 455 169 connect 11003 1;
+#X obj 336 193 mcnetsend;
+#X obj 624 196 mcnetsend;
+#X obj 488 84 r net;
+#X obj 457 121 route ecran plancher;
+#X text 534 92 SI aucun n'est specifie \, envoyer a tous;
+#X obj 624 220 print;
+#X obj 234 448 pack f f;
+#X obj 234 368 vsl 15 50 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X obj 255 368 vsl 15 50 0 1 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X msg 682 415 \; net plancher sendsafe image 0 yukie/canvas_plancher.png
+\; net plancher sendsafe fade 0 1;
+#X text 683 396 Pour reception de GIMP;
+#X text 681 469 Images pour le plancher;
+#X text 235 346 X;
+#X text 256 348 Y;
+#X msg 211 259 \; net ecran sendsafe capture 1 13136 10 \; net ecran
+sendsafe fade 1 1;
+#X msg 683 490 \; net plancher sendsafe image 2 yukie/plancher_arrivee.png
+\; net plancher sendsafe fade 2 1;
+#X msg 683 536 \; net plancher sendsafe image 2 yukie/plancher_ayana.png
+\; net plancher sendsafe fade 2 1;
+#X msg 683 582 \; net plancher sendsafe image 2 yukie/plancher_tissage.png
+\; net plancher sendsafe fade 2 1;
+#X msg 683 628 \; net plancher sendsafe image 2 yukie/plancher_chien.png
+\; net plancher sendsafe fade 2 1;
+#X msg 683 674 \; net plancher sendsafe image 2 yukie/plancher_metro.png
+\; net plancher sendsafe fade 2 1;
+#X msg 177 308 \; net ecran sendsafe scaletrans 1 1 -0.67 0 0.75;
+#X msg 234 470 \; net plancher send set_plugin_param 3 crayon POINT
+\$1 \$2;
+#X obj 255 426 t b f;
+#X text 223 142 Envoie a l'ecran;
+#X text 621 154 Envoie au plancher;
+#X text 510 238 Example to start prosilica capture;
+#X msg 513 260 \; net plancher sendsafe captureblend 1 12146 0.5 \;
+net plancher sendsafe fade 1 1;
+#X msg 512 316 \; net plancher send set_plugin_param 1 frameblend Ratio
+0.95;
+#X msg 512 350 \; net plancher send set_plugin_param 1 frameblend Ratio
+0.01;
+#X msg 18 458 \; net sendsafe unload 2;
+#X msg 18 492 \; net sendsafe unload 3;
+#X msg 446 737 1;
+#X obj 522 618 vsl 15 100 -3 3 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 523 729 5 0 0 0 - - -;
+#X obj 559 618 vsl 15 100 -3 3 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 562 729 5 0 0 0 - - -;
+#X obj 600 618 vsl 15 100 -3 3 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 601 729 5 0 0 0 - - -;
+#X obj 483 618 vsl 15 100 -3 3 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 0 1;
+#X floatatom 484 729 5 0 0 0 - - -;
+#X obj 525 749 t b f;
+#X obj 607 749 t b f;
+#X obj 484 749 t b f;
+#X obj 566 749 t b f;
+#X obj 484 782 pack 1 f f f f;
+#X obj 434 837 print;
+#X msg 483 594 1;
+#X msg 522 594 1;
+#X msg 559 594 0;
+#X msg 600 594 0;
+#X msg 434 804 \; net plancher send scaletrans \$1 \$2 \$3 \$4 \$5
+;
+#X msg 180 581 \; net ecran sendsafe color 2 0 0 0;
+#X msg 261 881 \; net ecran send set_color 2 \$1 \$2 \$3;
+#X msg 307 417 \; net plancher sendsafe plugin 3 crayon camera "" \;
+net plancher sendsafe fade 3 1;
+#X msg 235 504 \; net ecran sendsafe plugin 3 crayon camera "" \; net
+ecran sendsafe fade 3 1;
+#X msg 219 168 connect 11000 1;
+#X msg 624 172 connect 11000;
+#X msg 389 929 \; net ecran sendsafe capture 1 12145 10 \; net ecran
+sendsafe fade 1 1;
+#X msg 682 925 \; net ecran sendsafe loadAlpha 1 alpha_fade_short_vert.png
+;
+#X connect 0 0 68 0;
+#X connect 0 0 127 0;
+#X connect 0 0 128 0;
+#X connect 1 0 15 0;
+#X connect 5 0 3 0;
+#X connect 6 0 29 0;
+#X connect 7 0 8 0;
+#X connect 10 0 21 0;
+#X connect 11 0 12 0;
+#X connect 11 1 13 0;
+#X connect 11 2 14 0;
+#X connect 15 0 11 0;
+#X connect 18 0 19 0;
+#X connect 22 0 2 0;
+#X connect 23 0 21 1;
+#X connect 24 0 26 0;
+#X connect 25 0 2 0;
+#X connect 27 0 28 0;
+#X connect 30 0 29 0;
+#X connect 48 0 32 0;
+#X connect 49 0 32 0;
+#X connect 50 0 32 0;
+#X connect 51 0 52 0;
+#X connect 52 0 57 0;
+#X connect 53 0 54 0;
+#X connect 54 0 58 0;
+#X connect 55 0 56 0;
+#X connect 56 0 59 0;
+#X connect 57 0 124 0;
+#X connect 58 0 57 0;
+#X connect 58 1 57 1;
+#X connect 59 0 57 0;
+#X connect 59 1 57 2;
+#X connect 60 0 61 0;
+#X connect 61 0 51 0;
+#X connect 61 0 53 0;
+#X connect 61 0 55 0;
+#X connect 70 0 72 0;
+#X connect 71 0 69 0;
+#X connect 73 0 77 0;
+#X connect 74 0 75 0;
+#X connect 75 0 31 0;
+#X connect 75 1 31 0;
+#X connect 75 2 73 0;
+#X connect 75 2 31 0;
+#X connect 78 0 93 0;
+#X connect 79 0 78 0;
+#X connect 80 0 94 0;
+#X connect 86 0 92 0;
+#X connect 94 0 78 0;
+#X connect 94 1 78 1;
+#X connect 103 0 116 0;
+#X connect 104 0 105 0;
+#X connect 105 0 112 0;
+#X connect 106 0 107 0;
+#X connect 107 0 115 0;
+#X connect 108 0 109 0;
+#X connect 109 0 113 0;
+#X connect 110 0 111 0;
+#X connect 111 0 114 0;
+#X connect 112 0 116 0;
+#X connect 112 1 116 2;
+#X connect 113 0 116 0;
+#X connect 113 1 116 3;
+#X connect 114 0 116 0;
+#X connect 114 1 116 1;
+#X connect 115 0 116 0;
+#X connect 115 1 116 3;
+#X connect 116 0 122 0;
+#X connect 118 0 110 0;
+#X connect 119 0 104 0;
+#X connect 120 0 106 0;
+#X connect 121 0 108 0;
+#X connect 122 0 117 0;
+#X connect 127 0 31 0;
+#X connect 128 0 73 0;

@@ -1,0 +1,7 @@
+
+pour partir pd:
+
+pd -lib lighttwist -mididev <device number (0-4)> midipatch.pd
+
+la patch utilise le fichier patch.lua pour interpreter les controles midi.
+

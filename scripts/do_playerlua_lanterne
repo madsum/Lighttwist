@@ -1,0 +1,4 @@
+#!/bin/bash
+ltplayerlua -path ~/lighttwist/data -share /usr/local/share/lighttwist -lut ~/lighttwist/scan/out/imapXY_00_crop.lut.png -blend ~/lighttwist/scan/out/00_support_proj.png -video_shader deform_video.glsl -3d_shader deform_3d.glsl -m 0 -n 1 -zero 0 -sync -dlutsx 2048 -dlutsy 2048 -vpxmin 0 -vpymin 0 -vpwidth 1920 -vpheight 1080 -port 15555
+#./ltplayerlua -path ~/lighttwist/data -lut ~/lighttwist/scan/out/imapXY_00_crop.lut.png -blend ~/lighttwist/scan/out/00_support_proj.png -videoshader /usr/local/share/lighttwist/deform_video.glsl -3dshader /usr/local/share/lighttwist/deform_3d.glsl -m 0 -n 1 -zero 0 -sync -dlutsx 2048 -dlutsy 2048 -vpxmin 0 -vpymin 0 -vpwidth 768 -vpheight 512
+

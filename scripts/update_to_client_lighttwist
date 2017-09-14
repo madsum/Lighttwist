@@ -1,0 +1,14 @@
+#!/bin/sh -f
+
+#rsync -abv --delete --exclude 'roys/AzureusDownloads' --exclude 'roys/personnel/passwd' --exclude 'roys/.mozilla/firefox/0738aduy.default/Cache' --exclude 'roys/torrent' --exclude 'roys/Desktop/.torrent' --exclude 'roys/share/music' --exclude 'roys/share/video' --exclude 'roys/projet/cirque' --exclude 'roys/projet/fabrique' -e 'ssh' /home/roys yop.iro.umontreal.ca:/u/roys/dellX2/home
+
+#rsync -abv --delete --exclude 'roys/Musique' --exclude 'roys/sshfs' --exclude 'roys/.azureus' -e 'ssh' /home/roys yop.iro.umontreal.ca:/u/roys/dellX3/home
+#rsync -abv --delete --exclude 'roys/Bureau/.torrent' --exclude 'roys/sshfs' --exclude 'roys/.azureus' -e 'ssh' /home/roys yop.iro.umontreal.ca:/u/roys/dellX3/home
+
+#rsync -abv --delete -e 'ssh' /var/www yop.iro.umontreal.ca:/u/roys/dellX3/var
+
+#rsync -abv --delete --exclude 'roys/.azureus' --exclude 'roys/Bureau/.torrent' -e 'ssh' /home/roys yop.iro.umontreal.ca:/u/roys/dellX4/home
+
+rsync -abv --delete -e 'ssh' /home/roys/lighttwist prima1:/home/vision/
+
+

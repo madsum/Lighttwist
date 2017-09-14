@@ -1,0 +1,2 @@
+#!/bin/sh
+cmake . -GUnix\ Makefiles -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_CXX_FLAGS:STRING='-g -Wall -Wno-deprecated-declarations' -DCMAKE_CC_FLAGS:STRING='-g -Wall'
